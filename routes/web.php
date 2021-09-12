@@ -17,87 +17,95 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('backend/dashboard', function () {
-    return view('dashboard');
-})->name('backend.dashboard.index');
+Route::prefix('backend')->name('backend')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('.dashboard.index');
 
-Route::get('backend/users', function () {
-    return "Backend List User ";
-})->name('backend.users.index');
+    Route::prefix('/users')->group(function () {
+        Route::get('/', function () {
+            return "Backend List User ";
+        })->name('.users.index');
 
-Route::get('backend/users/{id?}', function ($id) {
-    return "Backend List User " . $id;
-})->whereNumber('id');
+        Route::get('/{id?}', function ($id) {
+            return "Backend List User " . $id;
+        })->whereNumber('id');
 
-Route::get('backend/users/create', function () {
-    return view('create');
+        Route::get('/create', function () {
+            return view('create');
+        });
+
+        Route::post('/store', function () {
+            return "Backend User Store";
+        });
+
+        Route::view('/edit', 'edit');
+
+        Route::put('/update', function () {
+            return "Backend User Update";
+        });
+    });
+
+    //----- quản lý Blog -----
+    Route::prefix('blogs')->name('.blogs')->group(function () {
+        Route::get('/', function () {
+            return view('blogs');
+        })->name('');
+
+        Route::get('/add', function () {
+            return view('addblogs');
+        })->name('.add');
+
+        Route::get('/save', function () {
+            return view('blogs');
+        })->name('.save');
+
+        Route::get('/edit', function () {
+            return view('editblogs');
+        })->name('.edit');
+
+        Route::get('/update', function () {
+            return view('blogs');
+        })->name('.update');
+
+        Route::get('/delete', function () {
+            return view('deleteblogs');
+        })->name('.delete');
+
+        Route::get('/detail', function () {
+            return view('detailblog');
+        })->name('.detail');
+
+        //---- Quản lý danh mục Blog ----
+
+        Route::prefix('cate')->name('.cate')->group(function () {
+            Route::get('/', function () {
+                return view('cateblog');
+            })->name('');
+
+            Route::get('/add', function () {
+                return view('addcateblogs');
+            })->name('.add');
+
+            Route::get('/save', function () {
+                return view('cateblog');
+            })->name('.save');
+
+            Route::get('/cate/edit', function () {
+                return view('editcateblog');
+            })->name('.edit');
+
+            Route::get('/update', function () {
+                return view('cateblog');
+            })->name('.update');
+
+            Route::get('/delete', function () {
+                return view('deletecateblog');
+            })->name('.delete');
+
+            Route::get('/detail', function () {
+                return view('detailcateblog');
+            })->name('.detail');
+        });
+    });
 });
-
-Route::post('backend/users/store', function () {
-    return "Backend User Store";
-});
-
-Route::view('backend/users/edit', 'edit');
-
-Route::put('backend/users/update', function () {
-    return "Backend User Update";
-});
-//----- quản lý Blog -----
-
-Route::get('backend/blogs', function () {
-    return view('blogs');
-})->name('backend.blogs');
-
-Route::get('backend/blogs/add', function () {
-    return view('addblogs');
-})->name('backend.blogs.add');
-
-Route::get('backend/blogs/save', function () {
-    return view('blogs');
-})->name('backend.blogs.save');
-
-Route::get('backend/blogs/edit', function () {
-    return view('editblogs');
-})->name('backend.blogs.edit');
-
-Route::get('backend/blogs/update', function () {
-    return view('blogs');
-})->name('backend.blogs.update');
-
-Route::get('backend/blogs/delete', function () {
-    return view('deleteblogs');
-})->name('backend.blogs.delete');
-
-Route::get('backend/blogs/detail', function () {
-    return view('detailblog');
-})->name('backend.blogs.detail');
-
-//---- Quản lý danh mục Blog ----
-
-Route::get('backend/blogs/cate', function () {
-    return view('cateblog');
-})->name('backend.blogs.cate');
-
-Route::get('backend/blogs/cate/add', function () {
-    return view('addcateblogs');
-})->name('backend.blogs.cate.add');
-
-Route::get('backend/blogs/cate/save', function () {
-    return view('cateblog');
-})->name('backend.blogs.cate.save');
-
-Route::get('backend/blogs/cate/edit', function () {
-    return view('editcateblog');
-})->name('backend.blogs.cate.edit');
-
-Route::get('backend/blogs/cate/update', function () {
-    return view('cateblog');
-})->name('backend.blogs.cate.update');
-
-Route::get('backend/blogs/cate/delete', function () {
-    return view('deletecateblog');
-})->name('backend.blogs.cate.delete');
-
-Route::get('backend/blogs/cate/detail', function () {
-    return view('detailcateblog');
-})->name('backend.blogs.cate.detail');
