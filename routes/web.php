@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    $currentRoute = Route::current()->uri();
+
+    // $currentRoute = Route::currentRouteName();
+    $currentRoute = Route::getCurrentRoute();
+
+    dd($currentRoute);
+
     return view('welcome');
 })->name('home');
 
