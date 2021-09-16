@@ -24,20 +24,20 @@ Route::get('/', function () {
 
     // dd($currentRoute);
 
-    // return view('welcome');
+    return view('welcome');
 })->name('home');
 
 Route::get('frontend/posts/show', function () {
     return view('frontend.posts.show');
 });
 
-Route::prefix('backend')->name('backend')->group(function () {
+Route::prefix('backend')->name('backend')->middleware([])->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.dashboard');
     })->name('.dashboard');
 
     Route::prefix('users')->group(function () {
-        Route::get('/', function () {
+        Route::get('', function () {
             return view("backend.users.index");
         })->name('.users.index');
 
@@ -46,7 +46,7 @@ Route::prefix('backend')->name('backend')->group(function () {
         })->whereNumber('id');
 
         Route::get('create', function () {
-            return view('backend.users.create');
+            return view("backend.users.create");
         })->name('.users.create');
 
         Route::post('/store', function () {
