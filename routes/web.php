@@ -1,6 +1,8 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
+use illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,39 +17,43 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $currentRoute = Route::current()->uri();
+    // $currentRoute = Route::current()->uri();
 
-    // $currentRoute = Route::currentRouteName();
-    $currentRoute = Route::getCurrentRoute();
+    // // $currentRoute = Route::currentRouteName();
+    // $currentRoute = Route::getCurrentRoute();
 
-    dd($currentRoute);
+    // dd($currentRoute);
 
-    return view('welcome');
+    // return view('welcome');
 })->name('home');
+
+Route::get('frontend/posts/show', function () {
+    return view('frontend.posts.show');
+});
 
 Route::prefix('backend')->name('backend')->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('.dashboard.index');
+        return view('backend.dashboard');
+    })->name('.dashboard');
 
-    Route::prefix('/users')->group(function () {
+    Route::prefix('users')->group(function () {
         Route::get('/', function () {
-            return "Backend List User ";
+            return view("backend.users.index");
         })->name('.users.index');
 
         Route::get('/{id?}', function ($id) {
             return "Backend List User " . $id;
         })->whereNumber('id');
 
-        Route::get('/create', function () {
-            return view('create');
-        });
+        Route::get('create', function () {
+            return view('backend.users.create');
+        })->name('.users.create');
 
         Route::post('/store', function () {
             return "Backend User Store";
         });
 
-        Route::view('/edit', 'edit');
+        Route::view('/edit', 'backend.users.edit');
 
         Route::put('/update', function () {
             return "Backend User Update";
