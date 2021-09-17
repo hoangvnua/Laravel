@@ -31,6 +31,7 @@ Route::get('frontend/posts/show', function () {
     return view('frontend.posts.show');
 });
 
+
 Route::prefix('backend')->name('backend')->middleware([])->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.dashboard');
@@ -53,7 +54,7 @@ Route::prefix('backend')->name('backend')->middleware([])->group(function () {
             return "Backend User Store";
         });
 
-        Route::view('/edit', 'backend.users.edit');
+        Route::view('/edit', 'backend.users.edit')->name('.users.edit');
 
         Route::put('/update', function () {
             return "Backend User Update";
@@ -121,5 +122,15 @@ Route::prefix('backend')->name('backend')->middleware([])->group(function () {
                 return view('detailcateblog');
             })->name('.detail');
         });
+    });
+
+    Route::prefix('posts')->group(function(){
+        Route::get('/', function () {
+            return view('backend.posts.index');
+        })->name('.posts.index');
+
+        Route::get('/create', function () {
+            return view('backend.posts.create');
+        })->name('.posts.create');
     });
 });

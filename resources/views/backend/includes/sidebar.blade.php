@@ -46,13 +46,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="./index.html" class="nav-link active">
+              <a href=" {{ route('backend.posts.create') }} " class="nav-link @yield('class') ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tạo mới Blog</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="./index2.html" class="nav-link">
+              <a href="{{ route('backend.posts.index') }}" class="nav-link @yield('class1') ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Danh sách Blog</p>
               </a>
@@ -71,19 +71,19 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="users/" class="nav-link">
+              <a href="{{ route('backend.users.index') }}" class="nav-link @yield('class2')">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Danh sách users</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="users/create" class="nav-link active">
+              <a href="{{ route('backend.users.create') }}" class="nav-link @yield('class3')">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tạo mới user</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="users/edit" class="nav-link">
+              <a href="{{ route('backend.users.edit') }}" class="nav-link @yield('class4')">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Chỉnh sửa users</p>
               </a>

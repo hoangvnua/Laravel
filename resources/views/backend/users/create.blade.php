@@ -138,3 +138,7 @@
   <!-- /.card-body -->
 </div>
 @endsection
+
+@section('class3')
+  active
+@endsection

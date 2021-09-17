@@ -4,6 +4,7 @@
   List User
 @endsection
 
+
 @section('content-header')
 <div class="container-fluid">
   <div class="row mb-2">
@@ -92,4 +93,8 @@
     </div>
   
 </div><!-- /.container-fluid -->
+@endsection
+
+@section('class2')
+  active
 @endsection
