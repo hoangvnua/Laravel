@@ -2,7 +2,9 @@
 
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
-use illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,20 +29,38 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// Route::get('/', [HomeController::class, 'index'] );
+Route::get('/', 'HomeController@index');
+
 Route::get('frontend/posts/show', function () {
     return view('frontend.posts.show');
 });
 
 
-Route::prefix('backend')->name('backend')->middleware([])->group(function () {
+Route::prefix('backend')
+->name('backend.')
+->namespace('Backend')
+->middleware([])
+->group(function () {
+
+    // Posts
+    Route::resource('posts', PostController::class)->only([
+        'index', 'store', 'create', 'edit', 'update'
+    ])->names([
+        'create' => 'posts.add'
+    ])->parameters([
+        'posts' => 'posts_id'
+    ]);
+
+
     Route::get('/dashboard', function () {
         return view('backend.dashboard');
-    })->name('.dashboard');
+    })->name('dashboard');
 
     Route::prefix('users')->group(function () {
         Route::get('', function () {
             return view("backend.users.index");
-        })->name('.users.index');
+        })->name('users.index');
 
         Route::get('/{id?}', function ($id) {
             return "Backend List User " . $id;
@@ -48,13 +68,13 @@ Route::prefix('backend')->name('backend')->middleware([])->group(function () {
 
         Route::get('create', function () {
             return view("backend.users.create");
-        })->name('.users.create');
+        })->name('users.create');
 
         Route::post('/store', function () {
             return "Backend User Store";
         });
 
-        Route::view('/edit', 'backend.users.edit')->name('.users.edit');
+        Route::view('/edit', 'backend.users.edit')->name('users.edit');
 
         Route::put('/update', function () {
             return "Backend User Update";
@@ -62,34 +82,34 @@ Route::prefix('backend')->name('backend')->middleware([])->group(function () {
     });
 
     //----- quản lý Blog -----
-    Route::prefix('blogs')->name('.blogs')->group(function () {
+    Route::prefix('blogs')->name('blogs')->group(function () {
         Route::get('/', function () {
             return view('blogs');
         })->name('');
 
         Route::get('/add', function () {
             return view('addblogs');
-        })->name('.add');
+        })->name('add');
 
         Route::get('/save', function () {
             return view('blogs');
-        })->name('.save');
+        })->name('save');
 
         Route::get('/edit', function () {
             return view('editblogs');
-        })->name('.edit');
+        })->name('edit');
 
         Route::get('/update', function () {
             return view('blogs');
-        })->name('.update');
+        })->name('update');
 
         Route::get('/delete', function () {
             return view('deleteblogs');
-        })->name('.delete');
+        })->name('delete');
 
         Route::get('/detail', function () {
             return view('detailblog');
-        })->name('.detail');
+        })->name('detail');
 
         //---- Quản lý danh mục Blog ----
 
@@ -100,37 +120,27 @@ Route::prefix('backend')->name('backend')->middleware([])->group(function () {
 
             Route::get('/add', function () {
                 return view('addcateblogs');
-            })->name('.add');
+            })->name('add');
 
             Route::get('/save', function () {
                 return view('cateblog');
-            })->name('.save');
+            })->name('save');
 
             Route::get('/cate/edit', function () {
                 return view('editcateblog');
-            })->name('.edit');
+            })->name('edit');
 
             Route::get('/update', function () {
                 return view('cateblog');
-            })->name('.update');
+            })->name('update');
 
             Route::get('/delete', function () {
                 return view('deletecateblog');
-            })->name('.delete');
+            })->name('delete');
 
             Route::get('/detail', function () {
                 return view('detailcateblog');
-            })->name('.detail');
+            })->name('detail');
         });
-    });
-
-    Route::prefix('posts')->group(function(){
-        Route::get('/', function () {
-            return view('backend.posts.index');
-        })->name('.posts.index');
-
-        Route::get('/create', function () {
-            return view('backend.posts.create');
-        })->name('.posts.create');
     });
 });

@@ -27,7 +27,7 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
           <li class="nav-item">
-          <a href="#1" class="nav-link">
+          <a href="{{ route('backend.dashboard') }}" class="nav-link @if (request()->is('backend/dashboard')) active @endif">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
               Dashboard
@@ -35,7 +35,7 @@
           </a>
           </li>
         <li class="nav-header">Quản lý chung</li>
-        <li class="nav-item">
+        <li class="nav-item @if (request()->routeIs('backend.posts.*')) menu-open @endif">
           <a href="#2" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
@@ -46,21 +46,21 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href=" {{ route('backend.posts.create') }} " class="nav-link @yield('class') ">
+              <a href="{{ route('backend.posts.index') }}" class="nav-link @if (request()->is('backend/posts')) active @endif">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Tạo mới Blog</p>
+                <p>Danh sách Blog</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('backend.posts.index') }}" class="nav-link @yield('class1') ">
+              <a href=" {{ route('backend.posts.add') }} " class="nav-link @if (request()->is('backend/posts/create')) active @endif ">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Danh sách Blog</p>
+                <p>Tạo mới Blog</p>
               </a>
             </li>
           </ul>
         </li>
         <li class="nav-header">Hệ thống</li>
-        <li class="nav-item">
+        <li class="nav-item @if (request()->routeIs('backend.users.*')) menu-open @endif">
           <a href="#2" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
@@ -71,19 +71,19 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('backend.users.index') }}" class="nav-link @yield('class2')">
+              <a href="{{ route('backend.users.index') }}" class="nav-link @if (request()->is('backend/users')) active @endif">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Danh sách users</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('backend.users.create') }}" class="nav-link @yield('class3')">
+              <a href="{{ route('backend.users.create') }}" class="nav-link @if (request()->is('backend/users/create')) active @endif">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tạo mới user</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('backend.users.edit') }}" class="nav-link @yield('class4')">
+              <a href="{{ route('backend.users.edit') }}" class="nav-link @if (request()->is('backend/users/edit')) active @endif">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Chỉnh sửa users</p>
               </a>
