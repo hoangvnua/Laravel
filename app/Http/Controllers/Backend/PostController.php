@@ -57,7 +57,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('backend.posts.edit');
     }
 
     /**
@@ -69,7 +69,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        return redirect('backend/posts');
     }
 
     /**

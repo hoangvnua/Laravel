@@ -50,7 +50,7 @@
                     <td>Bacon ipsum dolor sit.</td>
                     <td>John Doe</td>
                     <td>11-7-2014</td>
-                    <td><i class="far fa-edit btn btn-outline-primary"></i> <i class="far fa-trash-alt btn btn-outline-danger"></i></td>
+                    <td><a href='{{ route('backend.posts.edit', 1) }}'><i class="far fa-edit btn btn-outline-primary"></i></a> <i class="far fa-trash-alt btn btn-outline-danger"></i></td>
                   </tr>
                 </tbody>
               </table>

@@ -1,17 +1,18 @@
 @extends('backend.layouts.master')
 
 @section('title')
-  Create Post
+  Edit Post
 @endsection
 
 @section('content-header')
-    <h1>Tạo bài viết</h1>
+    <h1>Chỉnh sửa bài viết</h1>
 @endsection
 
 @section('content')
 
 <div class="card card-primary">
-    <form class="form-horizontal" method="POST" action="{{ route('backend.posts.store') }}">
+    <form class="form-horizontal" method="POST" action="{{ route('backend.posts.update', 1) }}">
+      @method('PUT')
       @csrf
       <div class="card-body">
         <div class="form-group">
@@ -52,7 +53,7 @@
       </div>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary" style="float: right">Tạo mới</button>
+        <button type="submit" class="btn btn-primary" style="float: right">Lưu</button>
       </div>
     </form>
   </div>

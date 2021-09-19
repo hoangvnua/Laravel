@@ -12,6 +12,7 @@
 <div class="card card-info">
   <div class="card-body">
     <form class="form-horizontal" method="POST" action="{{ route('backend.users.update',1) }}">
+    @method('PUT')
       @csrf
       <div class="input-group mb-3">
         <input type="hidden" name="id" id="" value="1">

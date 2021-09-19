@@ -70,8 +70,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        dd(1);
+        dd($request->all());
+        return redirect('backend/users');
     }
 
     /**

@@ -48,10 +48,10 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
+                  <th>Họ Tên</th>
+                  <th>Ngày sinh</th>
                   <th>Status</th>
-                  <th>Reason</th>
+                  <th>Hành động</th>
                 </tr>
               </thead>
               <tbody>
@@ -60,28 +60,7 @@
                   <td>John Doe</td>
                   <td>11-7-2014</td>
                   <td><span class="tag tag-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td><span class="tag tag-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="tag tag-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="tag tag-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td><a href='{{ route('backend.users.edit', 1) }}'><i class="far fa-edit btn btn-outline-primary"></i></a> <i class="far fa-trash-alt btn btn-outline-danger"></i></td>
                 </tr>
               </tbody>
             </table>
