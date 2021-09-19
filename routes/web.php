@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,17 +16,17 @@ use Illuminate\Support\Facades\App;
 |
 */
 
-Route::get('/', function () {
+// Route::get('/', function () {
 
-    // $currentRoute = Route::current()->uri();
+//     // $currentRoute = Route::current()->uri();
 
-    // // $currentRoute = Route::currentRouteName();
-    // $currentRoute = Route::getCurrentRoute();
+//     // // $currentRoute = Route::currentRouteName();
+//     // $currentRoute = Route::getCurrentRoute();
 
-    // dd($currentRoute);
+//     // dd($currentRoute);
 
-    return view('welcome');
-})->name('home');
+//     return view('welcome');
+// })->name('home');
 
 // Route::get('/', [HomeController::class, 'index'] );
 Route::get('/', 'HomeController@index');
@@ -52,34 +51,36 @@ Route::prefix('backend')
         'posts' => 'posts_id'
     ]);
 
+    // Dashboard
+    Route::resource('/dashboard', DashboardController::class);
+    
+    // User
+    Route::resource('users', UserController::class)->parameters([
+        'user' => 'id'
+    ]);
+    // Route::prefix('users')->group(function () {
+    //     Route::get('', function () {
+    //         return view("backend.users.index");
+    //     })->name('users.index');
 
-    Route::get('/dashboard', function () {
-        return view('backend.dashboard');
-    })->name('dashboard');
+    //     Route::get('/{id?}', function ($id) {
+    //         return "Backend List User " . $id;
+    //     })->whereNumber('id');
 
-    Route::prefix('users')->group(function () {
-        Route::get('', function () {
-            return view("backend.users.index");
-        })->name('users.index');
+    //     Route::get('create', function () {
+    //         return view("backend.users.create");
+    //     })->name('users.create');
 
-        Route::get('/{id?}', function ($id) {
-            return "Backend List User " . $id;
-        })->whereNumber('id');
+    //     Route::post('/store', function () {
+    //         return "Backend User Store";
+    //     });
 
-        Route::get('create', function () {
-            return view("backend.users.create");
-        })->name('users.create');
+    //     Route::view('/edit', 'backend.users.edit')->name('users.edit');
 
-        Route::post('/store', function () {
-            return "Backend User Store";
-        });
-
-        Route::view('/edit', 'backend.users.edit')->name('users.edit');
-
-        Route::put('/update', function () {
-            return "Backend User Update";
-        });
-    });
+    //     Route::put('/update', function () {
+    //         return "Backend User Update";
+    //     });
+    // });
 
     //----- quản lý Blog -----
     Route::prefix('blogs')->name('blogs')->group(function () {

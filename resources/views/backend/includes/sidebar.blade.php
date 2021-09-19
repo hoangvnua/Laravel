@@ -27,7 +27,7 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
           <li class="nav-item">
-          <a href="{{ route('backend.dashboard') }}" class="nav-link @if (request()->is('backend/dashboard')) active @endif">
+          <a href="{{ route('backend.dashboard.index') }}" class="nav-link @if (request()->is('backend/dashboard')) active @endif">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
               Dashboard
@@ -83,7 +83,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('backend.users.edit') }}" class="nav-link @if (request()->is('backend/users/edit')) active @endif">
+              <a href="{{ route('backend.users.edit', 1) }}" class="nav-link @if (request()->is('backend/users/edit')) active @endif">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Chỉnh sửa users</p>
               </a>
