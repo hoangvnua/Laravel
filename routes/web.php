@@ -55,9 +55,7 @@ Route::prefix('backend')
     Route::resource('/dashboard', DashboardController::class);
     
     // User
-    Route::resource('users', UserController::class)->parameters([
-        'user' => 'id'
-    ]);
+    Route::resource('users', UserController::class);
     // Route::prefix('users')->group(function () {
     //     Route::get('', function () {
     //         return view("backend.users.index");
@@ -82,66 +80,8 @@ Route::prefix('backend')
     //     });
     // });
 
-    //----- quản lý Blog -----
-    Route::prefix('blogs')->name('blogs')->group(function () {
-        Route::get('/', function () {
-            return view('blogs');
-        })->name('');
+    //---- Quản lý danh mục Blog ----
 
-        Route::get('/add', function () {
-            return view('addblogs');
-        })->name('add');
+    Route::resource('category', CategoryController::class);
 
-        Route::get('/save', function () {
-            return view('blogs');
-        })->name('save');
-
-        Route::get('/edit', function () {
-            return view('editblogs');
-        })->name('edit');
-
-        Route::get('/update', function () {
-            return view('blogs');
-        })->name('update');
-
-        Route::get('/delete', function () {
-            return view('deleteblogs');
-        })->name('delete');
-
-        Route::get('/detail', function () {
-            return view('detailblog');
-        })->name('detail');
-
-        //---- Quản lý danh mục Blog ----
-
-        Route::prefix('cate')->name('.cate')->group(function () {
-            Route::get('/', function () {
-                return view('cateblog');
-            })->name('');
-
-            Route::get('/add', function () {
-                return view('addcateblogs');
-            })->name('add');
-
-            Route::get('/save', function () {
-                return view('cateblog');
-            })->name('save');
-
-            Route::get('/cate/edit', function () {
-                return view('editcateblog');
-            })->name('edit');
-
-            Route::get('/update', function () {
-                return view('cateblog');
-            })->name('update');
-
-            Route::get('/delete', function () {
-                return view('deletecateblog');
-            })->name('delete');
-
-            Route::get('/detail', function () {
-                return view('detailcateblog');
-            })->name('detail');
-        });
-    });
 });

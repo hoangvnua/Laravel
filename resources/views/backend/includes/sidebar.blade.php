@@ -59,6 +59,31 @@
             </li>
           </ul>
         </li>
+        <li class="nav-header">Quản lý danh mục</li>
+        <li class="nav-item @if (request()->routeIs('backend.category.*')) menu-open @endif">
+          <a href="#2" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Blog
+              <i class="fas fa-angle-left right"></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('backend.category.index') }}" class="nav-link @if (request()->is('backend/category')) active @endif">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Danh sách danh mục</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href=" {{ route('backend.category.create') }} " class="nav-link @if (request()->is('backend/category/create')) active @endif ">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tạo mới danh mục</p>
+              </a>
+            </li>
+          </ul>
+        </li>
         <li class="nav-header">Hệ thống</li>
         <li class="nav-item @if (request()->routeIs('backend.users.*')) menu-open @endif">
           <a href="#2" class="nav-link">
