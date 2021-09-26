@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class UserController extends Controller
 {
@@ -39,8 +40,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        return redirect('backend/users');
+        return redirect()->route('backend.users.index');
     }
 
     /**
@@ -53,7 +53,7 @@ class UserController extends Controller
     {
         $user = DB::table('users')->select(['id', 'name'])->find($id);
         return view('backend.users.show', [
-            'user' =>$user
+            'user' => $user
         ]);
     }
 
@@ -65,7 +65,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.users.edit');
+        $user = DB::table('users')->find($id);
+
+        return view('backend.users.edit')->with([
+            'user' => $user
+        ]);
     }
 
     /**
@@ -77,8 +81,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
-        return redirect('backend/users');
+        $data = $request->only(['name', 'email']);
+
+        DB::table('users')->where('id', $id)->update([
+            'name' => $data['name'],
+            'email' => $data['email']
+        ]);
+        return redirect()->route('backend.users.index');
     }
 
     /**
@@ -89,6 +98,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('users')->where('id', $id)->delete();
+
+        return redirect()->route('backend.users.index');
     }
 }

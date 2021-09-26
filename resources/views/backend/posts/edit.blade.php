@@ -11,17 +11,19 @@
 @section('content')
 
 <div class="card card-primary">
-    <form class="form-horizontal" method="POST" action="{{ route('backend.posts.update', 1) }}">
+    <form class="form-horizontal" method="POST" action="{{ route('backend.posts.update',  $post->id) }}">
       @method('PUT')
       @csrf
       <div class="card-body">
         <div class="form-group">
           <label for="exampleInputEmail1">Tiêu đề</label>
-          <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
+          <input type="text" name="title" class="form-control" id="exampleInputEmail1" value="{{ $post->title }}">
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Textarea</label>
-          @include('backend.component.summernote')
+          @include('backend.component.summernote', [
+            'content' => $post->content
+          ])
         </div>
 
       <div class="row">

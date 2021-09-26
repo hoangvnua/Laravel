@@ -65,7 +65,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.category.edit');
+        $category =DB::table('categories')->find($id);
+        
+        return view('backend.category.edit')->with([
+            'category' => $category
+        ]);
     }
 
     /**
@@ -77,8 +81,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
-        return redirect('backend/posts');
+        $data = $request->only(['name']);
+
+        DB::table('categories')->where('id', $id)->update([
+            'name' => $data['name'],
+            'updated_at' => now()
+        ]);
+        return redirect()->route('backend.category.index');
     }
 
     /**
@@ -89,6 +98,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('categories')->where('id', $id)->delete();
+
+        return redirect()->route('backend.category.index');
     }
 }

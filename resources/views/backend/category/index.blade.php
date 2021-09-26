@@ -37,8 +37,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Tên danh mục</th>
-                                    <th>Trạng thái</th>
                                     <th>Ngày tạo</th>
+                                    <th>Thay đổi gần đây</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -47,16 +47,23 @@
                                     <tr>
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
                                         <td>{{ $category->created_at }}</td>
-                                        <td>
-                                          <a href='{{ route('backend.category.show', $category->id) }}'>
-                                            <i class="far fa-eye btn btn-outline-success"></i>
-                                          </a> 
-                                          <a href='{{ route('backend.category.edit', $category->id) }}'>
-                                            <i class="far fa-edit btn btn-outline-primary"></i>
-                                          </a> 
-                                          <i class="far fa-trash-alt btn btn-outline-danger"></i>
+                                        <td>{{ $category->updated_at }}</td>
+                                        <td style="display: flex">
+                                            <a href='{{ route('backend.category.show', $category->id) }}'>
+                                                <i class="far fa-eye btn btn-outline-success"></i>
+                                            </a>
+                                            <a href='{{ route('backend.category.edit', $category->id) }}'>
+                                                <i class="far fa-edit btn btn-outline-primary"></i>
+                                            </a>
+                                            <form method="POST"
+                                                action="{{ route('backend.category.destroy', $category->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-outline-danger">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -76,7 +76,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.posts.edit');
+        $post =DB::table('posts')->find($id);
+
+        return view('backend.posts.edit')->with([
+            'post' => $post
+        ]);
     }
 
     /**
@@ -88,8 +92,13 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
-        return redirect('backend/posts');
+        $data = $request->only(['title', 'content']);
+
+        DB::table('posts')->where('id', $id)->update([
+            'title' => $data['title'],
+            'content' => $data['content']
+        ]);
+        return redirect()->route('backend.posts.index');
     }
 
     /**
@@ -100,6 +109,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('posts')->where('id', $id)->delete();
+
+        return redirect()->route('backend.posts.index');
     }
 }

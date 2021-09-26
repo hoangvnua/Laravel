@@ -11,21 +11,21 @@
 @section('content')
 <div class="card card-info">
   <div class="card-body">
-    <form class="form-horizontal" method="POST" action="{{ route('backend.users.update',1) }}">
+    <form class="form-horizontal" method="POST" action="{{ route('backend.users.update', $user->id) }}">
     @method('PUT')
       @csrf
-      <div class="input-group mb-3">
-        <input type="hidden" name="id" id="" value="1">
-      </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fas fa-user"></i></span>
       </div>
-      <input type="text" class="form-control" name="name" placeholder="Họ tên">
+      <input type="text" class="form-control" name="name" placeholder="Họ tên" value="{{ $user->name }}">
     </div>
 
-    <div class="input-group mb-3 date" id="reservationdate" data-target-input="nearest">
-      <input type="date" class="form-control" name="ngaysinh" placeholder="Ngày sinh" data-target="#reservationdate">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+      </div>
+      <input type="date" class="form-control" name="ngaysinh" data-target="#reservationdate" value="{{ $user->updated_at }}">
       
     </div>
 
@@ -33,7 +33,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
       </div>
-      <input type="email" class="form-control" name="email" placeholder="Email">
+      <input type="email" class="form-control" name="email" placeholder="Email" value="{{ $user->email }}">
     </div>
 
     <div class="input-group mb-3">

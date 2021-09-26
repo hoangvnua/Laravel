@@ -37,7 +37,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Tên bài viết</th>
-                                    <th>Danh mục</th>
+                                    <th>Nội dung</th>
                                     <th>Người tạo</th>
                                     <th>Ngày tạo</th>
                                     <th>Hành động</th>
@@ -51,14 +51,21 @@
                                         <td>{{ $post->content }}</td>
                                         <td>John Doe</td>
                                         <td>{{ $post->created_at }}</td>
-                                        <td>
-                                            <a href='{{ route('backend.posts.show', $post->id ) }}'>
+                                        <td style="display: flex">
+
+                                            <a href='{{ route('backend.posts.show', $post->id) }}'>
                                                 <i class="far fa-eye btn btn-outline-success"></i>
                                             </a>
                                             <a href='{{ route('backend.posts.edit', $post->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
                                             </a>
-                                            <i class="far fa-trash-alt btn btn-outline-danger"></i>
+                                            <form method="POST" action="{{ route('backend.posts.destroy', $post->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-outline-danger">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

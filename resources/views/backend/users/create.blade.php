@@ -20,9 +20,12 @@
       <input type="text" class="form-control" name="name" placeholder="Họ tên">
     </div>
 
+    
     <div class="input-group mb-3 date" id="reservationdate" data-target-input="nearest">
-      <input type="date" class="form-control" name="ngaysinh" placeholder="Ngày sinh" data-target="#reservationdate">
-      
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+      </div>
+      <input type="date" class="form-control" name="ngaysinh" data-target="#reservationdate">
     </div>
 
     <div class="input-group mb-3">
