@@ -38,7 +38,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $data = $request->only(['title' , 'content']);
+        DB::table('posts')->insert([
+            'title' => $data['title'],
+            'slug' => Str::slug($data['title']),
+            'content' => $data['content'],
+            'img_url' => 'ảnh ảo',
+            'user_created_id' => 1,
+            'user_updated_id' => 1,
+            'category_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        return redirect()->route('backend.posts.index');
     }
 
     /**

@@ -37,7 +37,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = $request->only('name');
+        DB::table('categories')->insert([
+            'name' => $data['name'],
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        return redirect()->route('backend.category.index');
     }
 
     /**

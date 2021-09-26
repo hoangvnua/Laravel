@@ -50,7 +50,7 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->content }}</td>
                                         <td>John Doe</td>
-                                        <td>11-7-2014</td>
+                                        <td>{{ $post->created_at }}</td>
                                         <td>
                                             <a href='{{ route('backend.posts.show', $post->id ) }}'>
                                                 <i class="far fa-eye btn btn-outline-success"></i>
