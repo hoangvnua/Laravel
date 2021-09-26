@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -14,7 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('backend.posts.index');
+        $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
+        return view('backend.posts.index')->with(['posts' => $posts]);
     }
 
     /**
@@ -35,7 +38,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        
     }
 
     /**
@@ -46,7 +49,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = DB::table('posts')->find($id);
+        return view('backend.posts.show', [
+            'post' =>$post
+        ]);
     }
 
     /**

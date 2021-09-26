@@ -44,7 +44,7 @@ Route::prefix('backend')
 
     // Posts
     Route::resource('posts', PostController::class)->only([
-        'index', 'store', 'create', 'edit', 'update'
+        'index', 'store', 'create', 'edit', 'update', 'show'
     ])->names([
         'create' => 'posts.add'
     ])->parameters([

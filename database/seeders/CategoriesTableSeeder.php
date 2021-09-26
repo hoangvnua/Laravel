@@ -30,11 +30,8 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name' => 'Phụ kiện'
             ]
-            
-        ];
 
-        foreach($categories as $category){
-            DB::table('categories')->insert($category);
-        }
+        ];
+        DB::table('categories')->insert($categories);
     }
 }
