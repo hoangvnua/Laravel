@@ -64,14 +64,20 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->status }}</td>
-                                        <td>
+                                        <td style="display: flex">
                                             <a href='{{ route('backend.users.show', $user->id) }}'>
                                                 <i class="far fa-eye btn btn-outline-success"></i>
                                             </a>
                                             <a href='{{ route('backend.users.edit', $user->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
                                             </a>
-                                            <i class="far fa-trash-alt btn btn-outline-danger"></i>
+                                            <form method="POST" action="{{ route('backend.users.destroy', $user->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-outline-danger">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
