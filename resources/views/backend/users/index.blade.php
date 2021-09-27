@@ -47,6 +47,21 @@
                             </div>
                         </div>
                     </div>
+                    <form method="GET" action="{{ route('backend.users.index') }}" style="display: flex">
+                        <div class="col-3">
+                            <input type="text" class="form-control" name="name" placeholder="Lọc theo tên">
+                        </div>
+                        <div class="col-3">
+                                <input type="text" class="form-control" name="email" placeholder="Lọc theo Email">
+                            </div>
+                        {{-- <div class="col-3">
+                                <input type="text" class="form-control" placeholder=".col-5">
+                            </div> --}}
+                        <div class="col-3">
+                            <button class="btn btn-info">Lọc</button>
+                        </div>
+                    </form>
+
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">

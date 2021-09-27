@@ -16,9 +16,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = DB::table('users')->get();
+        $users_query = DB::table('users');
+
+        $name = $request->get('name');
+
+        if (!empty($name)) {
+            $users_query->where('name', 'like', "%" . $name . "%");
+        }
+        $email = $request->get('email');
+        if (!empty($email)) {
+            $users_query->where('email', 'like', '%' . $email . '%');
+        }
+        $users = $users_query->get();
+        // $users = DB::table('users')->get();
         return view('backend.users.index')->with([
             'users' => $users
         ]);

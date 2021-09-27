@@ -30,20 +30,21 @@
                             </div>
                         </div>
                     </div>
-                    <form method="GET" action="{{ route('backend.posts.index') }}">
+                    <form method="GET" action="{{ route('backend.posts.index') }}" style="display: flex">
                         <div class="col-3">
-                            <input type="text" class="form-control" name="title"  placeholder="Search">
+                            <input type="text" class="form-control" name="title" placeholder="Lọc theo title">
                         </div>
+                        <div class="col-3">
+                                <input type="text" class="form-control" name="status" placeholder="Lọc theo Status">
+                            </div>
                         {{-- <div class="col-3">
-                            <input type="text" class="form-control" placeholder=".col-4">
-                        </div> --}}
-                        {{-- <div class="col-3">
-                            <input type="text" class="form-control" placeholder=".col-5">
-                        </div> --}}
+                                <input type="text" class="form-control" placeholder=".col-5">
+                            </div> --}}
                         <div class="col-3">
                             <button class="btn btn-info">Lọc</button>
                         </div>
                     </form>
+
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
@@ -52,7 +53,7 @@
                                     <th>ID</th>
                                     <th>Tên bài viết</th>
                                     <th>Nội dung</th>
-                                    <th>Người tạo</th>
+                                    <th>Status</th>
                                     <th>Ngày tạo</th>
                                     <th>Hành động</th>
                                 </tr>
@@ -63,7 +64,7 @@
                                         <td>{{ $post->id }}</td>
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->content }}</td>
-                                        <td>John Doe</td>
+                                        <td>{{ $post->status }}</td>
                                         <td>{{ $post->created_at }}</td>
                                         <td style="display: flex">
 

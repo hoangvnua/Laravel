@@ -25,6 +25,10 @@
             'content' => $post->content
           ])
         </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Status</label>
+          <input type="text" name="status" class="form-control" id="exampleInputEmail1" value="{{ $post->status }}">
+        </div>
 
       <div class="row">
         <div class="col-sm-6">

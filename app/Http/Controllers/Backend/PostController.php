@@ -54,13 +54,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['title', 'content']);
+        $data = $request->only(['title', 'content', 'status']);
 
         try {
             $insert = DB::table('posts')->insert([
                 'title' => $data['title'],
                 'slug' => Str::slug($data['title']),
                 'content' => $data['content'],
+                'status' => $data['status'],
                 'img_url' => 'ảnh ảo',
                 'user_created_id' => 1,
                 'user_updated_id' => 1,
@@ -114,11 +115,12 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->only(['title', 'content']);
+        $data = $request->only(['title', 'content', 'status']);
 
         DB::table('posts')->where('id', $id)->update([
             'title' => $data['title'],
-            'content' => $data['content']
+            'content' => $data['content'],
+            'status' => $data['status']
         ]);
         return redirect()->route('backend.posts.index');
     }
