@@ -28,7 +28,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Responsive Hover Table</h3>
+                        @include('backend.component.btn', [
+                        'href' => route('backend.users.create'),
+                        'type' => 'primary',
+                        'content' => 'Thêm mới'
+                        ])
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">

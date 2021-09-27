@@ -65,8 +65,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category =DB::table('categories')->find($id);
-        
+        $category = DB::table('categories')->find($id);
+
         return view('backend.category.edit')->with([
             'category' => $category
         ]);

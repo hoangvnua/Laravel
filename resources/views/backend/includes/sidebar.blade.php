@@ -107,12 +107,6 @@
                 <p>Tạo mới user</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="{{ route('backend.users.edit', 1) }}" class="nav-link @if (request()->is('backend/users/edit')) active @endif">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Chỉnh sửa users</p>
-              </a>
-            </li>
           </ul>
         </li>
       </ul>

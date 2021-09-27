@@ -30,6 +30,20 @@
                             </div>
                         </div>
                     </div>
+                    <form method="GET" action="{{ route('backend.posts.index') }}">
+                        <div class="col-3">
+                            <input type="text" class="form-control" name="title"  placeholder="Search">
+                        </div>
+                        {{-- <div class="col-3">
+                            <input type="text" class="form-control" placeholder=".col-4">
+                        </div> --}}
+                        {{-- <div class="col-3">
+                            <input type="text" class="form-control" placeholder=".col-5">
+                        </div> --}}
+                        <div class="col-3">
+                            <button class="btn btn-info">Lọc</button>
+                        </div>
+                    </form>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">

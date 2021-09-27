@@ -43,10 +43,17 @@
     </div>
 
     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-key"></i></span>
+      </div>
+      <input type="password" class="form-control" name="password_confirm" placeholder="Confirm Password">
+    </div>
+
+    <div class="input-group mb-3">
       <div class="input-group-append">
         <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
       </div>
-      <input type="text" class="form-control" name="diachi" placeholder="Địa chỉ">
+      <input type="text" class="form-control" name="address" placeholder="Địa chỉ">
     </div>
 
       <button type="submit" class="btn btn-primary" style="float: right">Thêm User</button>

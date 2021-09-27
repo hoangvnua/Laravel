@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use PhpParser\Node\Stmt\TryCatch;
 
 class PostController extends Controller
 {
@@ -14,9 +17,22 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
+        $posts_query = DB::table('posts');
+
+        $title = $request->get('title');
+
+        if (!empty($title)) {
+            $posts_query->where('title', 'like', "%" . $title . "%");
+        }
+        $status = $request->get('status');
+        if ($status !== null) {
+            $posts_query->where('status', $status);
+        }
+        $posts = $posts_query->get();
+
+        // $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
         return view('backend.posts.index')->with(['posts' => $posts]);
     }
 
@@ -38,18 +54,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['title' , 'content']);
-        DB::table('posts')->insert([
-            'title' => $data['title'],
-            'slug' => Str::slug($data['title']),
-            'content' => $data['content'],
-            'img_url' => 'ảnh ảo',
-            'user_created_id' => 1,
-            'user_updated_id' => 1,
-            'category_id' => 1,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        $data = $request->only(['title', 'content']);
+
+        try {
+            $insert = DB::table('posts')->insert([
+                'title' => $data['title'],
+                'slug' => Str::slug($data['title']),
+                'content' => $data['content'],
+                'img_url' => 'ảnh ảo',
+                'user_created_id' => 1,
+                'user_updated_id' => 1,
+                'category_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        } catch (Exception $ex) {
+            Log::error("PostsController@store Error" . $ex->getMessage());
+        }
+
 
         return redirect()->route('backend.posts.index');
     }
@@ -64,7 +86,7 @@ class PostController extends Controller
     {
         $post = DB::table('posts')->find($id);
         return view('backend.posts.show', [
-            'post' =>$post
+            'post' => $post
         ]);
     }
 
@@ -76,7 +98,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post =DB::table('posts')->find($id);
+        $post = DB::table('posts')->find($id);
 
         return view('backend.posts.edit')->with([
             'post' => $post

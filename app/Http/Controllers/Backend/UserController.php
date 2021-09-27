@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use phpDocumentor\Reflection\Types\Nullable;
 
 class UserController extends Controller
@@ -40,6 +42,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->only(['name', 'email', 'password', 'address']);
+
+
+        try {
+            $insert = DB::table('users')->insert([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'address' => $data['address'],
+                'phone' => 123456,
+                'status' => 123456,
+                'avatar' => 'hiha'
+            ]);
+        } catch (Exception $ex) {
+            Log::error($ex->getMessage());
+        }
         return redirect()->route('backend.users.index');
     }
 
