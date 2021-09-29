@@ -125,12 +125,20 @@ class PostController extends Controller
     {
         $data = $request->only(['title', 'content', 'status']);
 
-        DB::table('posts')->where('id', $id)->update([
-            'title' => $data['title'],
-            'content' => $data['content'],
-            'status' => $data['status']
-        ]);
+        // DB::table('posts')->where('id', $id)->update([
+        //     'title' => $data['title'],
+        //     'content' => $data['content'],
+        //     'status' => $data['status']
+        // ]);
 
+        $post = Post::find($id);
+        $post->title = $data['title'];
+        $post->content = $data['content'];
+        $post->status = $data['status'];
+        $post->user_created_id = 1;
+        $post->user_updated_id = 1;
+        $post->category_id = 1;
+        $post->save();
 
         return redirect()->route('backend.posts.index');
     }
