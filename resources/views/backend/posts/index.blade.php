@@ -62,7 +62,10 @@
                                 @foreach ($posts as $post)
                                     <tr>
                                         <td>{{ $post->id }}</td>
-                                        <td>{{ $post->title }}</td>
+                                        <td>
+                                            Title: {{ $post->title }} <br>
+                                            Slug: {{ $post->slug }}
+                                        </td>
                                         <td>{{ $post->content }}</td>
                                         <td>{{ $post->status_text }}</td>
                                         <td>{{ $post->created_at }}</td>

@@ -37,6 +37,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Tên danh mục</th>
+                                    <th>slug</th>
                                     <th>Ngày tạo</th>
                                     <th>Thay đổi gần đây</th>
                                     <th>Hành động</th>
@@ -47,6 +48,7 @@
                                     <tr>
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
+                                        <td>{{ $category->slug }}</td>
                                         <td>{{ $category->created_at }}</td>
                                         <td>{{ $category->updated_at }}</td>
                                         <td style="display: flex">

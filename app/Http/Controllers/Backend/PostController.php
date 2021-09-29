@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
+
 use PhpParser\Node\Stmt\TryCatch;
 
 class PostController extends Controller
@@ -55,22 +55,31 @@ class PostController extends Controller
     {
         $data = $request->only(['title', 'content', 'status']);
 
-        try {
-            $insert = DB::table('posts')->insert([
-                'title' => $data['title'],
-                'slug' => Str::slug($data['title']),
-                'content' => $data['content'],
-                'status' => $data['status'],
-                'img_url' => 'ảnh ảo',
-                'user_created_id' => 1,
-                'user_updated_id' => 1,
-                'category_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-        } catch (Exception $ex) {
-            Log::error("PostsController@store Error" . $ex->getMessage());
-        }
+        // try {
+        //     $insert = DB::table('posts')->insert([
+        //         'title' => $data['title'],
+        //         'slug' => Str::slug($data['title']),
+        //         'content' => $data['content'],
+        //         'status' => $data['status'],
+        //         'img_url' => 'ảnh ảo',
+        //         'user_created_id' => 1,
+        //         'user_updated_id' => 1,
+        //         'category_id' => 1,
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ]);
+        // } catch (Exception $ex) {
+        //     Log::error("PostsController@store Error" . $ex->getMessage());
+        // }
+
+        $post = new Post();
+        $post->title = $data['title'];
+        $post->content = $data['content'];
+        $post->status = $data['status'];
+        $post->user_created_id = 1;
+        $post->user_updated_id = 1;
+        $post->category_id = 1;
+        $post->save();
 
 
         return redirect()->route('backend.posts.index');
@@ -96,7 +105,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $post = DB::table('posts')->find($id);
 
@@ -116,11 +125,21 @@ class PostController extends Controller
     {
         $data = $request->only(['title', 'content', 'status']);
 
-        DB::table('posts')->where('id', $id)->update([
-            'title' => $data['title'],
-            'content' => $data['content'],
-            'status' => $data['status']
-        ]);
+        // DB::table('posts')->where('id', $id)->update([
+        //     'title' => $data['title'],
+        //     'content' => $data['content'],
+        //     'status' => $data['status']
+        // ]);
+
+        $post = Post::find($id);
+        $post->title = $data['title'];
+        $post->content = $data['content'];
+        $post->status = $data['status'];
+        $post->user_created_id = 1;
+        $post->user_updated_id = 1;
+        $post->category_id = 1;
+        $post->save();
+
         return redirect()->route('backend.posts.index');
     }
 
