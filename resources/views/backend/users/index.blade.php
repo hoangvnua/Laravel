@@ -52,8 +52,8 @@
                             <input type="text" class="form-control" name="name" placeholder="Lọc theo tên">
                         </div>
                         <div class="col-3">
-                                <input type="text" class="form-control" name="email" placeholder="Lọc theo Email">
-                            </div>
+                            <input type="text" class="form-control" name="email" placeholder="Lọc theo Email">
+                        </div>
                         {{-- <div class="col-3">
                                 <input type="text" class="form-control" placeholder=".col-5">
                             </div> --}}

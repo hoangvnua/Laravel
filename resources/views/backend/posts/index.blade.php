@@ -64,7 +64,7 @@
                                         <td>{{ $post->id }}</td>
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->content }}</td>
-                                        <td>{{ $post->status }}</td>
+                                        <td>{{ $post->status_text }}</td>
                                         <td>{{ $post->created_at }}</td>
                                         <td style="display: flex">
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,18 +20,16 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts_query = DB::table('posts');
-
+        // $posts_query = DB::table('posts');
+        $posts = Post::get();
         $title = $request->get('title');
-
-        if (!empty($title)) {
-            $posts_query->where('title', 'like', "%" . $title . "%");
-        }
         $status = $request->get('status');
-        if ($status !== null) {
-            $posts_query->where('status', $status);
+        if (!empty($title)) {
+            $posts = Post::where('title', 'like', '%' . $title . '%')->get();
         }
-        $posts = $posts_query->get();
+        if ($status !== null) {
+            $posts = Post::where('status', $status)->get();
+        }
 
         // $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
         return view('backend.posts.index')->with(['posts' => $posts]);
