@@ -22,36 +22,19 @@
                     <label for="exampleInputEmail1">Textarea</label>
                     @include('backend.component.summernote')
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="exampleInputEmail1">Status</label>
                     <input type="text" name="status" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <!-- select -->
-                        <div class="form-group">
-                            <label>Danh mục</label>
-                            <select class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Trạng thái</label>
-                            <select class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                            </select>
-                        </div>
-                    </div>
+                </div> --}}
+
+                <!-- select -->
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                    <select class="form-control" name="status" aria-placeholder="1" aria-valuenow="1">
+                        <option value="1">Public</option>
+                        <option value="0">Draft</option>
+                        <option value="3">Test</option>
+                    </select>
                 </div>
             </div>
             <div class="card-footer">

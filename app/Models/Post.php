@@ -22,8 +22,7 @@ class Post extends Model
     protected $statusArr = [
         0 => 'Draft',
         1 => 'Public',
-        2 => 'Test',
-        31 => 'thừa'
+        2 => 'Test'
     ];
 
     public function getStatusTextAttribute()
