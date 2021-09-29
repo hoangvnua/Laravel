@@ -19,17 +19,20 @@ class Post extends Model
     ];
 
 
-    protected $statusArr= [
-        0=> 'Draft',
-        1=> 'Public',
-        2=> 'Test'
+    protected $statusArr = [
+        0 => 'Draft',
+        1 => 'Public',
+        2 => 'Test',
+        31 => 'thừa'
     ];
 
-    public function getStatusTextAttribute(){
+    public function getStatusTextAttribute()
+    {
         return $this->statusArr[$this->status];
     }
 
-    public function setTitleAttribute($title){
+    public function setTitleAttribute($title)
+    {
         $this->attributes['title'] = $title;
         $this->attributes['slug'] = Str::slug($title);
     }
