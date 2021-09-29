@@ -88,13 +88,11 @@ class CategoryController extends Controller
     {
         $data = $request->only(['name']);
 
-        // DB::table('categories')->where('id', $id)->update([
-        //     'name' => $data['name'],
-        //     'updated_at' => now()
-        // ]);
-        $category = Category::find($id);
-        $category->name = $data['name'];
-        $category->save();
+        DB::table('categories')->where('id', $id)->update([
+            'name' => $data['name'],
+            'updated_at' => now()
+        ]);
+        
         return redirect()->route('backend.category.index');
     }
 
