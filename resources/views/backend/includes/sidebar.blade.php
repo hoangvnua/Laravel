@@ -52,7 +52,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href=" {{ route('backend.posts.add') }} " class="nav-link @if (request()->is('backend/posts/create')) active @endif ">
+              <a href=" {{ route('backend.posts.create') }} " class="nav-link @if (request()->is('backend/posts/create')) active @endif ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tạo mới bài viết</p>
               </a>
@@ -60,7 +60,7 @@
           </ul>
         </li>
         <li class="nav-header">Quản lý danh mục</li>
-        <li class="nav-item @if (request()->routeIs('backend.category.*')) menu-open @endif">
+        <li class="nav-item @if (request()->routeIs('backend.categories.*')) menu-open @endif">
           <a href="#2" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
@@ -71,15 +71,21 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('backend.category.index') }}" class="nav-link @if (request()->is('backend/category')) active @endif">
+              <a href="{{ route('backend.categories.index') }}" class="nav-link @if (request()->is('backend/categories')) active @endif">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Danh sách danh mục</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href=" {{ route('backend.category.create') }} " class="nav-link @if (request()->is('backend/category/create')) active @endif ">
+              <a href=" {{ route('backend.categories.create') }} " class="nav-link @if (request()->is('backend/categories/create')) active @endif ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tạo mới danh mục</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href=" {{ route('backend.categories.delete') }} " class="nav-link @if (request()->is('backend/categories/delete')) active @endif ">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Danh mục đã xóa</p>
               </a>
             </li>
           </ul>
@@ -105,6 +111,12 @@
               <a href="{{ route('backend.users.create') }}" class="nav-link @if (request()->is('backend/users/create')) active @endif">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tạo mới user</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('backend.users.delete') }}" class="nav-link @if (request()->is('backend/users/delete')) active @endif">
+                <i class="far fa-circle nav-icon"></i>
+                <p>User deleted</p>
               </a>
             </li>
           </ul>

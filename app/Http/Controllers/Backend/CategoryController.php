@@ -17,9 +17,22 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::simplePaginate(5);
-        return view('backend.category.index')->with(['categories' => $categories]);
+        return view('backend.categories.index')->with(['categories' => $categories]);
     }
 
+    public function restore($id)
+    {
+        $categories = Category::withTrashed()->where('id', $id)->restore();
+
+        return redirect()->route('backend.categories.delete');
+    }
+
+    public function delete(Request $request){
+        $categories = Category::onlyTrashed()->get();
+        return view('backend.categories.softDelete',[
+            'categories' => $categories,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +40,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.category.create');
+        return view('backend.categories.create');
     }
 
     /**
@@ -48,7 +61,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $data['name'];
         $category->save();
-        return redirect()->route('backend.category.index');
+        return redirect()->route('backend.categories.index');
     }
 
     /**
@@ -70,10 +83,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = DB::table('categories')->find($id);
+        $categories = DB::table('categories')->find($id);
 
-        return view('backend.category.edit')->with([
-            'category' => $category
+        return view('backend.categories.edit')->with([
+            'categories' => $categories
         ]);
     }
 
@@ -95,7 +108,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = $data['name'];
         $category->save();
-        return redirect()->route('backend.category.index');
+        return redirect()->route('backend.categories.index');
     }
 
     /**
@@ -109,6 +122,6 @@ class CategoryController extends Controller
         // DB::table('categories')->where('id', $id)->delete();
         Category::destroy($id);
 
-        return redirect()->route('backend.category.index');
+        return redirect()->route('backend.categories.index');
     }
 }

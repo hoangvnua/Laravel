@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-    List User
+   Soft User
 @endsection
 
 
@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Danh sách users</h1>
+                <h1 class="m-0">Danh sách users đã xóa</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -47,21 +47,6 @@
                             </div>
                         </div>
                     </div>
-                    <form method="GET" action="{{ route('backend.users.index') }}" style="display: flex">
-                        <div class="col-3">
-                            <input type="text" class="form-control" name="name" placeholder="Lọc theo tên">
-                        </div>
-                        <div class="col-3">
-                            <input type="text" class="form-control" name="email" placeholder="Lọc theo Email">
-                        </div>
-                        {{-- <div class="col-3">
-                                <input type="text" class="form-control" placeholder=".col-5">
-                            </div> --}}
-                        <div class="col-3">
-                            <button class="btn btn-info">Lọc</button>
-                        </div>
-
-                    </form>
 
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
@@ -85,26 +70,16 @@
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->status }}</td>
                                         <td style="display: flex">
-                                            <a href='{{ route('backend.users.show', $user->id) }}'>
-                                                <i class="far fa-eye btn btn-outline-success"></i>
-                                            </a>
-                                            <a href='{{ route('backend.users.edit', $user->id) }}'>
-                                                <i class="far fa-edit btn btn-outline-primary"></i>
-                                            </a>
-                                            <form method="POST" action="{{ route('backend.users.destroy', $user->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-outline-danger">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </button>
-                                            </form>
+                                                <a href='{{ route('backend.users.restore',['id' => $user->id]) }}'>
+                                                    <i class="btn btn-outline-primary">Restore</i>
+                                                </a>
                                         </td>
                                     </tr>
                                 @endforeach
 
                             </tbody>
                         </table>
-                        {{ $users->links() }}
+                      
                     </div>
                     <!-- /.card-body -->
                 </div>

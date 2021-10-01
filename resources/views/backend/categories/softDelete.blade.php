@@ -12,11 +12,6 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        @include('backend.component.btn', [
-                        'href' => route('backend.category.create'),
-                        'type' => 'primary',
-                        'content' => 'Thêm mới'
-                        ])
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -52,27 +47,16 @@
                                         <td>{{ $category->created_at }}</td>
                                         <td>{{ $category->updated_at }}</td>
                                         <td style="display: flex">
-                                            <a href='{{ route('backend.category.show', $category->id) }}'>
-                                                <i class="far fa-eye btn btn-outline-success"></i>
+                                            <a href='{{ route('backend.categories.restore', $category->id) }}'>
+                                                <i class="btn btn-outline-primary">Restore</i>
                                             </a>
-                                            <a href='{{ route('backend.category.edit', $category->id) }}'>
-                                                <i class="far fa-edit btn btn-outline-primary"></i>
-                                            </a>
-                                            <form method="POST"
-                                                action="{{ route('backend.category.destroy', $category->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-outline-danger">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </button>
-                                            </form>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
 
                             </tbody>
                         </table>
-                        {{ $categories->links() }}
                     </div>
                     <!-- /.card-body -->
                 </div>

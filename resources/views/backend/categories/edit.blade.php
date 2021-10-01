@@ -11,7 +11,7 @@
 @section('content')
 
     <div class="card card-primary">
-        <form class="form-horizontal" method="POST" action="{{ route('backend.category.update', $category->id) }}">
+        <form class="form-horizontal" method="POST" action="{{ route('backend.categories.update', $category->id) }}">
             @method('PUT')
             @csrf
             <div class="card-body">

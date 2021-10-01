@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header">
                         @include('backend.component.btn', [
-                        'href' => route('backend.posts.add'),
+                        'href' => route('backend.posts.create'),
                         'type' => 'primary',
                         'content' => 'Thêm mới'
                         ])

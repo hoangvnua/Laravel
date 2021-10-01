@@ -1,24 +1,8 @@
 @extends('backend.layouts.master')
 
-@section('title')
-    List User
-@endsection
-
-
 @section('content-header')
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">Danh sách users</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Danh sách Users</li>
-                </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+    <h1>Danh sách danh mục</h1>
+
 @endsection
 
 @section('content')
@@ -29,15 +13,14 @@
                 <div class="card">
                     <div class="card-header">
                         @include('backend.component.btn', [
-                        'href' => route('backend.users.create'),
+                        'href' => route('backend.categories.create'),
                         'type' => 'primary',
                         'content' => 'Thêm mới'
                         ])
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right"
-                                    placeholder="Search">
+                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
@@ -47,51 +30,36 @@
                             </div>
                         </div>
                     </div>
-                    <form method="GET" action="{{ route('backend.users.index') }}" style="display: flex">
-                        <div class="col-3">
-                            <input type="text" class="form-control" name="name" placeholder="Lọc theo tên">
-                        </div>
-                        <div class="col-3">
-                            <input type="text" class="form-control" name="email" placeholder="Lọc theo Email">
-                        </div>
-                        {{-- <div class="col-3">
-                                <input type="text" class="form-control" placeholder=".col-5">
-                            </div> --}}
-                        <div class="col-3">
-                            <button class="btn btn-info">Lọc</button>
-                        </div>
-
-                    </form>
-
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Họ Tên</th>
-                                    <th>Email</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Status</th>
+                                    <th>Tên danh mục</th>
+                                    <th>slug</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Thay đổi gần đây</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($categories as $category)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->phone }}</td>
-                                        <td>{{ $user->status }}</td>
+                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->slug }}</td>
+                                        <td>{{ $category->created_at }}</td>
+                                        <td>{{ $category->updated_at }}</td>
                                         <td style="display: flex">
-                                            <a href='{{ route('backend.users.show', $user->id) }}'>
+                                            <a href='{{ route('backend.categories.show', $category->id) }}'>
                                                 <i class="far fa-eye btn btn-outline-success"></i>
                                             </a>
-                                            <a href='{{ route('backend.users.edit', $user->id) }}'>
+                                            <a href='{{ route('backend.categories.edit', $category->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
                                             </a>
-                                            <form method="POST" action="{{ route('backend.users.destroy', $user->id) }}">
+                                            <form method="POST"
+                                                action="{{ route('backend.categories.destroy', $category->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-outline-danger">
@@ -104,7 +72,7 @@
 
                             </tbody>
                         </table>
-                        {{ $users->links() }}
+                        {{ $categories->links() }}
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -115,6 +83,6 @@
     </div><!-- /.container-fluid -->
 @endsection
 
-@section('class2')
+@section('class1')
     active
 @endsection

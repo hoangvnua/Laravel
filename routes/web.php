@@ -36,6 +36,12 @@ Route::get('frontend/posts/show', function () {
 });
 
 
+Route::get('backend/users/delete','Backend\UserController@delete')->name('backend.users.delete');
+Route::get('backend/users/restore/{id}','Backend\UserController@restore')->name('backend.users.restore');
+
+Route::get('backend/categories/delete','Backend\CategoryController@delete')->name('backend.categories.delete');
+Route::get('backend/categories/restore/{id}','Backend\CategoryController@restore')->name('backend.categories.restore');
+
 Route::prefix('backend')
 ->name('backend.')
 ->namespace('Backend')
@@ -43,11 +49,7 @@ Route::prefix('backend')
 ->group(function () {
 
     // Posts
-    Route::resource('posts', PostController::class)->names([
-        'create' => 'posts.add'
-    ])->parameters([
-        'posts' => 'posts_id'
-    ]);
+    Route::resource('posts', PostController::class);
 
     // Dashboard
     Route::resource('/dashboard', DashboardController::class);
@@ -55,33 +57,8 @@ Route::prefix('backend')
     // User
     Route::resource('users', UserController::class);
 
-    Route::resource('users', DeletedUserController::class);
-    // Route::prefix('users')->group(function () {
-    //     Route::get('', function () {
-    //         return view("backend.users.index");
-    //     })->name('users.index');
-
-    //     Route::get('/{id?}', function ($id) {
-    //         return "Backend List User " . $id;
-    //     })->whereNumber('id');
-
-    //     Route::get('create', function () {
-    //         return view("backend.users.create");
-    //     })->name('users.create');
-
-    //     Route::post('/store', function () {
-    //         return "Backend User Store";
-    //     });
-
-    //     Route::view('/edit', 'backend.users.edit')->name('users.edit');
-
-    //     Route::put('/update', function () {
-    //         return "Backend User Update";
-    //     });
-    // });
-
     //---- Quản lý danh mục Blog ----
 
-    Route::resource('category', CategoryController::class);
+    Route::resource('categories', CategoryController::class);
 
 });

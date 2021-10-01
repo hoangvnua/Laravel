@@ -11,7 +11,7 @@
 @section('content')
 
 <div class="card card-primary">
-    <form class="form-horizontal" method="POST" action="{{ route('backend.category.store') }}">
+    <form class="form-horizontal" method="POST" action="{{ route('backend.categories.store') }}">
       @csrf
       <div class="card-body">
         <div class="form-group">

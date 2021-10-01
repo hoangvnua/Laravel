@@ -33,10 +33,16 @@ class UserController extends Controller
         if (!empty($email)) {
             $users = User::where('email', 'like', '%' . $email . '%')->simplePaginate(5);
         }
-        
+
         return view('backend.users.index')->with([
             'users' => $users
         ]);
+    }
+
+    public function restore($id){
+        $users = User::withTrashed()->where('id',$id)->restore();
+    
+        return redirect()->route('backend.users.delete');
     }
 
     /**
@@ -135,5 +141,12 @@ class UserController extends Controller
         User::destroy($id);
 
         return redirect()->route('backend.users.index');
+    }
+    
+    public function delete(Request $request){
+        $users = User::onlyTrashed()->get();
+        return view('backend.users.softDelete',[
+            'users' => $users,
+        ]);
     }
 }
