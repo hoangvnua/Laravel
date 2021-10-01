@@ -18,16 +18,25 @@ class Post extends Model
         //Không cho lưu cột trong này
     ];
 
+    const STATUS_DRAFT = 0;
+    const STATUS_DONE = 1;
+    const STATUS_PUBLIC = 2;
 
     protected $statusArr = [
-        0 => 'Draft',
-        1 => 'Public',
-        2 => 'Test'
+        self::STATUS_DRAFT => 'Draft',
+        self::STATUS_DONE => 'Done',
+        self::STATUS_PUBLIC => 'Public'
+    ];
+
+    protected $statusColor = [
+        self::STATUS_DRAFT => 'default',
+        self::STATUS_DONE => 'warning',
+        self::STATUS_PUBLIC => 'success'
     ];
 
     public function getStatusTextAttribute()
     {
-        return $this->statusArr[$this->status];
+        return '<span class="badge badge-' . $this->statusColor[$this->status] . '">' . $this->statusArr[$this->status] . '<span>';
     }
 
     public function setTitleAttribute($title)

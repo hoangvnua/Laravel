@@ -43,9 +43,7 @@ Route::prefix('backend')
 ->group(function () {
 
     // Posts
-    Route::resource('posts', PostController::class)->only([
-        'index', 'store', 'create', 'edit', 'update', 'show', 'destroy'
-    ])->names([
+    Route::resource('posts', PostController::class)->names([
         'create' => 'posts.add'
     ])->parameters([
         'posts' => 'posts_id'
@@ -56,6 +54,8 @@ Route::prefix('backend')
     
     // User
     Route::resource('users', UserController::class);
+
+    Route::resource('users', DeletedUserController::class);
     // Route::prefix('users')->group(function () {
     //     Route::get('', function () {
     //         return view("backend.users.index");

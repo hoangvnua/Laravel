@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::get();
+        $categories = Category::simplePaginate(5);
         return view('backend.category.index')->with(['categories' => $categories]);
     }
 
@@ -106,7 +106,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('categories')->where('id', $id)->delete();
+        // DB::table('categories')->where('id', $id)->delete();
+        Category::destroy($id);
 
         return redirect()->route('backend.category.index');
     }

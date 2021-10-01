@@ -21,14 +21,14 @@ class PostController extends Controller
     public function index(Request $request)
     {
         // $posts_query = DB::table('posts');
-        $posts = Post::get();
+        $posts = Post::simplePaginate(5);
         $title = $request->get('title');
         $status = $request->get('status');
         if (!empty($title)) {
-            $posts = Post::where('title', 'like', '%' . $title . '%')->get();
+            $posts = Post::where('title', 'like', '%' . $title . '%')->simplePaginate(5);
         }
         if ($status !== null) {
-            $posts = Post::where('status', $status)->get();
+            $posts = Post::where('status', $status)->simplePaginate(5);
         }
 
         // $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
@@ -107,8 +107,8 @@ class PostController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $post = DB::table('posts')->find($id);
-
+        // $post = DB::table('posts')->find($id);
+        $post = Post::find($id);
         return view('backend.posts.edit')->with([
             'post' => $post
         ]);
@@ -151,8 +151,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('posts')->where('id', $id)->delete();
-
+        // $post = Post::find($id);
+        // $post->delete();
+        Post::destroy($id);
         return redirect()->route('backend.posts.index');
     }
 }

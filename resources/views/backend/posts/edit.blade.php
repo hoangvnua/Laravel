@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label>Trạng thái</label>
                     <select class="form-control" name="status">
-                        <option value="{{ $post->status }}">{{ $post->status }}</option>
+                        <option value="{{ $post->status }}">{{ $post->status_text }}</option>
                         <option value="1">Public</option>
                         <option value="0">Draft</option>
                         <option value="2">Test</option>

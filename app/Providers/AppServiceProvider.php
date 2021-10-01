@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use illuminate\Support\Facades\View;
 
@@ -26,5 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $menu = ['Phone', 'Laptop'];
         view()->share('menu', $menu);
+
+        Paginator::useBootstrap();
     }
 }

@@ -35,8 +35,8 @@
                             <input type="text" class="form-control" name="title" placeholder="Lọc theo title">
                         </div>
                         <div class="col-3">
-                                <input type="text" class="form-control" name="status" placeholder="Lọc theo Status">
-                            </div>
+                            <input type="text" class="form-control" name="status" placeholder="Lọc theo Status">
+                        </div>
                         {{-- <div class="col-3">
                                 <input type="text" class="form-control" placeholder=".col-5">
                             </div> --}}
@@ -67,7 +67,7 @@
                                             Slug: {{ $post->slug }}
                                         </td>
                                         <td>{{ $post->content }}</td>
-                                        <td>{{ $post->status_text }}</td>
+                                        <td>{!! $post->status_text !!} </td>
                                         <td>{{ $post->created_at }}</td>
                                         <td style="display: flex">
 
@@ -90,6 +90,7 @@
 
                             </tbody>
                         </table>
+                        {{ $posts->links() }}
                     </div>
                     <!-- /.card-body -->
                 </div>

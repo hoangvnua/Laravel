@@ -15,7 +15,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('posts')->truncate();
+        Post::truncate();
         // $posts = [
         //     [
         //         'title' => 'Covid hôm nay',
