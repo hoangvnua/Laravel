@@ -72,7 +72,7 @@
                                     <th>Họ Tên</th>
                                     <th>Email</th>
                                     <th>Số điện thoại</th>
-                                    <th>Status</th>
+                                    <th>Địa chỉ</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -82,8 +82,8 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->phone }}</td>
-                                        <td>{{ $user->status }}</td>
+                                        <td>{{ $user->UserInfo->phone }}</td>
+                                        <td>{{ $user->UserInfo->address }}</td>
                                         <td style="display: flex">
                                             <a href='{{ route('backend.users.show', $user->id) }}'>
                                                 <i class="far fa-eye btn btn-outline-success"></i>

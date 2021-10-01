@@ -90,7 +90,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = DB::table('users')->select(['id', 'name'])->find($id);
+        $user = User::find($id);
+        // $userInfo = $user->UserInfo;
+        // dd($userInfo->address);
         return view('backend.users.show', [
             'user' => $user
         ]);
