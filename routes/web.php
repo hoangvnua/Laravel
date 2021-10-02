@@ -50,15 +50,12 @@ Route::prefix('backend')
 
     // Posts
     Route::resource('posts', PostController::class);
-
     // Dashboard
     Route::resource('/dashboard', DashboardController::class);
-    
     // User
     Route::resource('users', UserController::class);
-
     //---- Quản lý danh mục Blog ----
-
     Route::resource('categories', CategoryController::class);
-
+    //Tag
+    Route::resource('tags', TagController::class);
 });

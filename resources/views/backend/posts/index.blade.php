@@ -52,6 +52,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Tên bài viết</th>
+                                    <th>Tags</th>
                                     <th>Nội dung</th>
                                     <th>Người tạo</th>
                                     <th>Người sửa đổi</th>
@@ -67,6 +68,11 @@
                                         <td>
                                             Title: {{ $post->title }} <br>
                                             Slug: {{ $post->slug }}
+                                        </td>
+                                        <td>
+                                            @foreach ($post->tags as $tag)
+                                                <span class="badge badge-info">{{ $tag->name }}</span>
+                                            @endforeach
                                         </td>
                                         <td>{{ $post->content }}</td>
                                         <td>{{ $post->user->name }}</td>
