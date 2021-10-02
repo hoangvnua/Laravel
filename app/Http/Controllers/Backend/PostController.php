@@ -21,14 +21,14 @@ class PostController extends Controller
     public function index(Request $request)
     {
         // $posts_query = DB::table('posts');
-        $posts = Post::simplePaginate(5);
+        $posts = Post::where('status', '=', Post::STATUS_DONE)->simplePaginate(5);
         $title = $request->get('title');
         $status = $request->get('status');
         if (!empty($title)) {
-            $posts = Post::where('title', 'like', '%' . $title . '%')->simplePaginate(5);
+            $posts = Post::where('title', 'like', '%' . $title . '%')->where('status', '=', Post::STATUS_DONE)->simplePaginate(5);
         }
         if ($status !== null) {
-            $posts = Post::where('status', $status)->simplePaginate(5);
+            $posts = Post::where('status', $status)->where('status', '=', Post::STATUS_DONE)->simplePaginate(5);
         }
 
         // $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();

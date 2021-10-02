@@ -53,8 +53,10 @@
                                     <th>ID</th>
                                     <th>Tên bài viết</th>
                                     <th>Nội dung</th>
+                                    <th>Người tạo</th>
+                                    <th>Người sửa đổi</th>
                                     <th>Status</th>
-                                    <th>Ngày tạo</th>
+                                    <th>Tên danh mục</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -67,8 +69,10 @@
                                             Slug: {{ $post->slug }}
                                         </td>
                                         <td>{{ $post->content }}</td>
+                                        <td>{{ $post->user->name }}</td>
+                                        <td>{{ $post->userUpdate->name }}</td>
                                         <td>{!! $post->status_text !!} </td>
-                                        <td>{{ $post->created_at }}</td>
+                                        <td>{{ $post->category->name }}</td>
                                         <td style="display: flex">
 
                                             <a href='{{ route('backend.posts.show', $post->id) }}'>
