@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserInfo;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -67,18 +68,24 @@ class UserController extends Controller
 
 
         try {
-            $insert = DB::table('users')->insert([
+            $user_id = DB::table('users')->insertGetId([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
-                'address' => $data['address'],
-                'phone' => 123456,
-                'status' => 123456,
+                'status' => 1,
                 'avatar' => 'hiha'
+            ]);
+            
+            DB::table('user_infos')->insert([
+                'user_id' => $user_id,
+                'address' => $data['address'],
+                'phone' => '123456'
             ]);
         } catch (Exception $ex) {
             Log::error($ex->getMessage());
         }
+
+        
         return redirect()->route('backend.users.index');
     }
 

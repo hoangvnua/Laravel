@@ -28,6 +28,16 @@
                 </div> --}}
 
                 <!-- select -->
+                {{-- <div class="form-group">
+                    <label>Tag</label>
+                    <select class="form-control" name="tag" aria-placeholder="1" aria-valuenow="1">
+                        @foreach ($post->tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
+                        
+                    </select>
+                </div> --}}
+
                 <div class="form-group">
                     <label>Trạng thái</label>
                     <select class="form-control" name="status" aria-placeholder="1" aria-valuenow="1">

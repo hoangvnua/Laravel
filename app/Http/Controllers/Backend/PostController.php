@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Tag;
 use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -56,7 +58,7 @@ class PostController extends Controller
         $data = $request->only(['title', 'content', 'status']);
 
         // try {
-        //     $insert = DB::table('posts')->insert([
+        //     $insert = DB::table('posts')->insertGetId([
         //         'title' => $data['title'],
         //         'slug' => Str::slug($data['title']),
         //         'content' => $data['content'],
@@ -71,6 +73,10 @@ class PostController extends Controller
         // } catch (Exception $ex) {
         //     Log::error("PostsController@store Error" . $ex->getMessage());
         // }
+        // DB::table('post_tag')->insert([
+        //     'post_id' => $insert,
+        //     'tag_id' => 3
+        // ]);
 
         $post = new Post();
         $post->title = $data['title'];
@@ -81,6 +87,7 @@ class PostController extends Controller
         $post->category_id = 1;
         $post->save();
 
+        
 
         return redirect()->route('backend.posts.index');
     }
