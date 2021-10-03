@@ -26,8 +26,7 @@ class PostsTableSeeder extends Seeder
                 'user_created_id' => 1,
                 'user_updated_id' => 1,
                 'category_id' => 1,
-                'created_at' => now(),
-                'deleted_at' =>now()
+                'created_at' => now()
             ]
         ];
 
