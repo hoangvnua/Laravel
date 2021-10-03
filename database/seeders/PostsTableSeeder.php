@@ -16,18 +16,26 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         Post::truncate();
-        // $posts = [
-        //     [
-        //         'title' => 'Covid hôm nay',
-        //         'slug' => 'hihi-hihi',
-        //         'content' => 'Tối ngày 20/9, Hà Nội ghi nhận thêm 3 ca mắc COVID-19 đều là người trong cùng gia đình của ca bệnh cộng đồng ở phường Vĩnh Hưng, quận Hoàng Mai. Ngày hôm nay, Hà Nội chỉ ghi nhận 9 ca mắc COVID-19, thấp nhất trong hơn 2 tháng qua.',
-        //         'user_created_id' => 1,
-        //         'user_updated_id' => 1,
-        //         'category_id' => 1,
-        //         'created_at' => now()
-        //     ]
-        // ];
-        // DB::table('posts')->insert($posts);
-        Post::factory()->count(10)->create();
+        $posts = [
+            [
+                'title' => 'Covid hôm nay',
+                'slug' => 'hihi-hihi',
+                'content' => 'Tối ngày 20/9.',
+                'status' => 1,
+                'img_url' => 'ảnh ảo',
+                'user_created_id' => 1,
+                'user_updated_id' => 1,
+                'category_id' => 1,
+                'created_at' => now(),
+                'deleted_at' =>now()
+            ]
+        ];
+
+        $id_post = DB::table('posts')->insert($posts);
+        DB::table('post_tag')->insert([
+            'post_id' => $id_post,
+            'tag_id' => 1
+        ]);
+        // Post::factory()->count(10)->create();
     }
 }
