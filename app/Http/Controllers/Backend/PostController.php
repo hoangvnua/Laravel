@@ -44,7 +44,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('backend.posts.create');
+        $tags = Tag::get();
+        return view('backend.posts.create')->with(['tags' => $tags]);
     }
 
     /**
@@ -56,6 +57,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->only(['title', 'content', 'status']);
+        $tags = $request->get('tags');
 
         // try {
         //     $insert = DB::table('posts')->insertGetId([
@@ -87,7 +89,7 @@ class PostController extends Controller
         $post->category_id = 1;
         $post->save();
 
-        
+        $post->tags()->attach($tags);
 
         return redirect()->route('backend.posts.index');
     }
@@ -116,8 +118,10 @@ class PostController extends Controller
     {
         // $post = DB::table('posts')->find($id);
         $post = Post::find($id);
+        $tags = Tag::get();
         return view('backend.posts.edit')->with([
-            'post' => $post
+            'post' => $post,
+            'tags' => $tags
         ]);
     }
 
@@ -131,6 +135,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->only(['title', 'content', 'status']);
+        $tags = $request->get('tags');
 
         // DB::table('posts')->where('id', $id)->update([
         //     'title' => $data['title'],
@@ -147,6 +152,7 @@ class PostController extends Controller
         $post->category_id = 1;
         $post->save();
 
+        $post->tags()->sync($tags);
         return redirect()->route('backend.posts.index');
     }
 

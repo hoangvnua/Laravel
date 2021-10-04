@@ -26,11 +26,28 @@
                     'content' => $post->content
                     ])
                 </div>
-                {{-- <div class="form-group">
-                    <label for="exampleInputEmail1">Status</label>
-                    <input type="text" name="status" class="form-control" id="exampleInputEmail1"
-                        value="{{ $post->status }}">
-                </div> --}}
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Tag</label>
+                            <select multiple="" class="form-control" name="tags[]">
+                                @foreach ($tags as $tag)
+                                    @foreach ($post->tags as $post_tag)
+                                        @php
+                                            $selected = '';
+                                            if ($post_tag->id == $tag->id) {
+                                                $selected = 'selected';
+                                                break;
+                                            }
+                                        @endphp
+                                    @endforeach
+                                    <option value="{{ $tag->id }}" {{ $selected }}>{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label>Trạng thái</label>
