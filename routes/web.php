@@ -76,4 +76,12 @@ Route::prefix('frontend')->name('frontend.')->namespace('Frontend')->group(funct
     Route::get('posts/detail', function () {
         return view('frontend.posts.detail');
     })->name('posts.detail');
+
+    Route::get('login', function () {
+        return view('frontend.login.login');
+    })->name('login.login');
+
+    Route::get('register', function () {
+        return view('frontend.login.register');
+    })->name('login.register');
 });
