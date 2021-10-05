@@ -6,6 +6,6 @@
     </a>
 
     <!-- Sidebar -->
-    @includeIf('backend.includes.sidebar', ['name' => 'Nguyễn Văn Hoàng'])
+    @includeIf('backend.includes.sidebar')
     <!-- /.sidebar -->
   </aside>
