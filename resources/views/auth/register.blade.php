@@ -27,8 +27,9 @@
     <div class="col-lg-6 col-md-6" style="margin: 20%; width: 60%;">
         <div class="account_form aos-init aos-animate" data-aos="fade-up" data-aos-delay="0"
             style="border: 2px solid black; border-radius: 10px; padding: 5px;">
-            <h3>login</h3>
-            <form action="#" method="POST">
+            <h3>Register</h3>
+            <form action="{{ route('auth.register') }}" method="POST">
+                @csrf
                 <div class="default-form-box">
                     <label>Họ tên<span>*</span></label>
                     <input type="text" name="name">
@@ -39,19 +40,17 @@
                 </div>
                 <div class="default-form-box">
                     <label>Passwords <span>*</span></label>
-                    <input type="password">
+                    <input type="password" name="password">
                 </div>
                 <div class="default-form-box">
                     <label>Repasswords<span>*</span></label>
-                    <input type="password">
+                    <input type="password" name="password_confirmation">
                 </div>
                 <div class="login_submit">
                     <button class="btn btn-md btn-black-default-hover mb-4" type="submit">Đăng kí</button>
                     <label class="checkbox-default mb-4" for="offer">
                     </label>
                     <p style="display: flex">Đã có tài khoản<a href="#"><b>Đăng nhập</b></a></p>
-
-
                 </div>
             </form>
         </div>

@@ -81,11 +81,20 @@ Route::prefix('frontend')->name('frontend.')->namespace('Frontend')->group(funct
 });
 
 Route::prefix('/')->namespace('Auth')->name('auth.')->group(function(){
-    Route::get('login', function () {
-        return view('auth.login');
-    })->name('login');
+    Route::get('login', 'LoginController@create')
+    ->middleware('guest')
+    ->name('login');
 
-    Route::get('register', function () {
-        return view('auth.register');
-    })->name('register');
+    Route::post('login', 'LoginController@authenticate')
+    ->middleware('guest')
+    ->name('login');
+
+    Route::get('register', 'RegisteredController@create')
+    ->middleware('guest')
+    ->name('register');
+
+    Route::post('register', 'RegisteredController@store')
+    ->middleware('guest')
+    ->name('register');
+
 });
