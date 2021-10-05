@@ -77,11 +77,15 @@ Route::prefix('frontend')->name('frontend.')->namespace('Frontend')->group(funct
         return view('frontend.posts.detail');
     })->name('posts.detail');
 
+    
+});
+
+Route::prefix('/')->namespace('Auth')->name('auth.')->group(function(){
     Route::get('login', function () {
-        return view('frontend.login.login');
-    })->name('login.login');
+        return view('auth.login');
+    })->name('login');
 
     Route::get('register', function () {
-        return view('frontend.login.register');
-    })->name('login.register');
+        return view('auth.register');
+    })->name('register');
 });
