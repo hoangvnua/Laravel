@@ -59,3 +59,21 @@ Route::prefix('backend')
     //Tag
     Route::resource('tags', TagController::class);
 });
+
+Route::prefix('frontend')->name('frontend.')->namespace('Frontend')->group(function(){
+    Route::get('index', function () {
+        return view('frontend.index');
+    })->name('index');
+    
+    Route::get('posts/', function () {
+        return view('frontend.posts.index');
+    })->name('posts.index');
+
+    Route::get('posts/danhmuc', function () {
+        return view('frontend.posts.danhmuc');
+    })->name('posts.danhmuc');
+
+    Route::get('posts/detail', function () {
+        return view('frontend.posts.detail');
+    })->name('posts.detail');
+});

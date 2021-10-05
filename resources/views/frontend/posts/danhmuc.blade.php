@@ -6,13 +6,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="breadcrumb-title">Blog Grid - Full Width</h3>
+                        <h3 class="breadcrumb-title">Blog Grid - Left Sidebar</h3>
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
                                     <li><a href="blog-grid-sidebar-left.html">Blog</a></li>
-                                    <li class="active" aria-current="page">Blog Full Width</li>
+                                    <li class="active" aria-current="page">Blog Grid Left Sidebar</li>
                                 </ul>
                             </nav>
                         </div>
@@ -26,11 +26,110 @@
 @section('content')
     <div class="blog-section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="row flex-column-reverse flex-lg-row">
+                <div class="col-lg-3">
+                    <!-- Start Sidebar Area -->
+                    <div class="siderbar-section" data-aos="fade-up" data-aos-delay="0">
+
+                        <!-- Start Single Sidebar Widget -->
+                        <div class="sidebar-single-widget">
+                            <h6 class="sidebar-title">Search</h6>
+                            <div class="default-search-style d-flex">
+                                <input class="default-search-style-input-box" type="search" placeholder="Search..."
+                                    required>
+                                <button class="default-search-style-input-btn" type="submit"><i
+                                        class="fa fa-search"></i></button>
+                            </div>
+                        </div> <!-- End Single Sidebar Widget -->
+
+                        <!-- Start Single Sidebar Widget -->
+                        <div class="sidebar-single-widget">
+                            <h6 class="sidebar-title">CATEGORIES</h6>
+                            <div class="sidebar-content">
+                                <ul class="sidebar-menu">
+                                    <li><a href="#">Audio</a></li>
+                                    <li><a href="#">Company</a></li>
+                                    <li><a href="#">Gallery</a></li>
+                                    <li><a href="#">Other</a></li>
+                                    <li><a href="#">Travel</a></li>
+                                    <li><a href="#"> Uncategorized</a></li>
+                                    <li><a href="#"> Video</a></li>
+                                    <li><a href="#">Wordpress</a></li>
+                                </ul>
+                            </div>
+                        </div> <!-- End Single Sidebar Widget -->
+
+                        <!-- Start Single Sidebar Widget -->
+                        <div class="sidebar-single-widget">
+                            <h6 class="sidebar-title">Tags</h6>
+                            <div class="sidebar-content">
+                                <div class="tag-link">
+                                    <a href="#">Technology</a>
+                                    <a href="#">Information</a>
+                                    <a href="#">Wordpress</a>
+                                    <a href="#">Devs</a>
+                                    <a href="#">Program</a>
+                                </div>
+                            </div>
+                        </div> <!-- End Single Sidebar Widget -->
+
+                        <!-- Start Single Sidebar Widget -->
+                        <div class="sidebar-single-widget">
+                            <h6 class="sidebar-title">Meta</h6>
+                            <div class="sidebar-content">
+                                <ul class="sidebar-menu">
+                                    <li><a href="#">Log in</a></li>
+                                    <li><a href="#">Entries feed</a></li>
+                                    <li><a href="#">Comments feed</a></li>
+                                    <li><a href="#">WordPress.org</a></li>
+                                </ul>
+                            </div>
+                        </div> <!-- End Single Sidebar Widget -->
+
+                        <!-- Start Single Sidebar Widget -->
+                        <div class="sidebar-single-widget">
+                            <h6 class="sidebar-title">PRODUCT CATEGORIES</h6>
+                            <div class="sidebar-content">
+                                <ul class="sidebar-menu">
+                                    <li>
+                                        <ul class="sidebar-menu-collapse">
+                                            <!-- Start Single Menu Collapse List -->
+                                            <li class="sidebar-menu-collapse-list">
+                                                <div class="accordion">
+                                                    <a href="#" class="accordion-title collapsed" data-bs-toggle="collapse"
+                                                        data-bs-target="#men-fashion" aria-expanded="false">Men <i
+                                                            class="ion-ios-arrow-right"></i></a>
+                                                    <div id="men-fashion" class="collapse">
+                                                        <ul class="accordion-category-list">
+                                                            <li><a href="#">Dresses</a></li>
+                                                            <li><a href="#">Jackets &amp; Coats</a></li>
+                                                            <li><a href="#">Sweaters</a></li>
+                                                            <li><a href="#">Jeans</a></li>
+                                                            <li><a href="#">Blouses &amp; Shirts</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li> <!-- End Single Menu Collapse List -->
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Football</a></li>
+                                    <li><a href="#"> Men's</a></li>
+                                    <li><a href="#"> Portable Audio</a></li>
+                                    <li><a href="#"> Smart Watches</a></li>
+                                    <li><a href="#">Tennis</a></li>
+                                    <li><a href="#"> Uncategorized</a></li>
+                                    <li><a href="#"> Video Games</a></li>
+                                    <li><a href="#">Women's</a></li>
+                                </ul>
+                            </div>
+                        </div> <!-- End Single Sidebar Widget -->
+
+                    </div> <!-- End Sidebar Area -->
+                </div>
+                <div class="col-lg-9">
                     <div class="blog-wrapper">
                         <div class="row mb-n6">
-                            <div class="col-xl-4 col-md-6 col-12 mb-6">
+                            <div class="col-md-6 col-12 mb-6">
                                 <!-- Start Product Default Single Item -->
                                 <div class="blog-list blog-grid-single-item blog-color--golden" data-aos="fade-up"
                                     data-aos-delay="0">
@@ -55,7 +154,7 @@
                                 </div>
                                 <!-- End Product Default Single Item -->
                             </div>
-                            <div class="col-xl-4 col-md-6 col-12 mb-6">
+                            <div class="col-md-6 col-12 mb-6">
                                 <!-- Start Product Default Single Item -->
                                 <div class="blog-list blog-grid-single-item blog-color--golden" data-aos="fade-up"
                                     data-aos-delay="200">
@@ -97,10 +196,10 @@
                                 </div>
                                 <!-- End Product Default Single Item -->
                             </div>
-                            <div class="col-xl-4 col-md-6 col-12 mb-6">
+                            <div class="col-md-6 col-12 mb-6">
                                 <!-- Start Product Default Single Item -->
                                 <div class="blog-list blog-grid-single-item blog-color--golden" data-aos="fade-up"
-                                    data-aos-delay="400">
+                                    data-aos-delay="0">
                                     <div class="blog-video-box">
                                         <img class="img-fluid" src="/frontend/images/blog/blog-grid-home-1-img-5.jpg"
                                             alt="">
@@ -124,10 +223,10 @@
                                 </div>
                                 <!-- End Product Default Single Item -->
                             </div>
-                            <div class="col-xl-4 col-md-6 col-12 mb-6">
+                            <div class="col-md-6 col-12 mb-6">
                                 <!-- Start Product Default Single Item -->
                                 <div class="blog-list blog-grid-single-item blog-color--golden" data-aos="fade-up"
-                                    data-aos-delay="0">
+                                    data-aos-delay="200">
                                     <div class="image-box">
                                         <a href="blog-single-sidebar-left.html" class="image-link">
                                             <img class="img-fluid" src="/frontend/images/blog/blog-grid-home-1-img-2.jpg"
@@ -149,10 +248,10 @@
                                 </div>
                                 <!-- End Product Default Single Item -->
                             </div>
-                            <div class="col-xl-4 col-md-6 col-12 mb-6">
+                            <div class="col-md-6 col-12 mb-6">
                                 <!-- Start Product Default Single Item -->
                                 <div class="blog-list blog-grid-single-item blog-color--golden" data-aos="fade-up"
-                                    data-aos-delay="200">
+                                    data-aos-delay="0">
                                     <div class="image-box">
                                         <a href="blog-single-sidebar-left.html" class="image-link">
                                             <img class="img-fluid" src="/frontend/images/blog/blog-grid-home-1-img-5.jpg"
@@ -174,39 +273,20 @@
                                 </div>
                                 <!-- End Product Default Single Item -->
                             </div>
-                            <div class="col-xl-4 col-md-6 col-12 mb-6">
+                            <div class="col-md-6 col-12 mb-6">
                                 <!-- Start Product Default Single Item -->
                                 <div class="blog-list blog-grid-single-item blog-color--golden" data-aos="fade-up"
-                                    data-aos-delay="400">
-                                    <div class="blog-list-slider-arrow">
-                                        <!-- Slider main container -->
-                                        <div class="blog-list-slider swiper-container">
-                                            <!-- Additional required wrapper -->
-                                            <div class="swiper-wrapper">
-                                                <!-- Slides -->
-                                                <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"
-                                                        src="/frontend/images/blog/blog-grid-home-1-img-5.jpg" alt=""></div>
-                                                <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"
-                                                        src="/frontend/images/blog/blog-grid-home-1-img-2.jpg" alt=""></div>
-                                                <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"
-                                                        src="/frontend/images/blog/blog-grid-home-1-img-3.jpg" alt=""></div>
-                                                <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"
-                                                        src="/frontend/images/blog/blog-grid-home-1-img-1.jpg" alt=""></div>
-                                                <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"
-                                                        src="/frontend/images/blog/blog-grid-home-1-img-4.jpg" alt=""></div>
-                                            </div>
-
-                                            <!-- If we need navigation buttons -->
-                                            <div class="swiper-button-prev"></div>
-                                            <div class="swiper-button-next"></div>
-                                        </div>
+                                    data-aos-delay="200">
+                                    <div class="blog-audio-box">
+                                        <iframe class="embed-responsive-item" allow="autoplay"
+                                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/182537870&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>
                                     </div>
                                     <div class="content">
                                         <ul class="post-meta">
                                             <li>POSTED BY : <a href="#" class="author">Admin</a></li>
                                             <li>ON : <a href="#" class="date">APRIL 24, 2018</a></li>
                                         </ul>
-                                        <h6 class="title"><a href="blog-single-sidebar-left.html"> Blog Slider
+                                        <h6 class="title"><a href="blog-single-sidebar-left.html"> Blog Audio
                                                 post</a></h6>
                                         <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean
                                             posuere libero eu augue condimentum rhoncus. Praesent</p>
@@ -231,6 +311,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <br>
+    </div><br>
 @endsection
