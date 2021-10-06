@@ -25,7 +25,7 @@ class AddDeleteColumnUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('Users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->string('address');
             $table->integer('phone');
         });
