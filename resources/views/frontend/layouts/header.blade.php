@@ -142,9 +142,9 @@
                         <ul class="header-action-link action-color--black action-hover-color--golden">
                             @if (auth()->check())
                                 <li>
-                                    {{-- {{ auth()->user()->name }} --}}
+                                    {{ auth()->user()->name }}
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                         <i class="icon-heart"></i>
                                         <span class="item-count">3</span>
@@ -155,7 +155,7 @@
                                         <i class="icon-bag"></i>
                                         <span class="item-count">3</span>
                                     </a>
-                                </li>
+                                </li> --}}
                             @else
                                 <form method="get" action="{{ route('auth.login') }}">
                                     @csrf
