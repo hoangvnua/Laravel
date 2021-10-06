@@ -7,7 +7,7 @@
                         <!-- Start Header Logo -->
                         <div class="header-logo">
                             <div class="logo">
-                                <a href="index.html"><img src="/frontend/images/logo/logo_black.png" alt=""></a>
+                                <a href="{{ route('frontend.index') }}"><img src="/frontend/images/logo/logo_black.png" alt=""></a>
                             </div>
                         </div>
                         <!-- End Header Logo -->
@@ -17,7 +17,7 @@
                             <nav>
                                 <ul>
                                     <li class="has-dropdown">
-                                        <a class="active main-menu-link" href="index.html">Home <i
+                                        <a class="active main-menu-link" href="{{ route('frontend.index') }}">Home <i
                                                 class="fa fa-angle-down"></i></a>
                                         <!-- Sub Menu -->
                                         <ul class="sub-menu">
@@ -142,9 +142,9 @@
                         <ul class="header-action-link action-color--black action-hover-color--golden">
                             @if (auth()->check())
                                 <li>
-                                    {{ auth()->user()->name }}
+                                    {{-- {{ auth()->user()->name }} --}}
                                 </li>
-                                {{-- <li>
+                                <li>
                                     <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                         <i class="icon-heart"></i>
                                         <span class="item-count">3</span>
@@ -155,13 +155,15 @@
                                         <i class="icon-bag"></i>
                                         <span class="item-count">3</span>
                                     </a>
-                                </li> --}}
-                            @else
-                                <li>
-                                    <a href="{{ route('auth.login') }}">
-                                        <i class="fas fa-user"></i>
-                                    </a>
                                 </li>
+                            @else
+                                <form method="get" action="{{ route('auth.login') }}">
+                                    @csrf
+                                    <a href="#" class="nav-link"
+                                        onclick="this.closest('form').submit();return false;">
+                                        Login
+                                    </a>
+                                </form>
                             @endif
 
                             <li>
