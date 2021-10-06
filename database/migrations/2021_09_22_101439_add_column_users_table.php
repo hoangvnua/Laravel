@@ -17,7 +17,7 @@ class AddColumnUsersTable extends Migration
             $table->string('avatar')->after('name')->nullable();
             $table->string('address')->after('avatar');
             $table->string('phone')->after('email');
-            $table->integer('status')->after('phone');
+            $table->integer('status')->after('phone')->nullable();
         });
     }
 
