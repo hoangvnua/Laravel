@@ -27,32 +27,33 @@ class RegisteredController extends Controller
             'password' => ['required', 'confirmed']
         ]);
 
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        //     'status' => 1
-        // ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'status' => 1,
+        ]);
 
-        try {
+        DB::table('user_infos')->insert([
+            'user_id' => $user->id,
+            'address' => 'bắc ninh',
+            'phone' => '123456'
+        ]);
+        // try {
 
-            $user_id = DB::table('users')->insertGetId([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'status' => 1
-            ]);
+        //     $user_id = DB::table('users')->insertGetId([
+        //         'name' => $request->name,
+        //         'email' => $request->email,
+        //         'password' => Hash::make($request->password),
+        //         'status' => 1
+        //     ]);
 
-            DB::table('user_infos')->insert([
-                'user_id' => $user_id,
-                'address' => 'bắc ninh',
-                'phone' => '123456'
-            ]);
-        } catch (Exception $ex) {
-            // dd($ex->getMessage());
-            Log::error($ex->getMessage());
-        }
-        Auth::loginUsingId($user_id);
+        //     
+        // } catch (Exception $ex) {
+        //     // dd($ex->getMessage());
+        //     Log::error($ex->getMessage());
+        // }
+        Auth::login($user);
         return redirect('backend/dashboard');
     }
 }
