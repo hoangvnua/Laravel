@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Validation\Rules;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +24,7 @@ class RegisteredController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed']
         ]);
 
         // $user = User::create([
@@ -51,9 +52,7 @@ class RegisteredController extends Controller
             // dd($ex->getMessage());
             Log::error($ex->getMessage());
         }
-
-        $request->session()->regenerate();
-        return redirect()->intended('backend/dashboard');
-        // return view('auth.login');
+        Auth::loginUsingId($user_id);
+        return redirect('backend/dashboard');
     }
 }

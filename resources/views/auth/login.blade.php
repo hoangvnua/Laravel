@@ -25,7 +25,8 @@
 
 @section('content')
     <div class="col-lg-6 col-md-6" style="margin: 20%; width: 60%;">
-        <div class="account_form aos-init aos-animate" data-aos="fade-up" data-aos-delay="0" style="border: 2px solid black; border-radius: 10px; padding: 5px;">
+        <div class="account_form aos-init aos-animate" data-aos="fade-up" data-aos-delay="0"
+            style="border: 2px solid black; border-radius: 10px; padding: 5px;">
             <h3>login</h3>
             <form action="{{ route('auth.login') }}" method="POST">
                 @csrf
@@ -40,11 +41,12 @@
                 <div class="login_submit">
                     <button class="btn btn-md btn-black-default-hover mb-4" type="submit">login</button>
                     <label class="checkbox-default mb-4" for="offer">
-                        <input type="checkbox" id="offer">
+                        <input type="checkbox" id="offer" name="remember" value="true">
                         <span>Remember me</span>
                     </label>
                     <a href="#">Lost your password?</a>
-
+                    <p style="display: flex">Chưa có tài khoản&ensp;<a href="{{ route('auth.register') }}">Đăng kí</a></p>
+                    
                 </div>
             </form>
         </div>

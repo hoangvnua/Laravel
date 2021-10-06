@@ -16,11 +16,18 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email'=>['required','email'],
-            'password' =>['required']
+            'email' => ['required', 'email'],
+            'password' => ['required']
         ]);
+
+        if ($request->get('remember')) {
+            $remember = true;
+        } else {
+            $remember = false;
+        }
+
         // dd($credentials);
-        if(Auth::attempt($credentials)){
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
             return redirect()->intended('backend/dashboard');
         }
@@ -30,7 +37,8 @@ class LoginController extends Controller
         ]);
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
