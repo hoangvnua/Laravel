@@ -40,7 +40,7 @@ Route::get('frontend/posts/show', function () {
 Route::prefix('backend')
     ->name('backend.')
     ->namespace('Backend')
-    ->middleware([''])
+    ->middleware(['auth'])
     ->group(function () {
 
         Route::get('users/delete', 'UserController@delete')->name('users.delete');
