@@ -36,18 +36,18 @@ Route::get('frontend/posts/show', function () {
 });
 
 
-Route::get('backend/users/delete', 'Backend\UserController@delete')->name('backend.users.delete');
-Route::get('backend/users/restore/{id}', 'Backend\UserController@restore')->name('backend.users.restore');
-
-Route::get('backend/categories/delete', 'Backend\CategoryController@delete')->name('backend.categories.delete');
-Route::get('backend/categories/restore/{id}', 'Backend\CategoryController@restore')->name('backend.categories.restore');
 
 Route::prefix('backend')
     ->name('backend.')
     ->namespace('Backend')
-    ->middleware([])
+    ->middleware(['auth'])
     ->group(function () {
 
+        Route::get('users/delete', 'UserController@delete')->name('users.delete');
+        Route::get('users/restore/{id}', 'UserController@restore')->name('users.restore');
+
+        Route::get('categories/delete', 'CategoryController@delete')->name('categories.delete');
+        Route::get('categories/restore/{id}', 'CategoryController@restore')->name('categories.restore');
         // Posts
         Route::resource('posts', PostController::class);
         // Dashboard

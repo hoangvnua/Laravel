@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Exception;
 use Illuminate\Validation\Rules;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -20,10 +20,10 @@ class RegisteredController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()]
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         // $user = User::create([
@@ -34,6 +34,7 @@ class RegisteredController extends Controller
         // ]);
 
         try {
+
             $user_id = DB::table('users')->insertGetId([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -47,11 +48,12 @@ class RegisteredController extends Controller
                 'phone' => '123456'
             ]);
         } catch (Exception $ex) {
-            dd($ex->getMessage());
+            // dd($ex->getMessage());
             Log::error($ex->getMessage());
         }
 
-
-        return view('backend.dashboard');
+        $request->session()->regenerate();
+        return redirect()->intended('backend/dashboard');
+        // return view('auth.login');
     }
 }

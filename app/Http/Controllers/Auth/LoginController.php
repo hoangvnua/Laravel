@@ -19,10 +19,12 @@ class LoginController extends Controller
             'email'=>['required','email'],
             'password' =>['required']
         ]);
+        // dd($credentials);
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             return redirect()->intended('backend/dashboard');
         }
+        // dd(1);
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records'
         ]);

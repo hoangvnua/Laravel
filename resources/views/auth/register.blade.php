@@ -50,7 +50,7 @@
                     <button class="btn btn-md btn-black-default-hover mb-4" type="submit">Đăng kí</button>
                     <label class="checkbox-default mb-4" for="offer">
                     </label>
-                    <p style="display: flex">Đã có tài khoản<a href="#"><b>Đăng nhập</b></a></p>
+                    <p style="display: flex">Đã có tài khoản<a href="{{ route('auth.login') }}"><b>Đăng nhập</b></a></p>
                 </div>
             </form>
         </div>
