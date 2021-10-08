@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\UserInfo;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use phpDocumentor\Reflection\Types\Nullable;
@@ -40,9 +41,10 @@ class UserController extends Controller
         ]);
     }
 
-    public function restore($id){
-        $users = User::withTrashed()->where('id',$id)->restore();
-    
+    public function restore($id)
+    {
+        $users = User::withTrashed()->where('id', $id)->restore();
+
         return redirect()->route('backend.users.delete');
     }
 
@@ -75,7 +77,7 @@ class UserController extends Controller
                 'status' => 1,
                 'avatar' => 'hiha'
             ]);
-            
+
             DB::table('user_infos')->insert([
                 'user_id' => $user_id,
                 'address' => $data['address'],
@@ -85,7 +87,7 @@ class UserController extends Controller
             Log::error($ex->getMessage());
         }
 
-        
+
         return redirect()->route('backend.users.index');
     }
 
@@ -151,11 +153,19 @@ class UserController extends Controller
 
         return redirect()->route('backend.users.index');
     }
-    
-    public function delete(Request $request){
+
+    public function delete(Request $request)
+    {
         $users = User::onlyTrashed()->get();
-        return view('backend.users.softDelete',[
+        return view('backend.users.softDelete', [
             'users' => $users,
         ]);
+    }
+
+    public function loginWithUser($id)
+    {
+        Auth::loginUsingId($id);
+
+        return redirect('backend/dashboard');
     }
 }

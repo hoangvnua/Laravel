@@ -7,7 +7,8 @@
                         <!-- Start Header Logo -->
                         <div class="header-logo">
                             <div class="logo">
-                                <a href="{{ route('frontend.index') }}"><img src="/frontend/images/logo/logo_black.png" alt=""></a>
+                                <a href="{{ route('frontend.index') }}"><img
+                                        src="/frontend/images/logo/logo_black.png" alt=""></a>
                             </div>
                         </div>
                         <!-- End Header Logo -->
@@ -143,7 +144,9 @@
                             @if (auth()->check())
                                 <li>
                                     {{ auth()->user()->name }}
+
                                 </li>
+
                                 {{-- <li>
                                     <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                         <i class="icon-heart"></i>
@@ -157,13 +160,23 @@
                                     </a>
                                 </li> --}}
                             @else
-                                <form method="get" action="{{ route('auth.login') }}">
-                                    @csrf
-                                    <a href="#" class="nav-link"
-                                        onclick="this.closest('form').submit();return false;">
-                                        Login
-                                    </a>
-                                </form>
+                                @if (request()->routeIs('auth.login'))
+                                    <form method="get" action="{{ route('auth.register') }}">
+                                        @csrf
+                                        <a href="#" class="nav-link"
+                                            onclick="this.closest('form').submit();return false;">
+                                            Register
+                                        </a>
+                                    </form>
+                                @else
+                                    <form method="get" action="{{ route('auth.login') }}">
+                                        @csrf
+                                        <a href="#" class="nav-link"
+                                            onclick="this.closest('form').submit();return false;">
+                                            Login
+                                        </a>
+                                    </form>
+                                @endif
                             @endif
 
                             <li>
@@ -178,6 +191,15 @@
                             </li>
 
                         </ul>
+                        @if (auth()->check())
+                            <form method="post" action="{{ route('auth.logout') }}">
+                                @csrf
+                                <a href="#" class="nav-link" 4
+                                    onclick="this.closest('form').submit();return false;">
+                                    Logout
+                                </a>
+                            </form>
+                        @endif
                         <!-- End Header Action Link -->
                     </div>
                 </div>
