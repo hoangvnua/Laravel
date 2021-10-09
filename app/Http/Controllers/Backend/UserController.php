@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 use phpDocumentor\Reflection\Types\Nullable;
 
@@ -148,6 +149,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+
+        $user = User::find($id);
+        // dd($user);
+        if (!Gate::allows('delete-user', $user)) {
+            abort(403);
+        }
         // DB::table('users')->where('id', $id)->delete();
         User::destroy($id);
 
