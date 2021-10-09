@@ -19,6 +19,16 @@ use PhpParser\Node\Stmt\TryCatch;
 class PostController extends Controller
 {
     /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -138,9 +148,14 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
-        if (!Gate::allows('update-post', $post)) {
-            abort(403);
-        }
+        // if (!Gate::allows('update-post', $post)) {
+        //     abort(403);
+        // }
+
+        // if ($request->user()->cannot('update-post', $post)) {
+        //     abort(403);
+        // }
+
         $data = $request->only(['title', 'content', 'status']);
         $tags = $request->get('tags');
 
@@ -170,13 +185,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        // $post = Post::find($id);
-        // $post->delete();
+
         $post = Post::find($id);
-        // dd($post);
-        if (!Gate::allows('delete-post', $post)) {
-            abort(403);
-        }
+        // if (!Gate::allows('delete-post', $post)) {
+        //     abort(403);
+        // }
+
+        // $post->delete();
 
         Post::destroy($id);
         return redirect()->route('backend.posts.index');

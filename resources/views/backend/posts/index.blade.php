@@ -12,11 +12,14 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        @include('backend.component.btn', [
-                        'href' => route('backend.posts.create'),
-                        'type' => 'primary',
-                        'content' => 'Thêm mới'
-                        ])
+                        @can('create', App\models\Post::class)
+                            @include('backend.component.btn', [
+                            'href' => route('backend.posts.create'),
+                            'type' => 'primary',
+                            'content' => 'Thêm mới'
+                            ])
+                        @endcan
+
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -84,16 +87,22 @@
                                             <a href='{{ route('backend.posts.show', $post->id) }}'>
                                                 <i class="far fa-eye btn btn-outline-success"></i>
                                             </a>
-                                            <a href='{{ route('backend.posts.edit', $post->id) }}'>
-                                                <i class="far fa-edit btn btn-outline-primary"></i>
-                                            </a>
-                                            <form method="POST" action="{{ route('backend.posts.destroy', $post->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-outline-danger">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </button>
-                                            </form>
+                                            @can('update', $post)
+                                                <a href='{{ route('backend.posts.edit', $post->id) }}'>
+                                                    <i class="far fa-edit btn btn-outline-primary"></i>
+                                                </a>
+                                            @endcan
+
+                                            @can('delete', $post)
+                                                <form method="POST" action="{{ route('backend.posts.destroy', $post->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-outline-danger">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            @endcan
+
                                         </td>
                                     </tr>
                                 @endforeach
