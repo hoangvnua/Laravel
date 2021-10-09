@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 
 use PhpParser\Node\Stmt\TryCatch;
@@ -84,8 +87,8 @@ class PostController extends Controller
         $post->title = $data['title'];
         $post->content = $data['content'];
         $post->status = $data['status'];
-        $post->user_created_id = 1;
-        $post->user_updated_id = 1;
+        $post->user_created_id = Auth::user()->id;
+        $post->user_updated_id = Auth::user()->id;
         $post->category_id = 1;
         $post->save();
 
@@ -134,6 +137,10 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $post = Post::find($id);
+        if (!Gate::allows('update-post', $post)) {
+            abort(403);
+        }
         $data = $request->only(['title', 'content', 'status']);
         $tags = $request->get('tags');
 
@@ -143,12 +150,11 @@ class PostController extends Controller
         //     'status' => $data['status']
         // ]);
 
-        $post = Post::find($id);
         $post->title = $data['title'];
         $post->content = $data['content'];
         $post->status = $data['status'];
-        $post->user_created_id = 1;
-        $post->user_updated_id = 1;
+        // $post->user_created_id = Auth::user()->id;
+        $post->user_updated_id = Auth::user()->id;
         $post->category_id = 1;
         $post->save();
 
@@ -166,6 +172,12 @@ class PostController extends Controller
     {
         // $post = Post::find($id);
         // $post->delete();
+        $post = Post::find($id);
+        // dd($post);
+        if (!Gate::allows('delete-post', $post)) {
+            abort(403);
+        }
+
         Post::destroy($id);
         return redirect()->route('backend.posts.index');
     }
