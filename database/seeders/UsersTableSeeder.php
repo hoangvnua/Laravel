@@ -76,8 +76,8 @@ class UsersTableSeeder extends Seeder
                     'avatar' => 'hihi',
                     'address' => 'hihi',
                     'phone' => '0123456',
-                    'status' => '0123456',
-                    'email' => 'nvhoang1@gmail.com',
+                    'status' => '1',
+                    'email' => 'nvhoang.vnua@gmail.com',
                     'password' => bcrypt('12345678')
                 ],
                 'info' => [

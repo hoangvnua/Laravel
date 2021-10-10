@@ -27,22 +27,27 @@ class RegisteredController extends Controller
             'password' => ['required', 'confirmed']
         ]);
 
-        $user = User::create([
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        //     'role' => 'admin',
+        // ]);
+        $user = DB::table('users')->insertGetId([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'status' => 1,
-            'role' => 'admin'
+            'role' => 'admin',
         ]);
 
         DB::table('user_infos')->insert([
-            'user_id' => $user->id,
+            'user_id' => $user,
             'address' => 'bắc ninh',
             'phone' => '123456'
         ]);
         // try {
 
-        //     $user_id = DB::table('users')->insertGetId([
+        //     $user = DB::table('users')->insertGetId([
         //         'name' => $request->name,
         //         'email' => $request->email,
         //         'password' => Hash::make($request->password),
@@ -54,7 +59,7 @@ class RegisteredController extends Controller
         //     // dd($ex->getMessage());
         //     Log::error($ex->getMessage());
         // }
-        Auth::login($user);
+        // Auth::login($user);
         return redirect('backend/dashboard');
     }
 }
