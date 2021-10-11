@@ -67,7 +67,7 @@ Route::prefix('backend')
         // Permission
         Route::resource('permissions', PermissionController::class);
         //Role
-        Route::resource('user', UserController::class);
+        Route::resource('roles', RoleController::class);
     });
 
 Route::prefix('frontend')->name('frontend.')->namespace('Frontend')->group(function () {

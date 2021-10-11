@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header">
                         @include('backend.component.btn', [
-                        'href' => route('backend.permissions.create'),
+                        'href' => route('backend.roles.create'),
                         'type' => 'primary',
                         'content' => 'Thêm mới'
                         ])
@@ -58,27 +58,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($permissions as $permission)
+                                @foreach ($roles as $role)
                                     <tr>
                                         <td>
-                                            {{ $permission->id }}
+                                            {{ $role->id }}
                                         </td>
                                         <td>
-                                            {{ $permission->name }} <br>
+                                            {{ $role->name }} <br>
                                         </td>
                                         <td>
-                                            {{ $permission->slug }}
+                                            {{ $role->slug }}
                                         </td>
                                         <td style="display: flex">
 
-                                            <a href='{{ route('backend.permissions.show', $permission->id) }}'>
+                                            <a href='{{ route('backend.roles.show', $role->id) }}'>
                                                 <i class="far fa-eye btn btn-outline-success"></i>
                                             </a>
-                                            <a href='{{ route('backend.permissions.edit', $permission->id) }}'>
+                                            <a href='{{ route('backend.roles.edit', $role->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
                                             </a>
                                             <form method="POST"
-                                                action="{{ route('backend.permissions.destroy', $permission->id) }}">
+                                                action="{{ route('backend.roles.destroy', $role->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-outline-danger">

@@ -150,7 +150,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item @if (request()->routeIs('backend.permissions.*')) menu-open @endif">
+            <li class="nav-item @if (request()->routeIs('backend.roles.*')) menu-open @endif">
                 <a href="#2" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
@@ -161,13 +161,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('backend.permissions.index') }}" class="nav-link @if (request()->is('backend/permissions')) active @endif">
+                        <a href="{{ route('backend.roles.index') }}" class="nav-link @if (request()->is('backend/roles')) active @endif">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Danh sách Role</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href=" {{ route('backend.permissions.create') }} " class="nav-link @if (request()->is('backend/permissions/create')) active @endif ">
+                        <a href=" {{ route('backend.roles.create') }} " class="nav-link @if (request()->is('backend/roles/create')) active @endif ">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Tạo mới Role</p>
                         </a>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -14,7 +16,10 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::get();
+        return view('backend.roles.index')->with([
+            'roles' => $roles
+        ]);
     }
 
     /**
@@ -24,7 +29,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $permissions = Permission::get();
+        return view('backend.roles.create')->with(['permissions' => $permissions]);
     }
 
     /**
@@ -35,7 +41,16 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only('name');
+        $permissions = $request->get('permissions');
+        // dd($permissions);
+
+        $role = new Role();
+        $role->name = $data['name'];
+        $role->save();
+        $role->permissions()->attach($permissions);
+
+        return redirect()->route('backend.roles.index');
     }
 
     /**
@@ -57,7 +72,13 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roles = Role::find($id);
+        $permissions = Permission::get();
+
+        return view('backend.roles.edit')->with([
+            'roles' => $roles,
+            'permissions' => $permissions 
+        ]);
     }
 
     /**
@@ -69,7 +90,15 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = Role::find($id);
+        $data = $request->only(['name']);
+        $permissions = $request->get('permissions');
+
+        $role->name = $data['name'];
+        $role->save();
+        $role->permissions()->sync($permissions);
+
+        return redirect()->route('backend.roles.index');
     }
 
     /**
@@ -80,6 +109,8 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Role::destroy($id);
+
+        return redirect('backend/roles');
     }
 }
