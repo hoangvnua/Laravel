@@ -72,10 +72,7 @@ class UsersTableSeeder extends Seeder
         $users = [
             [
                 'user' => [
-                    'name' => 'admin',
-                    'avatar' => 'hihi',
-                    'address' => 'hihi',
-                    'phone' => '0123456',
+                    'name' => 'Admin',
                     'status' => '1',
                     'email' => 'nvhoang.vnua@gmail.com',
                     'password' => bcrypt('12345678')
@@ -87,10 +84,19 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'user' => [
-                    'name' => 'user',
-                    'avatar' => 'hihi',
-                    'address' => 'hihi',
-                    'phone' => '0123456',
+                    'name' => 'Admod',
+                    'status' => '0123456',
+                    'email' => 'nvhoang1@gmail.com',
+                    'password' => bcrypt('12345678')
+                ],
+                'info' => [
+                    'address' => 'Ha Noi',
+                    'phone' => '1900100'
+                ]
+            ],
+            [
+                'user' => [
+                    'name' => 'Writer',
                     'status' => '0123456',
                     'email' => 'nvhoang2@gmail.com',
                     'password' => bcrypt('12345678')

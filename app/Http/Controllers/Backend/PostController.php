@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(Post::class, 'post');
+        // $this->authorizeResource(Post::class, 'post');
     }
 
     /**
@@ -186,6 +186,9 @@ class PostController extends Controller
     public function destroy($id)
     {
 
+        if (Auth::user()->cannot('delete-post')){
+            return abort(403);
+        }
         $post = Post::find($id);
         // if (!Gate::allows('delete-post', $post)) {
         //     abort(403);
