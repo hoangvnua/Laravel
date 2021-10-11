@@ -56,10 +56,23 @@
                     <input type="text" class="form-control" name="address" placeholder="Địa chỉ">
                 </div>
 
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Roles</label>
+                            <select class="form-control" name="roles[]" aria-placeholder="1" aria-valuenow="1">
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-primary" style="float: right">Thêm User</button>
 
             </form>
         </div>
     </div>
 @endsection
-

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\UserInfo;
 use Exception;
@@ -56,7 +57,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('backend.users.create');
+        $roles = Role::get();
+        return view('backend.users.create')->with(['roles' => $roles]);
     }
 
     /**
@@ -115,10 +117,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = DB::table('users')->find($id);
+        $user = User::find($id);
+        $roles = Role::get();
 
         return view('backend.users.edit')->with([
-            'user' => $user
+            'user' => $user,
+            'roles' => $roles
         ]);
     }
 
