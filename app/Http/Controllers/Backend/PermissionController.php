@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tag;
+use App\Models\Permission;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-class TagController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,10 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::get();
+        $permissions = Permission::get();
 
-        return view('backend.tags.index')->with([
-            'tags' => $tags
+        return view('backend.permissions.index')->with([
+            'permissions' => $permissions
         ]);
     }
 
@@ -30,7 +29,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('backend.tags.create');
+        return view('backend.permissions.create');
     }
 
     /**
@@ -43,12 +42,11 @@ class TagController extends Controller
     {
         $data = $request->only('name');
 
-        $tag = new Tag();
-        $tag->name = $data['name'];
-        $tag->save();
+        $permission = new Permission();
+        $permission->name = $data['name'];
+        $permission->save();
 
-        return redirect()->route('backend.tags.index');
-
+        return redirect()->route('backend.permissions.index');
     }
 
     /**
@@ -59,7 +57,10 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        $permission = Permission::find($id);
+        return view('backend.permissions.show', [
+            'permission' => $permission
+        ]);
     }
 
     /**
@@ -70,7 +71,9 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permission = Permission::find($id);
+
+        return view('backend.permissions.edit')->with(['permission' => $permission]);
     }
 
     /**
@@ -82,7 +85,13 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->only('name');
+
+        $permission = Permission::find($id);
+        $permission->name = $data['name'];
+        $permission->save();
+
+        return redirect('backend/permissions');
     }
 
     /**
@@ -93,6 +102,8 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Permission::destroy($id);
+
+        return redirect('backend/permissions');
     }
 }

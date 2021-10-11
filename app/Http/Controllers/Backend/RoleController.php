@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-class TagController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +14,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::get();
-
-        return view('backend.tags.index')->with([
-            'tags' => $tags
-        ]);
+        //
     }
 
     /**
@@ -30,7 +24,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('backend.tags.create');
+        //
     }
 
     /**
@@ -41,14 +35,7 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only('name');
-
-        $tag = new Tag();
-        $tag->name = $data['name'];
-        $tag->save();
-
-        return redirect()->route('backend.tags.index');
-
+        //
     }
 
     /**

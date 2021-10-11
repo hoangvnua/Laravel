@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Permission;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
@@ -63,6 +64,10 @@ Route::prefix('backend')
         Route::resource('categories', CategoryController::class);
         //Tag
         Route::resource('tags', TagController::class);
+        // Permission
+        Route::resource('permissions', PermissionController::class);
+        //Role
+        Route::resource('user', UserController::class);
     });
 
 Route::prefix('frontend')->name('frontend.')->namespace('Frontend')->group(function () {
