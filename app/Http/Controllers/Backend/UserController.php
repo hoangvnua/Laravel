@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
-use phpDocumentor\Reflection\Types\Nullable;
 
 class UserController extends Controller
 {
@@ -135,12 +134,27 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->only(['name', 'email']);
+        $data = $request->only(['name', 'email', 'password', 'address', 'phone']);
+        $roles = $request->get('roles');
 
-        DB::table('users')->where('id', $id)->update([
-            'name' => $data['name'],
-            'email' => $data['email']
+        // DB::table('users')->where('id', $id)->update([
+        //     'name' => $data['name'],
+        //     'email' => $data['email']
+        // ]);
+
+        $user = User::find($id);
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->save();
+
+        DB::table('user_infos')->where('user_id', $id)->update([
+            'address' => $data['address'],
+            'phone' =>$data['phone']
         ]);
+        
+        $user->roles()->sync($roles);
+
         return redirect()->route('backend.users.index');
     }
 

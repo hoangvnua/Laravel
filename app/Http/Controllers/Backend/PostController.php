@@ -36,7 +36,8 @@ class PostController extends Controller
     public function index(Request $request)
     {
         // $posts_query = DB::table('posts');
-        $posts = Post::where('status', '=', Post::STATUS_DONE)->simplePaginate(5);
+        // $posts = Post::where('status', '=', Post::STATUS_DONE)->simplePaginate(5);
+        $posts = Post::simplePaginate(5);
         $title = $request->get('title');
         $status = $request->get('status');
         if (!empty($title)) {
@@ -115,9 +116,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = DB::table('posts')->find($id);
+        $post = Post::find($id);
+        $user = User::get();
         return view('backend.posts.show', [
-            'post' => $post
+            'post' => $post,
+            'user' => $user
         ]);
     }
 

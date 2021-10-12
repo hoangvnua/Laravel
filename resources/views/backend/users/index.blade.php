@@ -73,6 +73,7 @@
                                     <th>Email</th>
                                     <th>Số điện thoại</th>
                                     <th>Địa chỉ</th>
+                                    <th>Role</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>

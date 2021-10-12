@@ -42,7 +42,7 @@
                                             }
                                         @endphp
                                     @endforeach
-                                    <option value="{{ $tag->id }}" {{ $selected }}>{{ $tag->name }}</option>
+                                    <option value="{{ $tag->id }}" @if (isset($selected)) {{ $selected }} @endif>{{ $tag->name }}</option>
                                 @endforeach
                             </select>
                         </div>

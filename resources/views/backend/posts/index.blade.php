@@ -73,15 +73,25 @@
                                             Slug: {{ $post->slug }}
                                         </td>
                                         <td>
-                                            {{-- @foreach ($post->tags as $tag)
+                                            @foreach ($post->tags as $tag)
                                                 <span class="badge badge-info">{{ $tag->name }}</span>
-                                            @endforeach --}}
+                                            @endforeach
                                         </td>
-                                        <td>{{ $post->content }}</td>
-                                        {{-- <td>{{ $post->user->name }}</td> --}}
-                                        {{-- <td>{{ $post->userUpdate->name }}</td> --}}
-                                        <td>{!! $post->status_text !!} </td>
-                                        <td>{{ $post->category->name }}</td>
+                                        <td>
+                                            {{ $post->content }}
+                                        </td>
+                                        <td>
+                                            {{ $post->user->name }}
+                                        </td>
+                                        <td>
+                                            {{ $post->userUpdate->name }}
+                                        </td>
+                                        <td>
+                                            {!! $post->status_text !!}
+                                        </td>
+                                        <td>
+                                            {{ $post->category->name }}
+                                        </td>
                                         <td style="display: flex">
 
                                             <a href='{{ route('backend.posts.show', $post->id) }}'>
@@ -118,8 +128,4 @@
         </div>
 
     </div><!-- /.container-fluid -->
-@endsection
-
-@section('class1')
-    active
 @endsection
