@@ -68,26 +68,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['name', 'email', 'password', 'address']);
+        $data = $request->only(['name', 'email', 'password', 'phone', 'address']);
+        $roles = $request->get('roles');
 
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->status = 1;
+        $user->save();
 
-        try {
-            $user_id = DB::table('users')->insertGetId([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password']),
-                'status' => 1,
-            ]);
+        DB::table('user_infos')->insert([
+            'user_id' => $user->id,
+            'address' => $data['address'],
+            'phone' => $data['phone']
+        ]);
+        // $userInfo = new UserInfo();
+        // $userInfo->user_id = $user->id;
+        // $userInfo->address = $data['address'];
+        // $userInfo->phone = 123456;
+        // $userInfo->save();
 
-            DB::table('user_infos')->insert([
-                'user_id' => $user_id,
-                'address' => $data['address'],
-                'phone' => '123456'
-            ]);
-        } catch (Exception $ex) {
-            Log::error($ex->getMessage());
-        }
-
+        $user->roles()->attach($roles);
 
         return redirect()->route('backend.users.index');
     }
@@ -150,9 +152,9 @@ class UserController extends Controller
 
         DB::table('user_infos')->where('user_id', $id)->update([
             'address' => $data['address'],
-            'phone' =>$data['phone']
+            'phone' => $data['phone']
         ]);
-        
+
         $user->roles()->sync($roles);
 
         return redirect()->route('backend.users.index');

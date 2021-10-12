@@ -40,7 +40,7 @@ Route::get('frontend/posts/show', function () {
 Route::prefix('backend')
     ->name('backend.')
     ->namespace('Backend')
-    ->middleware(['auth', 'role:admin,admod'])
+    ->middleware(['auth'])
     ->group(function () {
 
 
