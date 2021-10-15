@@ -29,7 +29,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('backend.permissions.create');
+        // return view('backend.permissions.create');
     }
 
     /**
@@ -40,13 +40,13 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only('name');
+        // $data = $request->only('name');
 
-        $permission = new Permission();
-        $permission->name = $data['name'];
-        $permission->save();
+        // $permission = new Permission();
+        // $permission->name = $data['name'];
+        // $permission->save();
 
-        return redirect()->route('backend.permissions.index');
+        // return redirect()->route('backend.permissions.index');
     }
 
     /**
@@ -71,9 +71,9 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        $permission = Permission::find($id);
+        // $permission = Permission::find($id);
 
-        return view('backend.permissions.edit')->with(['permission' => $permission]);
+        // return view('backend.permissions.edit')->with(['permission' => $permission]);
     }
 
     /**
@@ -85,13 +85,13 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->only('name');
+        // $data = $request->only('name');
 
-        $permission = Permission::find($id);
-        $permission->name = $data['name'];
-        $permission->save();
+        // $permission = Permission::find($id);
+        // $permission->name = $data['name'];
+        // $permission->save();
 
-        return redirect('backend/permissions');
+        // return redirect('backend/permissions');
     }
 
     /**

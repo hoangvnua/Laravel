@@ -12,11 +12,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        @include('backend.component.btn', [
+                        {{-- @include('backend.component.btn', [
                         'href' => route('backend.permissions.create'),
                         'type' => 'primary',
                         'content' => 'Thêm mới'
-                        ])
+                        ]) --}}
 
 
                         <div class="card-tools">
@@ -74,9 +74,9 @@
                                             <a href='{{ route('backend.permissions.show', $permission->id) }}'>
                                                 <i class="far fa-eye btn btn-outline-success"></i>
                                             </a>
-                                            <a href='{{ route('backend.permissions.edit', $permission->id) }}'>
+                                            {{-- <a href='{{ route('backend.permissions.edit', $permission->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
-                                            </a>
+                                            </a> --}}
                                             <form method="POST"
                                                 action="{{ route('backend.permissions.destroy', $permission->id) }}">
                                                 @csrf
