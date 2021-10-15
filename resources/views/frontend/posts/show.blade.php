@@ -30,31 +30,14 @@
                 <div class="col-lg-3">
                     <!-- Start Sidebar Area -->
                     <div class="siderbar-section" data-aos="fade-up" data-aos-delay="0">
-
-                        <!-- Start Single Sidebar Widget -->
-                        <div class="sidebar-single-widget">
-                            <h6 class="sidebar-title">Search</h6>
-                            <div class="default-search-style d-flex">
-                                <input class="default-search-style-input-box" type="search" placeholder="Search..."
-                                    required>
-                                <button class="default-search-style-input-btn" type="submit"><i
-                                        class="fa fa-search"></i></button>
-                            </div>
-                        </div> <!-- End Single Sidebar Widget -->
-
                         <!-- Start Single Sidebar Widget -->
                         <div class="sidebar-single-widget">
                             <h6 class="sidebar-title">CATEGORIES</h6>
                             <div class="sidebar-content">
                                 <ul class="sidebar-menu">
-                                    <li><a href="#">Audio</a></li>
-                                    <li><a href="#">Company</a></li>
-                                    <li><a href="#">Gallery</a></li>
-                                    <li><a href="#">Other</a></li>
-                                    <li><a href="#">Travel</a></li>
-                                    <li><a href="#"> Uncategorized</a></li>
-                                    <li><a href="#"> Video</a></li>
-                                    <li><a href="#">Wordpress</a></li>
+                                    @foreach ($categories as $category)
+                                        <li><a href="#">{{ $category->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div> <!-- End Single Sidebar Widget -->
@@ -64,11 +47,9 @@
                             <h6 class="sidebar-title">Tags</h6>
                             <div class="sidebar-content">
                                 <div class="tag-link">
-                                    <a href="#">Technology</a>
-                                    <a href="#">Information</a>
-                                    <a href="#">Wordpress</a>
-                                    <a href="#">Devs</a>
-                                    <a href="#">Program</a>
+                                    @foreach ($tags as $tag)
+                                        <a href="#">{{ $tag->name }}</a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div> <!-- End Single Sidebar Widget -->
@@ -96,9 +77,9 @@
                                             <!-- Start Single Menu Collapse List -->
                                             <li class="sidebar-menu-collapse-list">
                                                 <div class="accordion">
-                                                    <a href="shop-grid-sidebar-left.html" class="accordion-title collapsed"
-                                                        data-bs-toggle="collapse" data-bs-target="#men-fashion"
-                                                        aria-expanded="false">Men <i class="ion-ios-arrow-right"></i></a>
+                                                    <a href="#" class="accordion-title collapsed" data-bs-toggle="collapse"
+                                                        data-bs-target="#men-fashion" aria-expanded="false">Men <i
+                                                            class="ion-ios-arrow-right"></i></a>
                                                     <div id="men-fashion" class="collapse">
                                                         <ul class="accordion-category-list">
                                                             <li><a href="#">Dresses</a></li>
@@ -133,54 +114,32 @@
                             <img class="img-fluid" src="/frontend/images/blog/blog-grid-home-1-img-1.jpg" alt="">
                         </div>
                         <ul class="post-meta" data-aos="fade-up" data-aos-delay="200">
-                            <li>POSTED BY : <a href="#" class="author">Admin</a></li>
-                            <li>ON : <a href="#" class="date">APRIL 24, 2018</a></li>
+                            <li>Đăng bởi : <a href="#" class="author">{{ $post->user->name }}</a></li>
+                            <li>ON : <a href="#" class="date">{{ $post->created_at->format('d/m/Y') }}</a></li>
                         </ul>
-                        <h4 class="post-title" data-aos="fade-up" data-aos-delay="400">Blog image post</h4>
+                        <h4 class="post-title" data-aos="fade-up" data-aos-delay="400">{{ $post->title }}</h4>
+
                         <div class="para-content" data-aos="fade-up" data-aos-delay="600">
-                            <p>Aenean et tempor eros, vitae sollicitudin velit. Etiam varius enim nec quam tempor, sed
-                                efficitur ex ultrices. Phasellus pretium est vel dui vestibulum condimentum. Aenean nec
-                                suscipit nibh. Phasellus nec lacus id arcu facilisis elementum. Curabitur lobortis, elit ut
-                                elementum congue, erat ex bibendum odio, nec iaculis lacus sem non lorem. Duis suscipit
-                                metus ante, sed convallis quam posuere quis. Ut tincidunt eleifend odio, ac fringilla mi
-                                vehicula nec. Nunc vitae lacus eget lectus imperdiet tempus sed in dui. Nam molestie magna
-                                at risus consectetur, placerat suscipit justo dignissim. Sed vitae fringilla enim, nec
-                                ullamcorper arcu.</p>
+                            <p>{{ $post->content }}</p>
                             <blockquote class="blockquote-content">
-                                Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur. In venenatis elit
-                                ac ultrices convallis. Duis est nisi, tincidunt ac urna sed, cursus blandit lectus. In
-                                ullamcorper sit amet ligula ut eleifend. Proin dictum tempor ligula, ac feugiat metus. Sed
-                                finibus tortor eu scelerisque scelerisque.
+                                {{ $post->content }}
                             </blockquote>
-                            <p>Aenean et tempor eros, vitae sollicitudin velit. Etiam varius enim nec quam tempor, sed
-                                efficitur ex ultrices. Phasellus pretium est vel dui vestibulum condimentum. Aenean nec
-                                suscipit nibh. Phasellus nec lacus id arcu facilisis elementum. Curabitur lobortis, elit ut
-                                elementum congue, erat ex bibendum odio, nec iaculis lacus sem non lorem. Duis suscipit
-                                metus ante, sed convallis quam posuere quis. Ut tincidunt eleifend odio, ac fringilla mi
-                                vehicula nec. Nunc vitae lacus eget lectus imperdiet tempus sed in dui. Nam molestie magna
-                                at risus consectetur, placerat suscipit justo dignissim. Sed vitae fringilla enim, nec
-                                ullamcorper arcu.</p>
-                            <p>Suspendisse turpis ipsum, tempus in nulla eu, posuere pharetra nibh. In dignissim vitae lorem
-                                non mollis. Praesent pretium tellus in tortor viverra condimentum. Nullam dignissim
-                                facilisis nisl, accumsan placerat justo ultricies vel. Vivamus finibus mi a neque pretium,
-                                ut convallis dui lacinia. Morbi a rutrum velit. Curabitur sagittis quam quis consectetur
-                                mattis. Aenean sit amet quam vel turpis interdum sagittis et eget neque. Nunc ante quam,
-                                luctus et neque a, interdum iaculis metus. Aliquam vel ante mattis, placerat orci id,
-                                vehicula quam. Suspendisse quis eros cursus, viverra urna sed, commodo mauris. Cras diam
-                                arcu, fringilla a sem condimentum, viverra facilisis nunc. Curabitur vitae orci id nulla
-                                maximus maximus. Nunc pulvinar sollicitudin molestie.</p>
+                            <p>{{ $post->content }}</p>
+                            <p>{{ $post->content }}</p>
                         </div>
                         <div class="para-tags" data-aos="fade-up" data-aos-delay="0">
                             <span>Tags: </span>
                             <ul>
-                                <li><a href="#">fashion</a></li>
-                                <li><a href="#">t-shirt</a></li>
-                                <li><a href="#">white</a></li>
+                                @foreach ($post->tags as $tag)
+                                    @if (isset($tag->name))
+                                        <li><a href="#">{{ $tag->name }}</a></li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                     </div> <!-- End Blog Single Content Area -->
                     <div class="comment-area">
-                        <div class="comment-box" data-aos="fade-up" data-aos-delay="0">
+                        {{-- <div class="comment-box" data-aos="fade-up" data-aos-delay="0">
                             <h4 class="title mb-4">3 Comments</h4>
                             <!-- Start - Review Comment -->
                             <ul class="comment">
@@ -272,7 +231,7 @@
                                     </div>
                                 </li> <!-- End - Review Comment list-->
                             </ul> <!-- End - Review Comment -->
-                        </div>
+                        </div> --}}
 
                         <!-- Start comment Form -->
                         <div class="comment-form" data-aos="fade-up" data-aos-delay="0">

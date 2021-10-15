@@ -32,11 +32,6 @@ use Illuminate\Support\Facades\App;
 // Route::get('/', [HomeController::class, 'index'] );
 Route::get('/', 'HomeController@index');
 
-Route::get('frontend/posts/show', function () {
-    return view('frontend.posts.show');
-});
-
-
 Route::prefix('backend')
     ->name('backend.')
     ->namespace('Backend')
@@ -71,21 +66,14 @@ Route::prefix('backend')
     });
 
 Route::prefix('frontend')->name('frontend.')->namespace('Frontend')->group(function () {
+
     Route::get('index', function () {
         return view('frontend.index');
     })->name('index');
 
-    Route::get('posts/', function () {
-        return view('frontend.posts.index');
-    })->name('posts.index');
+    Route::get('posts/list', 'PostController@list')->name('posts.list');
 
-    Route::get('posts/danhmuc', function () {
-        return view('frontend.posts.danhmuc');
-    })->name('posts.danhmuc');
-
-    Route::get('posts/detail', function () {
-        return view('frontend.posts.detail');
-    })->name('posts.detail');
+    Route::resource('posts', PostController::class);
 });
 
 Route::prefix('/')->namespace('Auth')->name('auth.')->group(function () {

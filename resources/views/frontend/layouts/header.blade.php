@@ -17,19 +17,13 @@
                         <div class="main-menu menu-color--black menu-hover-color--golden">
                             <nav>
                                 <ul>
-                                    <li class="has-dropdown">
-                                        <a class="active main-menu-link" href="{{ route('frontend.index') }}">Home <i
-                                                class="fa fa-angle-down"></i></a>
-                                        <!-- Sub Menu -->
-                                        <ul class="sub-menu">
-                                            <li><a href="index.html">Home 1</a></li>
-                                            <li><a href="index-2.html">Home 2</a></li>
-                                            <li><a href="index-3.html">Home 3</a></li>
-                                            <li><a href="index-4.html">Home 4</a></li>
-                                        </ul>
+                                    <li>
+                                        <a class="active main-menu-link" href="{{ route('frontend.index') }}">Trang
+                                            chủ</a>
                                     </li>
                                     <li class="has-dropdown has-megaitem">
-                                        <a href="product-details-default.html">Shop <i class="fa fa-angle-down"></i></a>
+                                        <a href="product-details-default.html">Cửa Hàng <i
+                                                class="fa fa-angle-down"></i></a>
                                         <!-- Mega Menu -->
                                         <div class="mega-menu">
                                             <ul class="mega-menu-inner">
@@ -104,18 +98,15 @@
                                         </div>
                                     </li>
                                     <li class="has-dropdown">
-                                        <a href="blog-single-sidebar-left.html">Blog <i
+                                        <a href="{{ route('frontend.posts.index') }}">Blog <i
                                                 class="fa fa-angle-down"></i></a>
                                         <!-- Sub Menu -->
                                         <ul class="sub-menu">
-                                            <li><a href="blog-grid-sidebar-left.html">Blog Grid Sidebar left</a></li>
-                                            <li><a href="blog-grid-sidebar-right.html">Blog Grid Sidebar Right</a></li>
-                                            <li><a href="blog-full-width.html">Blog Full Width</a></li>
-                                            <li><a href="blog-list-sidebar-left.html">Blog List Sidebar Left</a></li>
-                                            <li><a href="blog-list-sidebar-right.html">Blog List Sidebar Right</a></li>
-                                            <li><a href="blog-single-sidebar-left.html">Blog Single Sidebar left</a>
+                                            <li>
+                                                <a href="{{ route('frontend.posts.index') }}">All</a>
                                             </li>
-                                            <li><a href="blog-single-sidebar-right.html">Blog Single Sidebar Right</a>
+                                            <li>
+                                                <a href="{{ route('frontend.posts.list') }}">Blog theo danh mục</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -165,7 +156,7 @@
                                         @csrf
                                         <a href="#" class="nav-link"
                                             onclick="this.closest('form').submit();return false;">
-                                            Register
+                                            Đăng ký
                                         </a>
                                     </form>
                                 @else
@@ -173,7 +164,7 @@
                                         @csrf
                                         <a href="#" class="nav-link"
                                             onclick="this.closest('form').submit();return false;">
-                                            Login
+                                            Đăng nhập
                                         </a>
                                     </form>
                                 @endif
