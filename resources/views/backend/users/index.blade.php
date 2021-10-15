@@ -85,6 +85,10 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->UserInfo->phone }}</td>
                                         <td>{{ $user->UserInfo->address }}</td>
+                                        @foreach ($user->roles as $role)
+                                            <td>{{ $role->name }}</td>
+                                        @endforeach
+                                        
                                         <td style="display: flex">
                                             <a href='{{ route('backend.users.show', $user->id) }}'>
                                                 <i class="far fa-eye btn btn-outline-success"></i>
