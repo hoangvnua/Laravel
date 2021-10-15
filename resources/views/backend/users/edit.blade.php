@@ -49,14 +49,16 @@
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
                     </div>
-                    <input type="number" class="form-control" name="phone" placeholder="Số điện thoại">
+                    <input type="number" class="form-control" name="phone" placeholder="Số điện thoại"
+                        value="{{ $user->UserInfo->phone }}">
                 </div>
 
                 <div class="input-group mb-3">
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
                     </div>
-                    <input type="text" class="form-control" name="address" placeholder="Địa chỉ">
+                    <input type="text" class="form-control" name="address" placeholder="Địa chỉ"
+                        value="{{ $user->UserInfo->address }}">
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
@@ -73,7 +75,8 @@
                                             }
                                         @endphp
                                     @endforeach
-                                    <option value="{{ $role->id }}" @if (isset($selected)) {{ $selected }} @endif>{{ $role->name }}</option>
+                                    <option value="{{ $role->id }}" @if (isset($selected)) {{ $selected }} @endif>{{ $role->name }}
+                                    </option>
                                 @endforeach
 
                             </select>
