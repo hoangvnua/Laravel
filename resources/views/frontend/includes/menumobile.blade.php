@@ -14,10 +14,10 @@
                         </li>
                     </ul>
                 </div>
-                 <!-- End Mobile Left Side -->
+                <!-- End Mobile Left Side -->
 
-                 <!-- Start Mobile Right Side -->
-                 <div class="mobile-right-side">
+                <!-- Start Mobile Right Side -->
+                <div class="mobile-right-side">
                     <ul class="header-action-link action-color--black action-hover-color--golden">
                         <li>
                             <a href="#search">
@@ -42,8 +42,8 @@
                             </a>
                         </li>
                     </ul>
-                 </div>
-                 <!-- End Mobile Right Side -->
+                </div>
+                <!-- End Mobile Right Side -->
             </div>
         </div>
     </div>
@@ -64,16 +64,10 @@
             <div class="offcanvas-menu">
                 <ul>
                     <li>
-                        <a href="#"><span>Home</span></a>
-                        <ul class="mobile-sub-menu">
-                            <li><a href="index.html">Home 1</a></li>
-                            <li><a href="index-2.html">Home 2</a></li>
-                            <li><a href="index-3.html">Home 3</a></li>
-                            <li><a href="index-4.html">Home 4</a></li>
-                        </ul>
+                        <a href="#"><span>Trang chủ</span></a>
                     </li>
                     <li>
-                        <a href="#"><span>Shop</span></a>
+                        <a href="#"><span>Cửa hàng</span></a>
                         <ul class="mobile-sub-menu">
                             <li>
                                 <a href="#">Shop Layout</a>
@@ -123,28 +117,10 @@
                         <a href="#"><span>Blogs</span></a>
                         <ul class="mobile-sub-menu">
                             <li>
-                                <a href="#">Blog Grid</a>
-                                <ul class="mobile-sub-menu">
-                                    <li><a href="blog-grid-sidebar-left.html">Blog Grid Sidebar left</a></li>
-                                    <li><a href="blog-grid-sidebar-right.html">Blog Grid Sidebar Right</a></li>
-                                </ul>
+                                <a href="{{ route('frontend.posts.index') }}">Tất cả bài viết</a>
                             </li>
                             <li>
-                                <a href="blog-full-width.html">Blog Full Width</a>
-                            </li>
-                            <li>
-                                <a href="#">Blog List</a>
-                                <ul class="mobile-sub-menu">
-                                    <li><a href="blog-list-sidebar-left.html">Blog List Sidebar left</a></li>
-                                    <li><a href="blog-list-sidebar-right.html">Blog List Sidebar Right</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Blog Single</a>
-                                <ul class="mobile-sub-menu">
-                                    <li><a href="blog-single-sidebar-left.html">Blog Single Sidebar left</a></li>
-                                    <li><a href="blog-single-sidebar-right.html">Blog Single Sidebar Right</a></li>
-                                </ul>
+                                <a href="{{ route('frontend.posts.list') }}">Bài viết theo danh mục</a>
                             </li>
                         </ul>
                     </li>
@@ -165,13 +141,13 @@
         <!-- Start Mobile contact Info -->
         <div class="mobile-contact-info">
             <div class="logo">
-              <a href="index.html"><img src="/frontend/images/logo/logo_white.png" alt=""></a>  
+                <a href="index.html"><img src="/frontend/images/logo/logo_white.png" alt=""></a>
             </div>
 
             <address class="address">
-                <span>Address: 4710-4890 Breckinridge St, Fayettevill</span> 
-                <span>Call Us: (+800) 345 678, (+800) 123 456</span> 
-                <span>Email: yourmail@mail.com</span>    
+                <span>Address: 4710-4890 Breckinridge St, Fayettevill</span>
+                <span>Call Us: (+800) 345 678, (+800) 123 456</span>
+                <span>Email: yourmail@mail.com</span>
             </address>
 
             <ul class="social-link">
@@ -199,30 +175,30 @@
         <button class="offcanvas-close"><i class="ion-android-close"></i></button>
     </div> <!-- End Offcanvas Header -->
     <!-- Start Offcanvas Mobile Menu Wrapper -->
-        <!-- Start Mobile contact Info -->
-        <div class="mobile-contact-info">
-            <div class="logo">
-              <a href="index.html"><img src="/frontend/images/logo/logo_white.png" alt=""></a>  
-            </div>
-
-            <address class="address">
-                <span>Address: 4710-4890 Breckinridge St, Fayettevill</span> 
-                <span>Call Us: (+800) 345 678, (+800) 123 456</span> 
-                <span>Email: yourmail@mail.com</span>    
-            </address>
-
-            <ul class="social-link">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            </ul>
-
-            <ul class="user-link">
-                <li><a href="wishlist.html">Wishlist</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
-            </ul>
+    <!-- Start Mobile contact Info -->
+    <div class="mobile-contact-info">
+        <div class="logo">
+            <a href="index.html"><img src="/frontend/images/logo/logo_white.png" alt=""></a>
         </div>
-        <!-- End Mobile contact Info -->
+
+        <address class="address">
+            <span>Address: 4710-4890 Breckinridge St, Fayettevill</span>
+            <span>Call Us: (+800) 345 678, (+800) 123 456</span>
+            <span>Email: yourmail@mail.com</span>
+        </address>
+
+        <ul class="social-link">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+
+        <ul class="user-link">
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+    </div>
+    <!-- End Mobile contact Info -->
 </div> <!-- ...:::: End Offcanvas Mobile Menu Section:::... -->
