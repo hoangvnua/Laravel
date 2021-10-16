@@ -17,16 +17,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::get();
+        $posts = Post::simplePaginate(12);
         return view('frontend.posts.index')->with([
             'posts' => $posts
         ]);
     }
 
     public function list(){
-        $posts = Post::get();
+        $posts = Post::simplePaginate(12);
         $categories = Category::get();
         $tags = Tag::get();
+
         return view('frontend.posts.list')->with([
             'posts' => $posts,
             'categories' => $categories,

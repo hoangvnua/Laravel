@@ -36,7 +36,9 @@
                             <div class="sidebar-content">
                                 <ul class="sidebar-menu">
                                     @foreach ($categories as $category)
-                                        <li><a href="#">{{ $category->name }}</a></li>
+                                        <li><a
+                                                href="{{ route('frontend.posts.list', $category->id) }}">{{ $category->name }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -128,7 +130,7 @@
                                             <div class="col-xl-7 col-md-6">
                                                 <div class="content">
                                                     <h6 class="title"><a
-                                                            href="blog-single-sidebar-left.html">{{ $post->title }}</a>
+                                                            href="{{ route('frontend.posts.show', $post->id) }}">{{ $post->title }}</a>
                                                     </h6>
                                                     <ul class="post-meta">
                                                         <li>Người đăng : <a href="#"
@@ -138,7 +140,8 @@
                                                         </li>
                                                     </ul>
                                                     <p>{{ $post->content }}</p>
-                                                    <a href="#" class="read-more-btn icon-space-left">Read More <span
+                                                    <a href="{{ route('frontend.posts.show', $post->id) }}"
+                                                        class="read-more-btn icon-space-left">Read More <span
                                                             class="icon"><i
                                                                 class="ion-ios-arrow-thin-right"></i></span></a>
                                                 </div>
@@ -152,14 +155,8 @@
                     </div>
 
                     <!-- Start Pagination -->
-                    <div class="page-pagination text-center" data-aos="fade-up" data-aos-delay="0">
-                        <ul>
-                            <li><a class="active" href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#"><i class="ion-ios-skipforward"></i></a></li>
-                        </ul>
-                    </div> <!-- End Pagination -->
+                    {{ $posts->links() }}
+                    <!-- End Pagination -->
                 </div>
             </div>
         </div>

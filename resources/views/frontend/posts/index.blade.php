@@ -46,13 +46,14 @@
                                             <ul class="post-meta">
                                                 <li>Người đăng : <a href="#"
                                                         class="author">{{ $post->user->name }}</a></li>
-                                                <li>ON : <a href="#" class="date">{{ $post->created_at->format('d/m/Y') }}</a>
+                                                <li>ON : <a href="#"
+                                                        class="date">{{ $post->created_at->format('d/m/Y') }}</a>
                                                 </li>
                                             </ul>
-                                            <h6 class="title"><a href="blog-single-sidebar-left.html">
+                                            <h6 class="title"><a href="{{ route('frontend.posts.show', $post->id) }}">
                                                     {{ $post->title }}</a></h6>
                                             <p>{{ $post->content }}</p>
-                                            <a href="#" class="read-more-btn icon-space-left">Read More <span
+                                            <a href="{{ route('frontend.posts.show', $post->id) }}" class="read-more-btn icon-space-left">Read More <span
                                                     class="icon"><i
                                                         class="ion-ios-arrow-thin-right"></i></span></a>
                                         </div>
@@ -64,14 +65,15 @@
                     </div>
 
                     <!-- Start Pagination -->
-                    <div class="page-pagination text-center" data-aos="fade-up" data-aos-delay="0">
+                    {{ $posts->links() }}
+                    {{-- <div class="page-pagination text-center" data-aos="fade-up" data-aos-delay="0">
                         <ul>
                             <li><a class="active" href="#">1</a></li>
                             <li><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#"><i class="ion-ios-skipforward"></i></a></li>
                         </ul>
-                    </div> <!-- End Pagination -->
+                    </div> <!-- End Pagination --> --}}
                 </div>
             </div>
         </div>
