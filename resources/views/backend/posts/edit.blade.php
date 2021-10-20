@@ -17,8 +17,11 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tiêu đề</label>
-                    <input type="text" name="title" class="form-control" id="exampleInputEmail1"
-                        value="{{ $post->title }}">
+                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
+                        id="exampleInputEmail1" value="{{ $post->title }}">
+                    @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Textarea</label>
@@ -42,7 +45,8 @@
                                             }
                                         @endphp
                                     @endforeach
-                                    <option value="{{ $tag->id }}" @if (isset($selected)) {{ $selected }} @endif>{{ $tag->name }}</option>
+                                    <option value="{{ $tag->id }}" @if (isset($selected)) {{ $selected }} @endif>{{ $tag->name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -53,9 +57,9 @@
                     <label>Trạng thái</label>
                     <select class="form-control" name="status">
                         <option value="{{ $post->status }}">{{ $post->status_text }}</option>
-                        <option value="1">Public</option>
+                        <option value="1">Done</option>
                         <option value="0">Draft</option>
-                        <option value="2">Test</option>
+                        <option value="2">Public</option>
                     </select>
                 </div>
             </div>
@@ -64,8 +68,4 @@
             </div>
         </form>
     </div>
-@endsection
-
-@section('class')
-    active
 @endsection

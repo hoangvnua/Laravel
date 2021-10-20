@@ -17,8 +17,11 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tên danh mục</label>
-                    <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                         value="{{ $category->name }}">
+                    @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
 

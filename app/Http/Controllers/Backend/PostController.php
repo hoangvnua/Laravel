@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Validator;
 use PhpParser\Node\Stmt\TryCatch;
 
 class PostController extends Controller
@@ -68,8 +69,35 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
+        // $validated = $request->validate([
+        //     'title' => 'required|unique:posts|min:20|max:255',
+        //     'content' => 'required',
+        // ]);
+
+        // $validator = Validator::make(
+        //     $request->all(),
+        //     [
+        //         'title' => 'required|unique:posts|max:255',
+        //         'content' => 'required',
+        //     ],
+        //     [
+        //         'required' => 'Thuộc tính :attribute là bắt buộc',
+        //         'content.required' => 'Nội dung không được trống'
+        //     ],
+        //     [
+        //         'title' => 'Tiêu đề',
+        //         'content' => 'Nội dung'
+        //     ]
+        // );
+
+        // if ($validator->fails()) {
+        //     return redirect('backend/posts/create')
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
+
         $data = $request->only(['title', 'content', 'status']);
         $tags = $request->get('tags');
 
@@ -148,7 +176,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePostRequest $request, $id)
     {
         $post = Post::find($id);
         // if (!Gate::allows('update-post', $post)) {
@@ -189,7 +217,7 @@ class PostController extends Controller
     public function destroy($id)
     {
 
-        if (Auth::user()->cannot('delete-post')){
+        if (Auth::user()->cannot('delete-post')) {
             return abort(403);
         }
         $post = Post::find($id);

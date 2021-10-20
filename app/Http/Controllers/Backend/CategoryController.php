@@ -27,9 +27,10 @@ class CategoryController extends Controller
         return redirect()->route('backend.categories.delete');
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         $categories = Category::onlyTrashed()->get();
-        return view('backend.categories.softDelete',[
+        return view('backend.categories.softDelete', [
             'categories' => $categories,
         ]);
     }
@@ -51,6 +52,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|unique:categories|max:255',
+        ]);
+
         $data = $request->only('name');
         // DB::table('categories')->insert([
         //     'name' => $data['name'],
@@ -83,10 +88,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categories = DB::table('categories')->find($id);
+        $category = DB::table('categories')->find($id);
 
         return view('backend.categories.edit')->with([
-            'categories' => $categories
+            'category' => $category
         ]);
     }
 
@@ -99,6 +104,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name' => 'required|unique:categories|max:255',
+        ]);
+
         $data = $request->only(['name']);
 
         // DB::table('categories')->where('id', $id)->update([

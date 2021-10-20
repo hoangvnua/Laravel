@@ -11,12 +11,27 @@
 @section('content')
 
     <div class="card card-primary">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form class="form-horizontal" method="POST" action="{{ route('backend.posts.store') }}">
             @csrf
             <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tiêu đề</label>
-                    <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
+                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1"
+                        value="{{ old('title') }}"  placeholder="Enter...">
+                        @error('title')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Textarea</label>
@@ -46,9 +61,9 @@
                 <div class="form-group">
                     <label>Trạng thái</label>
                     <select class="form-control" name="status" aria-placeholder="1" aria-valuenow="1">
-                        <option value="1">Public</option>
+                        <option value="1">Done</option>
                         <option value="0">Draft</option>
-                        <option value="3">Test</option>
+                        <option value="2">Public</option>
                     </select>
                 </div>
             </div>

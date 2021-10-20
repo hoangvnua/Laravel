@@ -48,7 +48,7 @@
                     </div>
                     <input type="password" class="form-control" name="password_confirm" placeholder="Confirm Password">
                 </div>
-                
+
                 <div class="input-group mb-3">
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
