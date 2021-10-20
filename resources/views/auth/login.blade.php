@@ -28,6 +28,15 @@
         <div class="account_form aos-init aos-animate" data-aos="fade-up" data-aos-delay="0"
             style="border: 2px solid black; border-radius: 10px; padding: 5px;">
             <h3>login</h3>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{ route('auth.login') }}" method="POST">
                 @csrf
                 <div class="default-form-box">
@@ -46,7 +55,7 @@
                     </label>
                     <a href="#">Lost your password?</a>
                     <p style="display: flex">Chưa có tài khoản&ensp;<a href="{{ route('auth.register') }}">Đăng kí</a></p>
-                    
+
                 </div>
             </form>
         </div>

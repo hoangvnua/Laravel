@@ -31,7 +31,7 @@ class RegisteredController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'admod',
+            'role' => 'writer',
         ]);
 
         DB::table('user_infos')->insert([
@@ -39,6 +39,7 @@ class RegisteredController extends Controller
             'address' => 'bắc ninh',
             'phone' => '123456'
         ]);
+        $user->roles()->attach(3);
         // try {
 
         //     $user_id = DB::table('users')->insertGetId([
