@@ -69,34 +69,36 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
         // $validated = $request->validate([
         //     'title' => 'required|unique:posts|min:20|max:255',
         //     'content' => 'required',
         // ]);
 
-        // $validator = Validator::make(
-        //     $request->all(),
-        //     [
-        //         'title' => 'required|unique:posts|max:255',
-        //         'content' => 'required',
-        //     ],
-        //     [
-        //         'required' => 'Thuộc tính :attribute là bắt buộc',
-        //         'content.required' => 'Nội dung không được trống'
-        //     ],
-        //     [
-        //         'title' => 'Tiêu đề',
-        //         'content' => 'Nội dung'
-        //     ]
-        // );
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'title' => 'required|unique:posts|max:255',
+                'content' => 'required',
+                'status' => 'required|in:0,1,2',
+            ],
+            [
+                'required' => 'Thuộc tính :attribute là bắt buộc',
+                'content.required' => 'Nội dung không được trống',
 
-        // if ($validator->fails()) {
-        //     return redirect('backend/posts/create')
-        //         ->withErrors($validator)
-        //         ->withInput();
-        // }
+            ],
+            [
+                'title' => 'Tiêu đề',
+                'content' => 'Nội dung'
+            ]
+        );
+
+        if ($validator->fails()) {
+            return redirect('backend/posts/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $data = $request->only(['title', 'content', 'status']);
         $tags = $request->get('tags');
