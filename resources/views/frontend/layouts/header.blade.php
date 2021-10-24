@@ -110,15 +110,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown">
-                                        <a href="#">Pages <i class="fa fa-angle-down"></i></a>
-                                        <!-- Sub Menu -->
-                                        <ul class="sub-menu">
-                                            <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                        </ul>
-                                    </li>
+                                    
                                     <li>
                                         <a href="about-us.html">About Us</a>
                                     </li>

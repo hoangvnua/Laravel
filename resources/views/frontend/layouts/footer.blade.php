@@ -7,12 +7,12 @@
             <div class="col-lg-3 col-sm-6 mb-6">
                 <!-- Start Footer Single Item -->
                 <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"  data-aos-delay="0">
-                    <h5 class="title">INFORMATION</h5>
+                    <h5 class="title">Thông tin</h5>
                     <ul class="footer-nav">
-                        <li><a href="#">Delivery Information</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="contact-us.html">Contact</a></li>
-                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Thông tin giao hàng</a></li>
+                        <li><a href="#">Điều khoản</a></li>
+                        <li><a href="contact-us.html">Liên hệ</a></li>
+                        <li><a href="#">Đổi trả</a></li>
                     </ul>
                 </div>
                 <!-- End Footer Single Item -->
@@ -20,13 +20,13 @@
             <div class="col-lg-3 col-sm-6 mb-6">
                 <!-- Start Footer Single Item -->
                 <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"  data-aos-delay="200">
-                    <h5 class="title">MY ACCOUNT</h5>
+                    <h5 class="title">Tài khoản</h5>
                     <ul class="footer-nav"> 
-                        <li><a href="my-account.html">My account</a></li>
-                        <li><a href="wishlist.html">Wishlist</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="faq.html">Frequently Questions</a></li>
-                        <li><a href="#">Order History</a></li>
+                        <li><a href="my-account.html">Tài khoản của tôi</a></li>
+                        <li><a href="wishlist.html">Danh sách yêu thích</a></li>
+                        <li><a href="privacy-policy.html">Chính sách bảo mật</a></li>
+                        <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Lịch sử mua hàng</a></li>
                     </ul>
                 </div>
                 <!-- End Footer Single Item -->
@@ -34,13 +34,13 @@
             <div class="col-lg-3 col-sm-6 mb-6">
                 <!-- Start Footer Single Item -->
                 <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"  data-aos-delay="400">
-                    <h5 class="title">CATEGORIES</h5>
+                    <h5 class="title">Thể Loại</h5>
                     <ul class="footer-nav">
-                        <li><a href="#">Decorative</a></li>
-                        <li><a href="#">Kitchen utensils</a></li>
-                        <li><a href="#">Chair & Bar stools</a></li>
-                        <li><a href="#">Sofas and Armchairs</a></li>
-                        <li><a href="#">Interior lighting</a></li>
+                        <li><a href="#">Trang trí</a></li>
+                        <li><a href="#">Dụng cụ nhà bếp</a></li>
+                        <li><a href="#">Ghế & ghế đẩu</a></li>
+                        <li><a href="#">Sofas và ghế bành</a></li>
+                        <li><a href="#">Đèn chiếu sáng</a></li>
                     </ul>
                 </div>
                 <!-- End Footer Single Item -->
@@ -48,13 +48,13 @@
             <div class="col-lg-3 col-sm-6 mb-6">
                 <!-- Start Footer Single Item -->
                 <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"  data-aos-delay="600">
-                    <h5 class="title">ABOUT US</h5>
+                    <h5 class="title">Về chúng tôi</h5>
                     <div class="footer-about">
-                        <p>We are a team of designers and developers that create high quality Magento, Prestashop, Opencart.</p>
+                        <p>Chúng tôi là công ty cung cấp nội thất với phong cách độc quyền mang lại cho bạn một cảm giác sang trọng đẳng cấp.</p>
                         
                         <address class="address">
-                            <span>Address: 4710-4890 Breckinridge St, Fayettevill</span> 
-                            <span>Email: yourmail@mail.com</span>    
+                            <span>Địa chỉ: 01 Đào Nguyên, Gia Lâm, Hà Nội</span> <br>
+                            <span>Email: hoangnv1722@gmail.com</span>    
                         </address>
                     </div>
                 </div>
@@ -71,23 +71,23 @@
             <div class="row mb-n6">
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-6">
                     <div class="footer-social" data-aos="fade-up"  data-aos-delay="0">
-                        <h4 class="title">FOLLOW US</h4>
+                        <h4 class="title">Theo dõi chúng tôi</h4>
                         <ul class="footer-social-link">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a target="_blank" href="https://www.facebook.com/hoannguyen17"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.instagram.com/h0qgodbz/"><i class="fa fa-instagram"></i></a></li>
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-6 col-md-6 mb-6">
                     <div class="footer-newsletter" data-aos="fade-up"  data-aos-delay="200">
-                        <h4 class="title">DON'T MISS OUT ON THE LATEST</h4>
+                        <h4 class="title">Đăng kí nhận thông tin về sản phẩm và ưu đãi mới nhất</h4>
                         <div class="form-newsletter">
                             <form action="#" method="post">
                                 <div class="form-fild-newsletter-single-item input-color--golden">
-                                    <input type="email" placeholder="Your email address..." required>
-                                    <button type="submit">SUBSCRIBE!</button>
+                                    <input type="email" placeholder="Địa chỉ email của bạn..." required>
+                                    <button type="submit">Đăng kí ngay!</button>
                                 </div>
                             </form>
                         </div>
@@ -104,7 +104,7 @@
             <div class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
                 <div class="col-auto mb-6">
                     <div class="footer-copyright" >
-                        <p> COPYRIGHT &copy; <a href="https://hasthemes.com/" target="_blank">HasThemes</a>. ALL RIGHTS RESERVED.</p>
+                        <p> COPYRIGHT &copy; <a href="https://www.facebook.com/hoannguyen17" target="_blank">Nguyễn Văn Hoàng</a>. ALL RIGHTS RESERVED.</p>
                     </div>
                 </div>
                 <div class="col-auto mb-6">
