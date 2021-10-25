@@ -1,5 +1,5 @@
 
-  <textarea id="summernote" rows="10" name="content">
+  <textarea id="summernote" rows="8" name="content">
       @isset($content)
            {{ $content }}    
       @endisset

@@ -112,10 +112,10 @@
                                     </li>
                                     
                                     <li>
-                                        <a href="about-us.html">About Us</a>
+                                        <a href="about-us.html">Xem thêm về chúng tôi</a>
                                     </li>
                                     <li>
-                                        <a href="contact-us.html">Contact Us</a>
+                                        <a href="contact-us.html">Liên hệ</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -174,15 +174,6 @@
                             </li>
 
                         </ul>
-                        @if (auth()->check())
-                            <form method="post" action="{{ route('auth.logout') }}">
-                                @csrf
-                                <a href="#" class="nav-link" 4
-                                    onclick="this.closest('form').submit();return false;">
-                                    Logout
-                                </a>
-                            </form>
-                        @endif
                         <!-- End Header Action Link -->
                     </div>
                 </div>

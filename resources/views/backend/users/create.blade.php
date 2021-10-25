@@ -11,7 +11,8 @@
 @section('content')
     <div class="card card-info">
         <div class="card-body">
-            <form class="form-horizontal" method="POST" action="{{ route('backend.users.store') }}">
+            <form class="form-horizontal" method="POST" action="{{ route('backend.users.store') }}"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -20,6 +21,18 @@
                     <input type="text" class="form-control" name="name" placeholder="Họ tên">
                 </div>
 
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh đại diện</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="avatar">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="input-group mb-3 date" id="reservationdate" data-target-input="nearest">
                     <div class="input-group-prepend">

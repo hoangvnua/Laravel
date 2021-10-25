@@ -10,9 +10,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        Storage::makeDirectory('avatars');
-        Storage::makeDirectory('products');
-        Storage::makeDirectory('images');
+        // Storage::makeDirectory('avatars');
+        // Storage::makeDirectory('products');
+        // Storage::makeDirectory('images');
         // return Storage::disk('public')->download('canhdep.jpg', 'test.png');
         // if (Storage::missing('file.txt')) {
         //     dd('Không');
@@ -25,6 +25,6 @@ class DashboardController extends Controller
         // $contents = Storage::disk('public')->get('canhdep.jpg');
 
         // dd($contents);
-        // return view('backend.dashboard');
+        return view('backend.dashboard');
     }
 }

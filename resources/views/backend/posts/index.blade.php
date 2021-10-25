@@ -56,7 +56,7 @@
                                     <th>ID</th>
                                     <th>Tên bài viết</th>
                                     <th>Tags</th>
-                                    {{-- <th>Nội dung</th> --}}
+                                    <th>Image</th>
                                     <th>Người tạo</th>
                                     <th>Người sửa đổi</th>
                                     <th>Status</th>
@@ -69,7 +69,7 @@
                                     <tr>
                                         <td>{{ $post->id }}</td>
                                         <td>
-                                            Title: {{ $post->title }} <br>
+                                            {{ $post->title }} <br>
                                             {{-- Slug: {{ $post->slug }} --}}
                                         </td>
                                         <td>
@@ -77,9 +77,12 @@
                                                 <span class="badge badge-info">{{ $tag->name }}</span>
                                             @endforeach
                                         </td>
-                                        {{-- <td>
-                                            {{ $post->content }}
-                                        </td> --}}
+                                        <td>
+                                            @if (!empty($post->image))
+                                                <img src="{{ Illuminate\Support\Facades\Storage::disk($post->disk)->url($post->image) }}"
+                                                    width="100px">
+                                            @endif
+                                        </td>
                                         <td>
                                             {{ $post->user->name }}
                                         </td>

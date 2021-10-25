@@ -54,7 +54,7 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Hành động</th>
+                                    {{-- <th>Hành động</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,14 +69,14 @@
                                         <td>
                                             {{ $permission->slug }}
                                         </td>
-                                        <td style="display: flex">
+                                        {{-- <td style="display: flex">
 
                                             <a href='{{ route('backend.permissions.show', $permission->id) }}'>
                                                 <i class="far fa-eye btn btn-outline-success"></i>
                                             </a>
-                                            {{-- <a href='{{ route('backend.permissions.edit', $permission->id) }}'>
+                                            <a href='{{ route('backend.permissions.edit', $permission->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
-                                            </a> --}}
+                                            </a>
                                             <form method="POST"
                                                 action="{{ route('backend.permissions.destroy', $permission->id) }}">
                                                 @csrf
@@ -85,7 +85,7 @@
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>
                                             </form>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
 

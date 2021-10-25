@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use PhpParser\Node\Stmt\TryCatch;
 
@@ -100,29 +101,8 @@ class PostController extends Controller
                 ->withInput();
         }
 
-        $data = $request->only(['title', 'content', 'status']);
+        $data = $request->only(['title', 'content', 'status', 'image']);
         $tags = $request->get('tags');
-
-        // try {
-        //     $insert = DB::table('posts')->insertGetId([
-        //         'title' => $data['title'],
-        //         'slug' => Str::slug($data['title']),
-        //         'content' => $data['content'],
-        //         'status' => $data['status'],
-        //         'img_url' => 'ảnh ảo',
-        //         'user_created_id' => 1,
-        //         'user_updated_id' => 1,
-        //         'category_id' => 1,
-        //         'created_at' => now(),
-        //         'updated_at' => now()
-        //     ]);
-        // } catch (Exception $ex) {
-        //     Log::error("PostsController@store Error" . $ex->getMessage());
-        // }
-        // DB::table('post_tag')->insert([
-        //     'post_id' => $insert,
-        //     'tag_id' => 3
-        // ]);
 
         $post = new Post();
         $post->title = $data['title'];
@@ -131,6 +111,15 @@ class PostController extends Controller
         $post->user_created_id = Auth::user()->id;
         $post->user_updated_id = Auth::user()->id;
         $post->category_id = 1;
+
+        if ($request->hasFile('image')) {
+            $disk = 'public';
+            // $path = $request->file('image')->store('blogs', $disk);
+            $path = Storage::putFile('blogs', $request->file('image'));
+            $post->disk = $disk;
+            $post->image = $path;
+        }
+
         $post->save();
 
         $post->tags()->attach($tags);

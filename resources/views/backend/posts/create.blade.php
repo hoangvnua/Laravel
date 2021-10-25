@@ -22,17 +22,32 @@
                 </ul>
             </div>
         @endif
-        <form class="form-horizontal" method="POST" action="{{ route('backend.posts.store') }}">
+        <form class="form-horizontal" role="form" method="POST" action="{{ route('backend.posts.store') }}"
+            enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tiêu đề</label>
-                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1"
-                        value="{{ old('title') }}"  placeholder="Enter...">
-                        @error('title')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
+                        id="exampleInputEmail1" value="{{ old('title') }}" placeholder="Enter...">
+                    @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
+
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh đại diện</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="image">
+                            <label class="custom-file-label" for="exampleInputFile">Chọn file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">Tải lên</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="exampleInputEmail1">Textarea</label>
                     @include('backend.component.summernote')
@@ -43,20 +58,16 @@
                 </div> --}}
 
                 <!-- select -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label>Tag</label>
-                            <select multiple="" class="form-control" name="tags[]" aria-placeholder="1" aria-valuenow="1">
-                                @foreach ($tags as $tag)
-                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                                @endforeach
 
-                            </select>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label>Tags</label>
+                    <select class="select2" name="tags[]" multiple="multiple" data-placeholder="Select a State"
+                        style="width: 100%;">
+                        @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
-
 
                 <div class="form-group">
                     <label>Trạng thái</label>
@@ -72,8 +83,5 @@
             </div>
         </form>
     </div>
-@endsection
 
-@section('class')
-    active
 @endsection

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -68,7 +69,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['name', 'email', 'password', 'phone', 'address']);
+        $data = $request->only(['name', 'email', 'password', 'phone', 'address', 'avatar']);
         $roles = $request->get('roles');
 
         $user = new User();
@@ -76,6 +77,13 @@ class UserController extends Controller
         $user->email = $data['email'];
         $user->password = bcrypt($data['password']);
         $user->status = 1;
+        if ($request->hasFile('avatar')) {
+            $disk = 'public';
+            $path = $request->file('avatar')->store('avatars', $disk);
+            // $path = Storage::putFile('avatar', $request->file('public'));
+            $user->disk = $disk;
+            $user->avatar = $path;
+        }
         $user->save();
 
         DB::table('user_infos')->insert([

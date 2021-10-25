@@ -175,28 +175,14 @@
                 </ul>
             </li>
             <li class="nav-item @if (request()->routeIs('backend.permissions.*')) menu-open @endif">
-                <a href="#2" class="nav-link">
+                <a href="{{ route('backend.permissions.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
-                        Quản lý Permission
-                        <i class="fas fa-angle-left right"></i>
+                        Permission
+                        
 
                     </p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('backend.permissions.index') }}" class="nav-link @if (request()->is('backend/permissions')) active @endif">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Danh sách Permission</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=" {{ route('backend.permissions.create') }} " class="nav-link @if (request()->is('backend/permissions/create')) active @endif ">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Tạo mới Permission</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
         </ul>
     </nav>

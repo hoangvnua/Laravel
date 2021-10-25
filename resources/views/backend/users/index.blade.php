@@ -69,6 +69,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Ảnh đại diện</th>
                                     <th>Họ Tên</th>
                                     <th>Email</th>
                                     <th>Số điện thoại</th>
@@ -81,6 +82,12 @@
                                 @foreach ($users as $user)
                                     <tr>
                                         <td>{{ $user->id }}</td>
+                                        <td>
+                                            @if (!empty($user->avatar))
+                                                <img src="{{ Illuminate\Support\Facades\Storage::disk($user->disk)->url($user->avatar) }}"
+                                                    width="100px">
+                                            @endif
+                                        </td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->UserInfo->phone }}</td>

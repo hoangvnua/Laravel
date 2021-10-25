@@ -176,28 +176,46 @@
     </div> <!-- End Offcanvas Header -->
     <!-- Start Offcanvas Mobile Menu Wrapper -->
     <!-- Start Mobile contact Info -->
-    <div class="mobile-contact-info">
-        <div class="logo">
-            <a href="index.html"><img src="/frontend/images/logo/logo_white.png" alt=""></a>
+    <div class="mobile-contact-info" style="text-align: left; float: left;">
+        <div class="logo" style="text-align: left">
+            @if (auth()->check())
+                <div>
+                    <a href="#">
+                        {{ auth()->user()->name }}
+                    </a>
+                </div>
+            @endif
         </div>
 
-        <address class="address">
-            <span>Address: 4710-4890 Breckinridge St, Fayettevill</span>
-            <span>Call Us: (+800) 345 678, (+800) 123 456</span>
-            <span>Email: yourmail@mail.com</span>
-        </address>
-
-        <ul class="social-link">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-        </ul>
-
-        <ul class="user-link">
-            <li><a href="wishlist.html">Wishlist</a></li>
-            <li><a href="cart.html">Cart</a></li>
-            <li><a href="checkout.html">Checkout</a></li>
+        <ul style="float: left">
+            <li>
+                <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                    <i class="icon-heart"></i>
+                    Sản phẩm yêu thích
+                </a>
+            </li>
+            <li>
+                <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                    <i class="icon-bag"></i>
+                    Giỏ hàng
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-instagram"></i>
+                    Chế độ tối
+                </a>
+            </li>
+            <li>
+                @if (auth()->check())
+                    <form method="post" action="{{ route('auth.logout') }}">
+                        @csrf
+                        <a href="#" class="nav-link" 4 onclick="this.closest('form').submit();return false;">
+                            Đăng xuất
+                        </a>
+                    </form>
+                @endif
+            </li>
         </ul>
     </div>
     <!-- End Mobile contact Info -->
