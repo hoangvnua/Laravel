@@ -11,6 +11,17 @@
 @section('content')
     <div class="card card-info">
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                {{ $error }}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form class="form-horizontal" method="POST" action="{{ route('backend.users.store') }}"
                 enctype="multipart/form-data">
                 @csrf

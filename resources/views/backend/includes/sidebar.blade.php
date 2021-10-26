@@ -119,6 +119,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item @if (request()->routeIs('backend.categories.*')) menu-open @endif">
+                <a href="#2" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Bài viết
+                        <i class="fas fa-angle-left right"></i>
+
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('backend.categories.index') }}" class="nav-link @if (request()->is('backend/categories')) active @endif">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Danh sách danh mục</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-header">Hệ thống</li>
             <li class="nav-item @if (request()->routeIs('backend.users.*')) menu-open @endif">
                 <a href="#2" class="nav-link">

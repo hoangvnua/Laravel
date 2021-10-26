@@ -23,7 +23,7 @@ class StorageController extends Controller
 
     public function destroy()
     {
-        Storage::delete();
+        // Storage::delete();
     }
 
     public function download()

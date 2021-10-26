@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -46,6 +47,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getImageAttribute()
+    {
+        if (!empty($this->avatar)) {
+            if (Storage::disk($this->disk)->exists($this->avatar)) {
+                return Storage::disk($this->disk)->url($this->avatar);
+            } else {
+                return Storage::disk('public')->url('default.jpg');
+            }
+        } else {
+            return Storage::disk('public')->url('default.jpg');
+        }
+    }
 
     public function UserInfo()
     {

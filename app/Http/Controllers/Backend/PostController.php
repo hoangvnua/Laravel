@@ -83,6 +83,7 @@ class PostController extends Controller
                 'title' => 'required|unique:posts|max:255',
                 'content' => 'required',
                 'status' => 'required|in:0,1,2',
+                'image' => 'file|mimes:jpg,png|max:3072|min:20|dimensions:ratio=1/1'
             ],
             [
                 'required' => 'Thuộc tính :attribute là bắt buộc',
@@ -115,7 +116,7 @@ class PostController extends Controller
         if ($request->hasFile('image')) {
             $disk = 'public';
             // $path = $request->file('image')->store('blogs', $disk);
-            $path = Storage::putFile('blogs', $request->file('image'));
+            $path = Storage::disk($disk)->putFile('blogs', $request->file('image'));
             $post->disk = $disk;
             $post->image = $path;
         }

@@ -83,8 +83,8 @@
                                     <tr>
                                         <td>{{ $user->id }}</td>
                                         <td>
-                                            @if (!empty($user->avatar))
-                                                <img src="{{ Illuminate\Support\Facades\Storage::disk($user->disk)->url($user->avatar) }}"
+                                            @if (!empty($user->image))
+                                                <img src="{{ $user->image }}"
                                                     width="100px">
                                             @endif
                                         </td>

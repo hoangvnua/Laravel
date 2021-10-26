@@ -39,7 +39,7 @@
                                             <a href="{{ route('frontend.posts.show', $post->id) }}"
                                                 class="image-link">
                                                 <img class="img-fluid"
-                                                    src="/frontend/images/blog/blog-grid-home-1-img-1.jpg" alt="">
+                                                    src="{{ $post->image_url }}" alt="">
                                             </a>
                                         </div>
                                         <div class="content">
