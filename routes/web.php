@@ -48,8 +48,8 @@ Route::prefix('backend')
         Route::get('categories/delete', 'CategoryController@delete')->name('categories.delete');
         Route::get('categories/restore/{id}', 'CategoryController@restore')->name('categories.restore');
 
-        Route::get('storages', 'StorageController@index')->name('storages.index');
-        Route::get('storages', 'StorageController@destroy')->name('storage.destroy');
+        // Route::get('storages', 'StorageController@index')->name('storages.index');
+        Route::resource('storages', StorageController::class);
 
         // Posts
         Route::resource('posts', PostController::class);
