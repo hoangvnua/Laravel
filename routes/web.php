@@ -49,7 +49,7 @@ Route::prefix('backend')
         Route::get('categories/restore/{id}', 'CategoryController@restore')->name('categories.restore');
 
         // Route::get('storages', 'StorageController@index')->name('storages.index');
-        Route::resource('storages', StorageController::class);
+        Route::resource('storages', StorageController::class)->parameters(['storages' => 'id']);
 
         // Posts
         Route::resource('posts', PostController::class);

@@ -56,19 +56,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($paths as $path)
+                                @foreach ($paths as $key => $path)
                                     <tr>
                                         <td>
-                                            <img src="{{ $path }}" alt="" width="200px"
-                                                height="200px">
+                                            <img src="{{ $path }}" alt="" width="200px" height="200px">
                                         </td>
                                         <td>
-                                            <a href="">
+                                            <a href="{{ route('backend.storages.show', $key) }}">
                                                 Tải về
                                             </a><br>
-                                            <a href="">
-                                                Xóa
-                                            </a>
+                                            <form method="POST" action="{{ route('backend.storages.destroy', $key) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-outline-danger">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </form>
                                         </td>
 
                                         {{-- <td style="display: flex">
