@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use PhpParser\Node\Stmt\TryCatch;
@@ -39,15 +40,15 @@ class PostController extends Controller
     {
         // $posts_query = DB::table('posts');
         // $posts = Post::where('status', '=', Post::STATUS_DONE)->simplePaginate(5);
-        $posts = Post::simplePaginate(5);
-        $title = $request->get('title');
+        $posts = Post::paginate(5);
+        $search = $request->get('table_search');
         $status = $request->get('status');
-        if (!empty($title)) {
-            $posts = Post::where('title', 'like', '%' . $title . '%')->where('status', '=', Post::STATUS_DONE)->simplePaginate(5);
+        if (!empty($search)) {
+            $posts = Post::where('title', 'like', '%' . $search . '%')->paginate(5);
         }
-        if ($status !== null) {
-            $posts = Post::where('status', $status)->where('status', '=', Post::STATUS_DONE)->simplePaginate(5);
-        }
+        // if ($status !== null) {
+        //     $posts = Post::->where('status', '=', Post::STATUS_DONE)->paginate(5);
+        // }
 
         // $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
         return view('backend.posts.index')->with(['posts' => $posts]);
@@ -83,7 +84,7 @@ class PostController extends Controller
                 'title' => 'required|unique:posts|max:255',
                 'content' => 'required',
                 'status' => 'required|in:0,1,2',
-                'image' => 'file|mimes:jpg,png|max:3072|min:20|dimensions:ratio=1/1'
+                'image' => 'file|mimes:jpg,png|max:3072|min:20'
             ],
             [
                 'required' => 'Thuộc tính :attribute là bắt buộc',
@@ -125,6 +126,7 @@ class PostController extends Controller
 
         $post->tags()->attach($tags);
 
+        $request->session()->flash('success', 'Thêm mới bài viết thành công!');
         return redirect()->route('backend.posts.index');
     }
 
@@ -197,6 +199,7 @@ class PostController extends Controller
         $post->save();
 
         $post->tags()->sync($tags);
+        Session::flash('success', 'Sửa bài viết thành công!');
         return redirect()->route('backend.posts.index');
     }
 
@@ -212,7 +215,7 @@ class PostController extends Controller
         if (Auth::user()->cannot('delete-post')) {
             return abort(403);
         }
-        $post = Post::find($id);
+        // $post = Post::find($id);
         // if (!Gate::allows('delete-post', $post)) {
         //     abort(403);
         // }
@@ -220,6 +223,7 @@ class PostController extends Controller
         // $post->delete();
 
         Post::destroy($id);
+        Session::flash('success', 'Đã xóa bài viết!');
         return redirect()->route('backend.posts.index');
     }
 }

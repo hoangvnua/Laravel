@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // Storage::makeDirectory('avatars');
         // Storage::makeDirectory('products');
@@ -25,6 +25,11 @@ class DashboardController extends Controller
         // $contents = Storage::disk('public')->get('canhdep.jpg');
 
         // dd($contents);
+
+
+        // Session
+        // $request->session()->put('name', 'Hoàng');
+
         return view('backend.dashboard');
     }
 }

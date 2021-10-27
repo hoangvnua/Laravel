@@ -32,7 +32,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="float: right">Thêm Permission</button>
+                <button type="submit" class="btn btn-primary" style="float: right">Thêm role</button>
 
             </form>
         </div>

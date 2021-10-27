@@ -2,7 +2,16 @@
 
 @section('content-header')
     <h1>Danh sách Permission</h1>
-
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
 @endsection
 
 @section('content')
@@ -52,8 +61,8 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Slug</th>
+                                    <th>Tên</th>
+                                    <th>Quyền</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -67,7 +76,11 @@
                                             {{ $role->name }} <br>
                                         </td>
                                         <td>
-                                            {{ $role->slug }}
+                                            @foreach ($role->permissions as $permission)
+                                                {{ $permission->name }}
+                                                <br>
+                                            @endforeach
+
                                         </td>
                                         <td style="display: flex">
 
@@ -77,8 +90,7 @@
                                             <a href='{{ route('backend.roles.edit', $role->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
                                             </a>
-                                            <form method="POST"
-                                                action="{{ route('backend.roles.destroy', $role->id) }}">
+                                            <form method="POST" action="{{ route('backend.roles.destroy', $role->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-outline-danger">

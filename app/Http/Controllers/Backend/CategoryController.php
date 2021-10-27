@@ -66,6 +66,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $data['name'];
         $category->save();
+        $request->session()->flash('success', 'Thêm mới danh mục thành công!');
         return redirect()->route('backend.categories.index');
     }
 
@@ -117,6 +118,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = $data['name'];
         $category->save();
+        $request->session()->flash('success', 'Cập nhật danh mục thành công!');
         return redirect()->route('backend.categories.index');
     }
 
@@ -126,11 +128,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         // DB::table('categories')->where('id', $id)->delete();
         Category::destroy($id);
-
+        $request->session()->flash('success', 'Đã xóa danh mục!');
         return redirect()->route('backend.categories.index');
     }
 }

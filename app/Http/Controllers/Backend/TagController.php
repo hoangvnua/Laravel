@@ -47,8 +47,8 @@ class TagController extends Controller
         $tag->name = $data['name'];
         $tag->save();
 
+        $request->session()->flash('success', 'Thêm thành công một thẻ mới!');
         return redirect()->route('backend.tags.index');
-
     }
 
     /**
@@ -91,8 +91,10 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        Tag::destroy($id);
+        $request->session()->flash('success', 'Xóa thẻ thành công!');
+        return redirect()->route('backend.tags.index');
     }
 }

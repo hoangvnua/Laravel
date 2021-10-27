@@ -6,6 +6,16 @@
 @endsection
 
 @section('content')
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -20,33 +30,22 @@
                             ])
                         @endcan
 
-
-                        <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">
-                                        <i class="fas fa-search"></i>
-                                    </button>
+                        <form method="GET" action="{{ route('backend.posts.index') }}" style="float: right">
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right"
+                                        placeholder="Tìm kiếm">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                        </form>
                     </div>
-                    <form method="GET" action="{{ route('backend.posts.index') }}" style="display: flex">
-                        <div class="col-3">
-                            <input type="text" class="form-control" name="title" placeholder="Lọc theo title">
-                        </div>
-                        <div class="col-3">
-                            <input type="text" class="form-control" name="status" placeholder="Lọc theo Status">
-                        </div>
-                        {{-- <div class="col-3">
-                                <input type="text" class="form-control" placeholder=".col-5">
-                            </div> --}}
-                        <div class="col-3">
-                            <button class="btn btn-info">Lọc</button>
-                        </div>
-                    </form>
+
 
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
@@ -79,7 +78,7 @@
                                         </td>
                                         <td>
                                             @if (!empty($post->image))
-                                                <img src="{{ Illuminate\Support\Facades\Storage::disk($post->disk)->url($post->image) }}"
+                                                <img src="{{ Storage::disk($post->disk)->url($post->image) }}"
                                                     width="100px">
                                             @endif
                                         </td>

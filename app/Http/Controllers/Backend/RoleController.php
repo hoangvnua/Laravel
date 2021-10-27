@@ -49,7 +49,7 @@ class RoleController extends Controller
         $role->name = $data['name'];
         $role->save();
         $role->permissions()->attach($permissions);
-
+        $request->session()->flash('success', 'Thêm mới role thành công!');
         return redirect()->route('backend.roles.index');
     }
 
@@ -97,7 +97,7 @@ class RoleController extends Controller
         $role->name = $data['name'];
         $role->save();
         $role->permissions()->sync($permissions);
-
+        $request->session()->flash('success', 'Chỉnh sửa thành công!');
         return redirect()->route('backend.roles.index');
     }
 
@@ -107,10 +107,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         Role::destroy($id);
-
+        $request->session()->flash('success', 'Xóa role thành công!');
         return redirect('backend/roles');
     }
 }
