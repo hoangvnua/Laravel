@@ -10,26 +10,8 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        // Storage::makeDirectory('avatars');
-        // Storage::makeDirectory('products');
-        // Storage::makeDirectory('images');
-        // return Storage::disk('public')->download('canhdep.jpg', 'test.png');
-        // if (Storage::missing('file.txt')) {
-        //     dd('Không');
-        // } else {
-        //     dd('Có');
-        // }
-        // // dd(storage_path('app'));
-        // // $save = Storage::disk('local')->put('file.txt', 'Contents');
-
-        // $contents = Storage::disk('public')->get('canhdep.jpg');
-
-        // dd($contents);
-
-
-        // Session
-        // $request->session()->put('name', 'Hoàng');
-
+        // $cookie = cookie('username', 'hoangnv', 5);
+        // return response('hello')->cookie($cookie);
         return view('backend.dashboard');
     }
 }

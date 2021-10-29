@@ -16,6 +16,11 @@
                         <div class="main-menu menu-color--black menu-hover-color--golden">
                             <nav>
                                 <ul>
+                                    @foreach ($menus as $item)
+                                        <li><a href="#">{{ $item->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                                {{-- <ul>
                                     <li>
                                         <a class="active main-menu-link" href="{{ route('frontend.index') }}">Home <i
                                                 class="fa fa-angle-down"></i></a>
@@ -126,7 +131,7 @@
                                     <li>
                                         <a href="contact-us.html">Contact Us</a>
                                     </li>
-                                </ul>
+                                </ul> --}}
                             </nav>
                         </div>
                         <!-- End Header Main Menu Start -->
