@@ -28,8 +28,8 @@ class MenusTableSeeder extends Seeder
                 'sort' => 2
             ],
             [
-                'name' => 'Blog',
-                'url' => '/blog',
+                'name' => 'Bài viết',
+                'url' => '/posts',
                 'status' => 1,
                 'sort' => 3
             ],

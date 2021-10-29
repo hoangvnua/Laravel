@@ -6,13 +6,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="breadcrumb-title">Blog Grid - Full Width</h3>
+                        <h3 class="breadcrumb-title">Tất cả bài viết</h3>
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="blog-grid-sidebar-left.html">Blog</a></li>
-                                    <li class="active" aria-current="page">Blog Full Width</li>
+                                    <li><a href="index.html">Trang chủ</a></li>
+                                    <li class="active" aria-current="page">Bài viết</li>
                                 </ul>
                             </nav>
                         </div>
@@ -53,7 +52,7 @@
                                             <h6 class="title"><a href="{{ route('frontend.posts.show', $post->id) }}">
                                                     {{ $post->title }}</a></h6>
                                             <p>{{ $post->content }}</p>
-                                            <a href="{{ route('frontend.posts.show', $post->id) }}" class="read-more-btn icon-space-left">Read More <span
+                                            <a href="{{ route('frontend.posts.show', $post->id) }}" class="read-more-btn icon-space-left">Xem chi tiết <span
                                                     class="icon"><i
                                                         class="ion-ios-arrow-thin-right"></i></span></a>
                                         </div>

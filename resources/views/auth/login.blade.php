@@ -6,13 +6,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="breadcrumb-title">Login</h3>
+                        <h3 class="breadcrumb-title">Đăng nhập</h3>
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="blog-grid-sidebar-left.html">Shop</a></li>
-                                    <li class="active" aria-current="page">Login</li>
+                                    <li><a href="{{ route('frontend.posts.index') }}">Trang chủ</a></li>
+                                    <li class="active" aria-current="page">Đặng nhập</li>
                                 </ul>
                             </nav>
                         </div>
@@ -27,7 +26,7 @@
     <div class="col-lg-6 col-md-6" style="margin: 20%; width: 60%;">
         <div class="account_form aos-init aos-animate" data-aos="fade-up" data-aos-delay="0"
             style="border: 2px solid black; border-radius: 10px; padding: 5px;">
-            <h3>login</h3>
+            <h3>Đăng nhập</h3>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -40,21 +39,21 @@
             <form action="{{ route('auth.login') }}" method="POST">
                 @csrf
                 <div class="default-form-box">
-                    <label>Username or email <span>*</span></label>
+                    <label>Email <span>*</span></label>
                     <input type="email" name="email">
                 </div>
                 <div class="default-form-box">
-                    <label>Passwords <span>*</span></label>
+                    <label>Mật khẩu <span>*</span></label>
                     <input type="password" name="password">
                 </div>
                 <div class="login_submit">
-                    <button class="btn btn-md btn-black-default-hover mb-4" type="submit">login</button>
+                    <button class="btn btn-md btn-black-default-hover mb-4" type="submit">Đăng nhập</button>
                     <label class="checkbox-default mb-4" for="offer">
                         <input type="checkbox" id="offer" name="remember" value="true">
-                        <span>Remember me</span>
+                        <span>Nhớ tôi</span>
                     </label>
-                    <a href="#">Lost your password?</a>
-                    <p style="display: flex">Chưa có tài khoản&ensp;<a href="{{ route('auth.register') }}">Đăng kí</a></p>
+                    <a href="#">Quên mật khẩu?</a>
+                    <p style="display: flex">Chưa có tài khoản&ensp;<a href="{{ route('auth.register') }}">Đăng kí!</a></p>
 
                 </div>
             </form>

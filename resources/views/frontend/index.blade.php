@@ -18,10 +18,10 @@
                             <div class="row">
                                 <div class="col-auto">
                                     <div class="hero-slider-content">
-                                        <h4 class="subtitle">New collection</h4>
+                                        <h4 class="subtitle">Bộ sưu tập mới</h4>
                                         <h2 class="title">Best Of NeoCon <br> Gold Award </h2>
-                                        <a href="product-details-default.html" class="btn btn-lg btn-outline-golden">shop
-                                            now </a>
+                                        <a href="product-details-default.html" class="btn btn-lg btn-outline-golden">Mua sắm
+                                            ngay</a>
                                     </div>
                                 </div>
                             </div>
@@ -40,10 +40,10 @@
                             <div class="row">
                                 <div class="col-auto">
                                     <div class="hero-slider-content">
-                                        <h4 class="subtitle">New collection</h4>
+                                        <h4 class="subtitle">Bộ sưu tập mới</h4>
                                         <h2 class="title">Luxy Chairs <br> Design Award </h2>
-                                        <a href="product-details-default.html" class="btn btn-lg btn-outline-golden">shop
-                                            now </a>
+                                        <a href="product-details-default.html" class="btn btn-lg btn-outline-golden">Mua sắm
+                                            ngay</a>
                                     </div>
                                 </div>
                             </div>
@@ -74,8 +74,8 @@
                                 <img src="/frontend/images/icons/service-promo-1.png" alt="">
                             </div>
                             <div class="content">
-                                <h6 class="title">FREE SHIPPING</h6>
-                                <p>Get 10% cash back, free shipping, free returns, and more at 1000+ top retailers!</p>
+                                <h6 class="title">MIỄN PHÍ GIAO HÀNG</h6>
+                                <p>Hoàn tiền 10%, giao hàng miễn phí tại các thành phố lớn</p>
                             </div>
                         </div>
                     </div>
@@ -87,8 +87,8 @@
                                 <img src="/frontend/images/icons/service-promo-2.png" alt="">
                             </div>
                             <div class="content">
-                                <h6 class="title">30 DAYS MONEY BACK</h6>
-                                <p>100% satisfaction guaranteed, or get your money back within 30 days!</p>
+                                <h6 class="title">1 ĐỔI 1 TRONG VÒNG 30 NGÀY</h6>
+                                <p>Đổi hàng hoặc hoàn tiền 100% trong vòng 30 ngày!</p>
                             </div>
                         </div>
                     </div>
@@ -100,8 +100,8 @@
                                 <img src="/frontend/images/icons/service-promo-3.png" alt="">
                             </div>
                             <div class="content">
-                                <h6 class="title">SAFE PAYMENT</h6>
-                                <p>Pay with the world’s most popular and secure payment methods.</p>
+                                <h6 class="title">THANH TOÁN AN TOÀN</h6>
+                                <p>Thanh toán nhanh an toàn bằng các phương pháp phổ biến nhất thế giới.</p>
                             </div>
                         </div>
                     </div>
@@ -113,8 +113,8 @@
                                 <img src="/frontend/images/icons/service-promo-4.png" alt="">
                             </div>
                             <div class="content">
-                                <h6 class="title">LOYALTY CUSTOMER</h6>
-                                <p>Card for the other 30% of their purchases at a rate of 1% cash back.</p>
+                                <h6 class="title">KHÁCH HÀNG QUEN THUỘC</h6>
+                                <p>Hoàn lại 1% với hóa đơn khách hàng quen thuộc.</p>
                             </div>
                         </div>
                     </div>
@@ -139,12 +139,11 @@
                                 <img src="/frontend/images/banner/banner-style-1-img-1.jpg" alt="">
                             </div>
                             <div class="content">
-                                <h4 class="title">Mini rechargeable
-                                    Table Lamp - E216</h4>
-                                <h5 class="sub-title">We design your home</h5>
+                                <h4 class="title">Đèn bàn sạc mini - E216</h4>
+                                <h5 class="sub-title">Chúng tôi thiết kế ngôi nhà của bạn</h5>
                                 <a href="product-details-default.html"
                                     class="btn btn-lg btn-outline-golden icon-space-left"><span
-                                        class="d-flex align-items-center">discover now <i
+                                        class="d-flex align-items-center">Khám phá ngay <i
                                             class="ion-ios-arrow-thin-right"></i></span></a>
                             </div>
                         </div>
@@ -161,10 +160,13 @@
                                         <img src="/frontend/images/banner/banner-style-2-img-1.jpg" alt="">
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">Kitchen <br>
-                                            utensils</h4>
-                                        <a href="product-details-default.html" class="link-text"><span>Shop
-                                                now</span></a>
+                                        <h4 class="title">Dụng cụ <br>
+                                            nhà bếp</h4>
+                                        <a href="product-details-default.html" class="link-text">
+                                            <span>
+                                                Mua sắm ngay
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -177,10 +179,13 @@
                                         <img src="/frontend/images/banner/banner-style-2-img-2.jpg" alt="">
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">Sofas and <br>
-                                            Armchairs</h4>
-                                        <a href="product-details-default.html" class="link-text"><span>Shop
-                                                now</span></a>
+                                        <h4 class="title">Sofas và <br>
+                                            Ghế bành</h4>
+                                        <a href="product-details-default.html" class="link-text">
+                                            <span>
+                                                Mua sắm ngay
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -193,10 +198,13 @@
                                         <img src="/frontend/images/banner/banner-style-2-img-3.jpg" alt="">
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">Chair & Bar<br>
-                                            stools</h4>
-                                        <a href="product-details-default.html" class="link-text"><span>Shop
-                                                now</span></a>
+                                        <h4 class="title">Ghế & <br>
+                                            ghế đẩu</h4>
+                                        <a href="product-details-default.html" class="link-text">
+                                            <span>
+                                                Mua sắm ngay
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -209,9 +217,13 @@
                                         <img src="/frontend/images/banner/banner-style-2-img-4.jpg" alt="">
                                     </div>
                                     <div class="content">
-                                        <h4>Interior <br>
-                                            lighting</h4>
-                                        <a href="product-details-default.html"><span>Shop now</span></a>
+                                        <h4>Ánh sáng <br>
+                                            Nội thất</h4>
+                                        <a href="product-details-default.html" class="link-text">
+                                            <span>
+                                                Mua sắm ngay
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -234,8 +246,8 @@
                     <div class="col-12">
                         <div class="section-content-gap">
                             <div class="secton-content">
-                                <h3 class="section-title">THE NEW ARRIVALS</h3>
-                                <p>Preorder now to receive exclusive deals & gifts</p>
+                                <h3 class="section-title">Sản phẩm mới</h3>
+                                <p>Đặt hàng trước ngay bây giờ để nhận ưu đãi và quà tặng độc quyền</p>
                             </div>
                         </div>
                     </div>
@@ -264,8 +276,7 @@
                                             </div>
                                             <div class="action-link">
                                                 <div class="action-link-left">
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to
-                                                        Cart</a>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Thêm vào giỏ hàng</a>
                                                 </div>
                                                 <div class="action-link-right">
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i
@@ -757,12 +768,11 @@
                             <img class="img-fluid" src="/frontend/images/banner/banner-style-3-img-1.jpg" alt="">
                         </div>
                         <div class="content">
-                            <h3 class="title">Modern Furniture
-                                Basic Collection</h3>
-                            <h5 class="sub-title">We design your home more beautiful</h5>
+                            <h3 class="title">Nội thất hiện đại bộ sưu tập cơ bản</h3>
+                            <h5 class="sub-title">Để chúng tôi thiết kế ngôi nhà của bạn</h5>
                             <a href="product-details-default.html"
                                 class="btn btn-lg btn-outline-golden icon-space-left"><span
-                                    class="d-flex align-items-center">discover now <i
+                                    class="d-flex align-items-center">Khám phá ngay <i
                                         class="ion-ios-arrow-thin-right"></i></span></a>
                         </div>
                     </div>
