@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
@@ -17,7 +18,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::simplePaginate(12);
+        $posts = Cache::remember('front_end_posts', 10, function () {
+            return Post::simplePaginate(12);
+        });
+        // $posts = Post::simplePaginate(12);
         return view('frontend.posts.index')->with([
             'posts' => $posts
         ]);
