@@ -70,7 +70,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag = Tag::find($id);
+        return view('backend.tags.edit')->with(['tag' => $tag]);
     }
 
     /**
@@ -82,7 +83,13 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->only('name');
+        $tag = Tag::find($id);
+        $tag->name = $data['name'];
+        $tag->save();
+
+        $request->session()->flash('success', 'Chỉnh sửa thành công!');
+        return redirect()->route('backend.tags.index');
     }
 
     /**

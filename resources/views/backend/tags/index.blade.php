@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-    List Tags
+    Danh sách thẻ
 @endsection
 
 
@@ -9,11 +9,8 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Danh sách Tags</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Danh sách tag</li>
                 </ol>
             </div><!-- /.col -->
@@ -64,10 +61,9 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Slug</th>
-                                    <th>Created_at</th>
-                                    <th>Updated_at</th>
+                                    <th>Tên thẻ</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Ngày sửa</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -76,16 +72,12 @@
                                     <tr>
                                         <td>{{ $tag->id }}</td>
                                         <td>{{ $tag->name }}</td>
-                                        <td>{{ $tag->slug }}</td>
-                                        <td>{{ $tag->created_at }}</td>
-                                        <td>{{ $tag->updated_at }}</td>
+                                        <td>{{ $tag->created_at->format('d/m/Y') }}</td>
+                                        <td>{{ $tag->updated_at->format('d/m/Y') }}</td>
                                         <td style="display: flex">
-                                            <a href='{{ route('backend.tags.show', $tag->id) }}'>
-                                                <i class="far fa-eye btn btn-outline-success"></i>
-                                            </a>
                                             <a href='{{ route('backend.tags.edit', $tag->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
-                                            </a>
+                                            </a>&ensp;
                                             <form method="POST" action="{{ route('backend.tags.destroy', $tag->id) }}">
                                                 @csrf
                                                 @method('DELETE')

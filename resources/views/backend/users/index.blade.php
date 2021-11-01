@@ -47,21 +47,21 @@
                             </div>
                         </div>
                     </div>
-                    <form method="GET" action="{{ route('backend.users.index') }}" style="display: flex">
+                    {{-- <form method="GET" action="{{ route('backend.users.index') }}" style="display: flex">
                         <div class="col-3">
                             <input type="text" class="form-control" name="name" placeholder="Lọc theo tên">
                         </div>
                         <div class="col-3">
                             <input type="text" class="form-control" name="email" placeholder="Lọc theo Email">
                         </div>
-                        {{-- <div class="col-3">
+                        <div class="col-3">
                                 <input type="text" class="form-control" placeholder=".col-5">
-                            </div> --}}
+                            </div>
                         <div class="col-3">
                             <button class="btn btn-info">Lọc</button>
                         </div>
 
-                    </form>
+                    </form> --}}
 
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
@@ -74,7 +74,7 @@
                                     <th>Email</th>
                                     <th>Số điện thoại</th>
                                     <th>Địa chỉ</th>
-                                    <th>Role</th>
+                                    <th>Quyền</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -97,18 +97,15 @@
                                         @endforeach
 
                                         <td style="display: flex">
-                                            <a href='{{ route('backend.users.show', $user->id) }}'>
-                                                <i class="far fa-eye btn btn-outline-success"></i>
-                                            </a>
                                             <a href='{{ route('backend.users.edit', $user->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
-                                            </a>
+                                            </a>&ensp;
                                             <form method="POST" action="{{ route('backend.users.login', $user->id) }}">
                                                 @csrf
-                                                <button class="btn btn-outline-danger">
+                                                <button class="btn btn-outline-success">
                                                     <i class="fas fa-user"></i>
                                                 </button>
-                                            </form>
+                                            </form>&ensp;
                                             <form method="POST" action="{{ route('backend.users.destroy', $user->id) }}">
                                                 @csrf
                                                 @method('DELETE')

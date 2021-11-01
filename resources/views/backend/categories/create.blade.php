@@ -1,11 +1,20 @@
 @extends('backend.layouts.master')
 
 @section('title')
-    Create Category Post
+    Tạo mới damh mục
 @endsection
 
 @section('content-header')
-    <h1>Thêm mới danh mục</h1>
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Thêmn mới danh mục</li>
+            </ol>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.container-fluid -->
 @endsection
 
 @section('content')
@@ -26,14 +35,14 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tên danh mục</label>
                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                        value="{{ old('title') }}" placeholder="Enter...">
+                        value="{{ old('title') }}" placeholder="Nhập tên danh mục ...">
                     @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
 
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-sm-12">
                         <!-- select -->
                         <div class="form-group">
@@ -45,7 +54,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary" style="float: right">Tạo mới</button>

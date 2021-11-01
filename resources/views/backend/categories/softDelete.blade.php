@@ -1,8 +1,16 @@
 @extends('backend.layouts.master')
 
 @section('content-header')
-    <h1>Danh sách danh mục</h1>
-
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Danh mục đã xóa</li>
+            </ol>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.container-fluid -->
 @endsection
 
 @section('content')
@@ -44,11 +52,11 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
-                                        <td>{{ $category->created_at }}</td>
-                                        <td>{{ $category->updated_at }}</td>
+                                        <td>{{ $category->created_at->format('d/m/Y') }}</td>
+                                        <td>{{ $category->updated_at->format('d/m/Y') }}</td>
                                         <td style="display: flex">
                                             <a href='{{ route('backend.categories.restore', $category->id) }}'>
-                                                <i class="btn btn-outline-primary">Restore</i>
+                                                <i class="btn btn-outline-primary">Khôi phục</i>
                                             </a>
                                             
                                         </td>

@@ -1,8 +1,7 @@
 @extends('backend.layouts.master')
 
-@section('content-header')
-    <h1>Danh sách bài viết</h1>
-
+@section('title')
+    Danh sách bài viết
 @endsection
 
 @section('content')
@@ -54,11 +53,10 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Tên bài viết</th>
-                                    <th>Tags</th>
-                                    <th>Image</th>
+                                    <th>Thẻ</th>
+                                    <th>Ảnh đại diện</th>
                                     <th>Người tạo</th>
-                                    <th>Người sửa đổi</th>
-                                    <th>Status</th>
+                                    <th>Trạng thái</th>
                                     <th>Tên danh mục</th>
                                     <th>Hành động</th>
                                 </tr>
@@ -68,8 +66,9 @@
                                     <tr>
                                         <td>{{ $post->id }}</td>
                                         <td>
-                                            {{ $post->title }} <br>
-                                            {{-- Slug: {{ $post->slug }} --}}
+                                            <a href="{{ route('frontend.posts.show' , $post->id) }}" style="color: black; font-weight: bold">
+                                                {{ $post->title }}
+                                            </a>
                                         </td>
                                         <td>
                                             @foreach ($post->tags as $tag)
@@ -86,25 +85,18 @@
                                             {{ $post->user->name }}
                                         </td>
                                         <td>
-                                            {{ $post->userUpdate->name }}
-                                        </td>
-                                        <td>
                                             {!! $post->status_text !!}
                                         </td>
                                         <td>
                                             {{ $post->category->name }}
                                         </td>
                                         <td style="display: flex">
-
-                                            <a href='{{ route('backend.posts.show', $post->id) }}'>
-                                                <i class="far fa-eye btn btn-outline-success"></i>
-                                            </a>
                                             @can('update-post', $post)
                                                 <a href='{{ route('backend.posts.edit', $post->id) }}'>
                                                     <i class="far fa-edit btn btn-outline-primary"></i>
                                                 </a>
                                             @endcan
-
+                                            &ensp;
                                             @can('delete-post', $post)
                                                 <form method="POST" action="{{ route('backend.posts.destroy', $post->id) }}">
                                                     @csrf

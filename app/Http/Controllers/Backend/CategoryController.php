@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::simplePaginate(5);
+        $categories = Category::paginate(5);
         return view('backend.categories.index')->with(['categories' => $categories]);
     }
 

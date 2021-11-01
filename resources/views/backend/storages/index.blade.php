@@ -8,12 +8,9 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Danh sách ảnh</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
+                <ol class="breadcrumb float-sm-left">
                     <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item active">Hình ảnh</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -61,10 +58,11 @@
                                         <td>
                                             <img src="{{ $path }}" alt="" width="200px" height="200px">
                                         </td>
-                                        <td>
-                                            <a href="{{ route('backend.storages.show', $key) }}">
-                                                Tải về
-                                            </a><br>
+                                        <td style="display: flex">
+                                            <a class="btn btn-outline-success"
+                                                href="{{ route('backend.storages.show', $key) }}">
+                                                <i class="fas fa-cloud-download-alt"></i>
+                                            </a> &ensp;
                                             <form method="POST" action="{{ route('backend.storages.destroy', $key) }}">
                                                 @csrf
                                                 @method('DELETE')

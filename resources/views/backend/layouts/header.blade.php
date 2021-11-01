@@ -5,11 +5,10 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('frontend.index') }}" class="nav-link">Home</a>
+            <a href="{{ route('backend.dashboard.index') }}" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
-        </li>
+            <a href="{{ route('frontend.index') }}" target="_blank" class="nav-link">Web bán hàng</a>
     </ul>
 
     <!-- Right navbar links -->
@@ -139,7 +138,7 @@
             <form method="post" action="{{ route('auth.logout') }}">
                 @csrf
                 <a href="#" class="nav-link" 4 onclick="this.closest('form').submit();return false;">
-                    Logout
+                    Đăng xuất
                 </a>
             </form>
         </li>

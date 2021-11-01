@@ -1,7 +1,16 @@
 @extends('backend.layouts.master')
 
 @section('content-header')
-    <h1>Danh sách danh mục</h1>
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Danh mục</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
     @if (session('error'))
         <div class="alert alert-danger" role="alert">
             {{ session('error') }}
@@ -29,7 +38,8 @@
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                <input type="text" name="table_search" class="form-control float-right"
+                                    placeholder="Search">
 
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
@@ -58,15 +68,12 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
-                                        <td>{{ $category->created_at }}</td>
-                                        <td>{{ $category->updated_at }}</td>
+                                        <td>{{ $category->created_at->format('d/m/Y') }}</td>
+                                        <td>{{ $category->updated_at->format('d/m/Y') }}</td>
                                         <td style="display: flex">
-                                            <a href='{{ route('backend.categories.show', $category->id) }}'>
-                                                <i class="far fa-eye btn btn-outline-success"></i>
-                                            </a>
                                             <a href='{{ route('backend.categories.edit', $category->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
-                                            </a>
+                                            </a>&ensp;
                                             <form method="POST"
                                                 action="{{ route('backend.categories.destroy', $category->id) }}">
                                                 @csrf

@@ -276,7 +276,8 @@
                                             </div>
                                             <div class="action-link">
                                                 <div class="action-link-left">
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Thêm vào giỏ hàng</a>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Thêm
+                                                        vào giỏ hàng</a>
                                                 </div>
                                                 <div class="action-link-right">
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i
@@ -1394,9 +1395,9 @@
         </div>
     </div>
     <!-- End Blog Slider Section -->
-
+    <br><br>
     <!-- Start Instagramr Section -->
-    <div class="instagram-section section-top-gap-100 section-inner-bg">
+    {{-- <div class="instagram-section section-top-gap-100 section-inner-bg">
         <div class="instagram-wrapper" data-aos="fade-up" data-aos-delay="0">
             <div class="container">
                 <div class="row">
@@ -1424,12 +1425,12 @@
                             </div>
                             <div class="instagram-link">
                                 <h5><a href="https://www.instagram.com/myfurniturecom/" target="_blank"
-                                        rel="noopener noreferrer">HONOTEMPLATE</a></h5>
+                                        rel="noopener noreferrer">  </a></h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

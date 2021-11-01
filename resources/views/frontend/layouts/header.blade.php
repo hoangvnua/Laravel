@@ -129,13 +129,13 @@
 
                         <!-- Start Header Action Link -->
                         <ul class="header-action-link action-color--black action-hover-color--golden">
-                            @if (auth()->check())
+                            {{-- @if (auth()->check())
                                 <li>
                                     {{ auth()->user()->name }}
 
-                                </li>
+                                </li> --}}
 
-                                {{-- <li>
+                                <li>
                                     <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                         <i class="icon-heart"></i>
                                         <span class="item-count">3</span>
@@ -146,8 +146,8 @@
                                         <i class="icon-bag"></i>
                                         <span class="item-count">3</span>
                                     </a>
-                                </li> --}}
-                            @else
+                                </li>
+                            {{-- @else
                                 @if (request()->routeIs('auth.login'))
                                     <form method="get" action="{{ route('auth.register') }}">
                                         @csrf
@@ -165,7 +165,7 @@
                                         </a>
                                     </form>
                                 @endif
-                            @endif
+                            @endif --}}
 
                             <li>
                                 <a href="#search">
