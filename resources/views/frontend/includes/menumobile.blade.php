@@ -200,22 +200,34 @@
                     Giỏ hàng
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-instagram"></i>
-                    Chế độ tối
-                </a>
-            </li>
-            <li>
-                @if (auth()->check())
+            @if (auth()->check())
+                <li>
                     <form method="post" action="{{ route('auth.logout') }}">
                         @csrf
                         <a href="#" class="nav-link" 4 onclick="this.closest('form').submit();return false;">
                             Đăng xuất
                         </a>
                     </form>
-                @endif
-            </li>
+                </li>
+            @else
+                <li>
+                    <form method="get" action="{{ route('auth.login') }}">
+                        @csrf
+                        <a href="#" class="nav-link" onclick="this.closest('form').submit();return false;">
+                            Đăng nhập
+                        </a>
+                    </form>
+                </li>
+                <li>
+                    <form method="get" action="{{ route('auth.register') }}">
+                        @csrf
+                        <a href="#" class="nav-link" onclick="this.closest('form').submit();return false;">
+                            Đăng ký
+                        </a>
+                    </form>
+                </li>
+            @endif
+
         </ul>
     </div>
     <!-- End Mobile contact Info -->

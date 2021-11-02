@@ -1,11 +1,19 @@
 @extends('backend.layouts.master')
 
 @section('title')
-    Edit Permission
+    Chỉnh sửa chức vị
 @endsection
 
-@section('content-header')
-    <h1>Edit Permission</h1>
+@section('content-header')<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Chỉnh sửa chức vị</li>
+            </ol>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.container-fluid -->
 @endsection
 
 @section('content')
@@ -14,6 +22,8 @@
             <form class="form-horizontal" method="POST" action="{{ route('backend.roles.update', $roles->id) }}">
                 @method('PUT')
                 @csrf
+                
+                <label for="">Tên Chức vị</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -23,7 +33,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label>Permission</label>
+                            <label>Quyền hạn</label>
                             <select multiple="" class="form-control" name="permissions[]" aria-placeholder="1"
                                 aria-valuenow="1">
                                 @foreach ($permissions as $permission)

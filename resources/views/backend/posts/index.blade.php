@@ -4,6 +4,19 @@
     Danh sách bài viết
 @endsection
 
+@section('content-header')
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Danh sách bài viết</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+@endsection
+
 @section('content')
     @if (session('error'))
         <div class="alert alert-danger" role="alert">
@@ -66,7 +79,8 @@
                                     <tr>
                                         <td>{{ $post->id }}</td>
                                         <td>
-                                            <a href="{{ route('frontend.posts.show' , $post->id) }}" style="color: black; font-weight: bold">
+                                            <a href="{{ route('frontend.posts.show', $post->id) }}"
+                                                style="color: black; font-weight: bold">
                                                 {{ $post->title }}
                                             </a>
                                         </td>

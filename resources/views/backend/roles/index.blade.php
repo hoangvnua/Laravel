@@ -1,7 +1,16 @@
 @extends('backend.layouts.master')
 
 @section('content-header')
-    <h1>Danh sách Permission</h1>
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Chức năng người dùng</li>
+            </ol>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.container-fluid -->
     @if (session('error'))
         <div class="alert alert-danger" role="alert">
             {{ session('error') }}
@@ -83,13 +92,9 @@
 
                                         </td>
                                         <td style="display: flex">
-
-                                            <a href='{{ route('backend.roles.show', $role->id) }}'>
-                                                <i class="far fa-eye btn btn-outline-success"></i>
-                                            </a>
                                             <a href='{{ route('backend.roles.edit', $role->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
-                                            </a>
+                                            </a>&nbsp;
                                             <form method="POST" action="{{ route('backend.roles.destroy', $role->id) }}">
                                                 @csrf
                                                 @method('DELETE')

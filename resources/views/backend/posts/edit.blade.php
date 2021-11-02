@@ -1,11 +1,20 @@
 @extends('backend.layouts.master')
 
 @section('title')
-    Edit Post
+    Chỉnh sửa bài viết
 @endsection
 
 @section('content-header')
-    <h1>Chỉnh sửa bài viết</h1>
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Chỉnh sửa bài viết</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
 @endsection
 
 @section('content')

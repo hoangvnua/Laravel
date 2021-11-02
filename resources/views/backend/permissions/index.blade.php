@@ -1,8 +1,16 @@
 @extends('backend.layouts.master')
 
 @section('content-header')
-    <h1>Danh sách Permission</h1>
-
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Danh sách quyền</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
 @endsection
 
 @section('content')
@@ -21,7 +29,8 @@
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                <input type="text" name="table_search" class="form-control float-right"
+                                    placeholder="Search">
 
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
@@ -52,7 +61,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Quyền</th>
                                     <th>Slug</th>
                                     {{-- <th>Hành động</th> --}}
                                 </tr>

@@ -6,6 +6,7 @@
   <title>LARAVEL 22 | @yield('title')</title>
 
   @include('backend.component.linkcss')
+  @stack('stack-css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

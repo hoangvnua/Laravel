@@ -1,11 +1,20 @@
 @extends('backend.layouts.master')
 
 @section('title')
-    Create User
+    Thêm mới người dùng
 @endsection
 
 @section('content-header')
-    <h1>Creat new user</h1>
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Tạo mới người dùng</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
 @endsection
 
 @section('content')
@@ -25,11 +34,14 @@
             <form class="form-horizontal" method="POST" action="{{ route('backend.users.store') }}"
                 enctype="multipart/form-data">
                 @csrf
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <div class="form-group">
+                    <label for="exampleInputFile">Họ tên</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="name" placeholder="Họ tên">
                     </div>
-                    <input type="text" class="form-control" name="name" placeholder="Họ tên">
                 </div>
 
                 <div class="form-group">
@@ -37,60 +49,74 @@
                     <div class="input-group">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" name="avatar">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            <label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
                         </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ngày sinh</label>
+                    <div class="input-group mb-3 date" id="reservationdate" data-target-input="nearest">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                        </div>
+                        <input type="date" class="form-control" name="ngaysinh" data-target="#reservationdate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Email</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <input type="email" class="form-control" name="email" placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputFile">Mật khẩu</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputFile">Nhập lại mật khẩu</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="password_confirm"
+                            placeholder="Nhập lại mật khẩu">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputFile">Số điện thoại</label>
+                    <div class="input-group mb-3">
                         <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
+                            <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
                         </div>
+                        <input type="number" class="form-control" name="phone" placeholder="Số điện thoại">
                     </div>
                 </div>
 
-                <div class="input-group mb-3 date" id="reservationdate" data-target-input="nearest">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                <div class="form-group">
+                    <label for="exampleInputFile">Địa chỉ</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="address" placeholder="Địa chỉ">
                     </div>
-                    <input type="date" class="form-control" name="ngaysinh" data-target="#reservationdate">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                    </div>
-                    <input type="email" class="form-control" name="email" placeholder="Email">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-key"></i></span>
-                    </div>
-                    <input type="password" class="form-control" name="password" placeholder="Password">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-key"></i></span>
-                    </div>
-                    <input type="password" class="form-control" name="password_confirm" placeholder="Confirm Password">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-append">
-                        <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
-                    </div>
-                    <input type="number" class="form-control" name="phone" placeholder="Số điện thoại">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-append">
-                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-                    </div>
-                    <input type="text" class="form-control" name="address" placeholder="Địa chỉ">
                 </div>
 
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label>Roles</label>
+                            <label>Quyền</label>
                             <select class="form-control" name="roles[]" aria-placeholder="1" aria-valuenow="1">
                                 @foreach ($roles as $role)
                                     <option value="{{ $role->id }}">{{ $role->name }}</option>

@@ -6,7 +6,7 @@
         </div>
         <div class="info">
             <a href="#" class="d-block">
-                {{ auth()->user()->name }}
+                {{ auth()->user()->name ?? "" }}
             </a>
         </div>
     </div>
@@ -184,7 +184,7 @@
                 <a href="{{ route('backend.permissions.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-cog"></i>
                     <p>
-                        Quyền
+                        Vai trò
                     </p>
                 </a>
             </li>
