@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Menu;
+use App\Models\SubMenu;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -31,7 +32,11 @@ class AppServiceProvider extends ServiceProvider
         // view()->share('menu', $menu);
 
         $menus = Menu::get();
-        View::share('menus', $menus);
+        $sub =  SubMenu::get();
+        View::share([
+            'menus' => $menus,
+            'sub' => $sub
+        ]);
 
         Paginator::useBootstrap();
     }

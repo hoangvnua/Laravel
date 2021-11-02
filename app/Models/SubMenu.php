@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class SubMenu extends Model
 {
     use HasFactory;
 
-    public function subMenus()
+    public function menus()
     {
-        return $this->hasMany(SubMenu::class);
+        return $this->belongsTo(Menu::class, 'menu_id');
     }
 }

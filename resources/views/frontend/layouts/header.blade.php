@@ -18,7 +18,42 @@
                             <nav>
                                 <ul>
                                     @foreach ($menus as $item)
-                                        <li><a href="{{ $item->url }}">{{ $item->name }}</a></li>
+                                        <li class="has-dropdown">
+                                            <a href="{{ $item->url }}">{{ $item->name }}
+                                                @foreach ($item->subMenus as $sub_menu)
+                                                    @if (!empty($sub_menu->menu_id))
+                                                        <i class="fa fa-angle-down"></i>
+                                                    @endif
+                                                    @php
+                                                        break;
+                                                    @endphp
+                                                @endforeach
+                                            </a>
+
+                                            @foreach ($item->subMenus as $sub_menu)
+                                                @if (!empty($sub_menu->menu_id))
+                                                        <ul class="sub-menu">
+                                                @endif
+                                                @php
+                                                    break;
+                                                @endphp
+                                            @endforeach
+                                                @foreach ($item->subMenus as $sub_menu)
+                                                    @if (!empty($sub_menu->menu_id))
+                                                        <li>
+                                                            <a href="{{ $sub_menu->url }}">{{ $sub_menu->name }}</a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            @foreach ($item->subMenus as $sub_menu)
+                                                @if (!empty($sub_menu->menu_id))
+                                                        </ul>
+                                                @endif
+                                                @php
+                                                    break;
+                                                @endphp
+                                            @endforeach
+                                        </li>
                                     @endforeach
                                 </ul>
                                 {{-- <ul>
@@ -115,7 +150,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    
+
                                     <li>
                                         <a href="about-us.html">Xem thêm về chúng tôi</a>
                                     </li>
@@ -135,18 +170,18 @@
 
                                 </li> --}}
 
-                                <li>
-                                    <a href="#offcanvas-wishlish" class="offcanvas-toggle">
-                                        <i class="icon-heart"></i>
-                                        <span class="item-count">3</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#offcanvas-add-cart" class="offcanvas-toggle">
-                                        <i class="icon-bag"></i>
-                                        <span class="item-count">3</span>
-                                    </a>
-                                </li>
+                            <li>
+                                <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                    <i class="icon-heart"></i>
+                                    <span class="item-count">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                                    <i class="icon-bag"></i>
+                                    <span class="item-count">3</span>
+                                </a>
+                            </li>
                             {{-- @else
                                 @if (request()->routeIs('auth.login'))
                                     <form method="get" action="{{ route('auth.register') }}">
