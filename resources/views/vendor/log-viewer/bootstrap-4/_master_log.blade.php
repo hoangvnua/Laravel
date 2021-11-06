@@ -21,11 +21,11 @@
 
         .main-footer {
             position: absolute;
-            bottom: 0;
+            /* bottom: 0;
             width: 100%;
             height: 60px;
             line-height: 60px;
-            background-color: #E8EAF6;
+            background-color: #E8EAF6; */
         }
 
         .main-footer p {

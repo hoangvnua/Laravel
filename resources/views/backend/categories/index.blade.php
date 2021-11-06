@@ -74,14 +74,45 @@
                                             <a href='{{ route('backend.categories.edit', $category->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
                                             </a>&ensp;
-                                            <form method="POST"
-                                                action="{{ route('backend.categories.destroy', $category->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-outline-danger">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </button>
-                                            </form>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                data-target="#exampleModal">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc
+                                                                muốn xóa
+                                                            </h5>
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Sau khi xác nhận xẽ xóa vĩnh viễn và có thể không khôi phục lại
+                                                            được
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <form method="POST"
+                                                                action="{{ route('backend.categories.destroy', $category->id) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger">
+                                                                    Xác nhận xóa
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -26,16 +26,16 @@ class UserController extends Controller
         // $users = DB::table('users')->paginate(5);
         // $users = DB::table('users')->simplePaginate(5);
 
-        $users = User::simplePaginate(5);
+        $users = User::Paginate(5);
         $name = $request->get('name');
         $email = $request->get('email');
 
         if (!empty($name)) {
-            $users = User::where('name', 'like', "%" . $name . "%")->simplePaginate(5);
+            $users = User::where('name', 'like', "%" . $name . "%")->Paginate(5);
         }
 
         if (!empty($email)) {
-            $users = User::where('email', 'like', '%' . $email . '%')->simplePaginate(5);
+            $users = User::where('email', 'like', '%' . $email . '%')->Paginate(5);
         }
 
         return view('backend.users.index')->with([

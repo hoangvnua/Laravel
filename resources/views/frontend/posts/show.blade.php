@@ -6,13 +6,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="breadcrumb-title">Blog Single - Left Sidebar</h3>
+                        <h3 class="breadcrumb-title">{{ $post->title }}</h3>
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="blog-grid-sidebar-left.html">Blog</a></li>
-                                    <li class="active" aria-current="page">Blog Single Left Sidebar</li>
+                                    <li><a href="index.html">Trang chủ</a></li>
+                                    <li><a href="blog-grid-sidebar-left.html">Bài viết</a></li>
+                                    <li class="active" aria-current="page">{{ $post->title }}</li>
                                 </ul>
                             </nav>
                         </div>
@@ -29,83 +29,7 @@
             <div class="row flex-column-reverse flex-lg-row">
                 <div class="col-lg-3">
                     <!-- Start Sidebar Area -->
-                    <div class="siderbar-section" data-aos="fade-up" data-aos-delay="0">
-                        <!-- Start Single Sidebar Widget -->
-                        <div class="sidebar-single-widget">
-                            <h6 class="sidebar-title">CATEGORIES</h6>
-                            <div class="sidebar-content">
-                                <ul class="sidebar-menu">
-                                    @foreach ($categories as $category)
-                                        <li><a href="#">{{ $category->name }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div> <!-- End Single Sidebar Widget -->
-
-                        <!-- Start Single Sidebar Widget -->
-                        <div class="sidebar-single-widget">
-                            <h6 class="sidebar-title">Tags</h6>
-                            <div class="sidebar-content">
-                                <div class="tag-link">
-                                    @foreach ($tags as $tag)
-                                        <a href="#">{{ $tag->name }}</a>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div> <!-- End Single Sidebar Widget -->
-
-                        <!-- Start Single Sidebar Widget -->
-                        <div class="sidebar-single-widget">
-                            <h6 class="sidebar-title">Meta</h6>
-                            <div class="sidebar-content">
-                                <ul class="sidebar-menu">
-                                    <li><a href="#">Log in</a></li>
-                                    <li><a href="#">Entries feed</a></li>
-                                    <li><a href="#">Comments feed</a></li>
-                                    <li><a href="#">WordPress.org</a></li>
-                                </ul>
-                            </div>
-                        </div> <!-- End Single Sidebar Widget -->
-
-                        <!-- Start Single Sidebar Widget -->
-                        <div class="sidebar-single-widget">
-                            <h6 class="sidebar-title">PRODUCT CATEGORIES</h6>
-                            <div class="sidebar-content">
-                                <ul class="sidebar-menu">
-                                    <li>
-                                        <ul class="sidebar-menu-collapse">
-                                            <!-- Start Single Menu Collapse List -->
-                                            <li class="sidebar-menu-collapse-list">
-                                                <div class="accordion">
-                                                    <a href="#" class="accordion-title collapsed" data-bs-toggle="collapse"
-                                                        data-bs-target="#men-fashion" aria-expanded="false">Men <i
-                                                            class="ion-ios-arrow-right"></i></a>
-                                                    <div id="men-fashion" class="collapse">
-                                                        <ul class="accordion-category-list">
-                                                            <li><a href="#">Dresses</a></li>
-                                                            <li><a href="#">Jackets &amp; Coats</a></li>
-                                                            <li><a href="#">Sweaters</a></li>
-                                                            <li><a href="#">Jeans</a></li>
-                                                            <li><a href="#">Blouses &amp; Shirts</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li> <!-- End Single Menu Collapse List -->
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Football</a></li>
-                                    <li><a href="#"> Men's</a></li>
-                                    <li><a href="#"> Portable Audio</a></li>
-                                    <li><a href="#"> Smart Watches</a></li>
-                                    <li><a href="#">Tennis</a></li>
-                                    <li><a href="#"> Uncategorized</a></li>
-                                    <li><a href="#"> Video Games</a></li>
-                                    <li><a href="#">Women's</a></li>
-                                </ul>
-                            </div>
-                        </div> <!-- End Single Sidebar Widget -->
-
-                    </div> <!-- End Sidebar Area -->
+                    @include('frontend.posts.sidebar')
                 </div>
                 <div class="col-lg-9">
                     <!-- Start Blog Single Content Area -->
@@ -115,7 +39,7 @@
                         </div>
                         <ul class="post-meta" data-aos="fade-up" data-aos-delay="200">
                             <li>Đăng bởi : <a href="#" class="author">{{ $post->user->name }}</a></li>
-                            <li>ON : <a href="#" class="date">{{ $post->created_at->format('d/m/Y') }}</a></li>
+                            <li><a href="#" class="date">{{ $post->created_at->format('d-m-Y') }}</a></li>
                         </ul>
                         <h4 class="post-title" data-aos="fade-up" data-aos-delay="400">{{ $post->title }}</h4>
 
@@ -128,7 +52,7 @@
                             <p>{{ $post->content }}</p>
                         </div>
                         <div class="para-tags" data-aos="fade-up" data-aos-delay="0">
-                            <span>Tags: </span>
+                            <span>Thẻ: </span>
                             <ul>
                                 @foreach ($post->tags as $tag)
                                     @if (isset($tag->name))
@@ -233,7 +157,7 @@
                             </ul> <!-- End - Review Comment -->
                         </div> --}}
 
-                        <!-- Start comment Form -->
+                        {{-- <!-- Start comment Form -->
                         <div class="comment-form" data-aos="fade-up" data-aos-delay="0">
                             <div class="coment-form-text-top mt-30">
                                 <h4 class="title mb-3 mt-3">Leave a Reply</h4>
@@ -266,7 +190,7 @@
                                     </div>
                                 </div>
                             </form>
-                        </div> <!-- End comment Form -->
+                        </div> <!-- End comment Form --> --}}
                     </div>
                 </div>
             </div>

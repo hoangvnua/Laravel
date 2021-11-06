@@ -51,7 +51,6 @@
                             <input type="file" class="custom-file-input" name="image">
                             <label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
                         </div>
-
                     </div>
                 </div>
 
@@ -68,12 +67,14 @@
 
                 <div class="form-group">
                     <label>Thẻ</label>
-                    <select class="select2" name="tags[]" multiple="multiple" data-placeholder="Chọn thẻ"
-                        style="width: 100%;">
-                        @foreach ($tags as $tag)
-                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="select2-purple">
+                        <select class="select2" name="tags[]" multiple="multiple" data-placeholder="Chọn thẻ"
+                            style="width: 100%;">
+                            @foreach ($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group">

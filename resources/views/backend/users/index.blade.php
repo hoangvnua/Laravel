@@ -81,8 +81,7 @@
                                         <td>{{ $user->id }}</td>
                                         <td>
                                             @if (!empty($user->image))
-                                                <img src="{{ $user->image }}"
-                                                    width="100px">
+                                                <img src="{{ $user->image }}" width="100px">
                                             @endif
                                         </td>
                                         <td>{{ $user->name }}</td>
@@ -106,17 +105,56 @@
                                             <form method="POST" action="{{ route('backend.users.destroy', $user->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-outline-danger">
+                                                <button class="btn btn-outline-danger" 
+                                                   {{-- data-toggle="modal" data-target="#exampleModal"--}}
+                                                    onclick="if(!confirm('Xác nhận xóa')) { return false } "> 
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>
                                             </form>
+
+                                            <!-- Modal -->
+                                            {{-- <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc
+                                                                muốn xóa
+                                                            </h5>
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Sau khi xác nhận xẽ xóa vĩnh viễn và có thể không khôi phục lại
+                                                            được
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <form method="POST"
+                                                                action="{{ route('backend.users.destroy', $user->id) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger">
+                                                                    Xác nhận xóa
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> --}}
+
                                         </td>
                                     </tr>
                                 @endforeach
 
                             </tbody>
                         </table>
+                        <div style="float: right">
                         {{ $users->links() }}
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>

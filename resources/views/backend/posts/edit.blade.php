@@ -32,19 +32,30 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Textarea</label>
+                    <label for="exampleInputFile">Ảnh đại diện</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="image">
+                            <label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nội dung</label>
                     @include('backend.component.summernote', [
                     'content' => $post->content
                     ])
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label>Tag</label>
-                            <select multiple="" class="form-control" name="tags[]">
-                                @foreach ($tags as $tag)
+                <div class="form-group">
+                    <label>Thẻ</label>
+                    <div class="select2-purple">
+                        <select class="select2" name="tags[]" multiple="multiple" data-placeholder="Chọn thẻ"
+                            style="width: 100%;">
+                            @foreach ($tags as $tag)
                                     @foreach ($post->tags as $post_tag)
                                         @php
                                             $selected = '';
@@ -57,8 +68,7 @@
                                     <option value="{{ $tag->id }}" @if (isset($selected)) {{ $selected }} @endif>{{ $tag->name }}
                                     </option>
                                 @endforeach
-                            </select>
-                        </div>
+                        </select>
                     </div>
                 </div>
 

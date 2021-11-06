@@ -1,16 +1,16 @@
 @extends('backend.layouts.master')
 
 @section('content-header')
-<div class="container-fluid">
-    <div class="row mb-2">
-        <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                <li class="breadcrumb-item active">Chức năng người dùng</li>
-            </ol>
-        </div><!-- /.col -->
-    </div><!-- /.row -->
-</div><!-- /.container-fluid -->
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Chức năng người dùng</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
     @if (session('error'))
         <div class="alert alert-danger" role="alert">
             {{ session('error') }}
@@ -39,7 +39,8 @@
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                <input type="text" name="table_search" class="form-control float-right"
+                                    placeholder="Search">
 
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
@@ -95,13 +96,45 @@
                                             <a href='{{ route('backend.roles.edit', $role->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
                                             </a>&nbsp;
-                                            <form method="POST" action="{{ route('backend.roles.destroy', $role->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-outline-danger">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </button>
-                                            </form>
+                                            <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                data-target="#exampleModal">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc
+                                                                muốn xóa
+                                                            </h5>
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Sau khi xác nhận xẽ xóa vĩnh viễn và có thể không khôi phục lại
+                                                            được
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <form method="POST"
+                                                                action="{{ route('backend.roles.destroy', $role->id) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger">
+                                                                    Xác nhận xóa
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </td>
                                     </tr>
                                 @endforeach

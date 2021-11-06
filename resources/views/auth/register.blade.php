@@ -1,29 +1,11 @@
-@extends('frontend.layouts.master')
+@extends('auth.master')
 
-@section('content-header')
-    <div class="breadcrumb-section breadcrumb-bg-color--golden">
-        <div class="breadcrumb-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="breadcrumb-title">Đăng kí</h3>
-                        <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
-                            <nav aria-label="breadcrumb">
-                                <ul>
-                                    <li><a href="{{ route('frontend.index') }}">Trang chủ</a></li>
-                                    <li class="active" aria-current="page">Đăng kí</li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+@section('title')
+    Register
 @endsection
 
 @section('content')
-    <div class="col-lg-6 col-md-6" style="margin: 20%; width: 60%;">
+    {{-- <div class="col-lg-6 col-md-6" style="margin: 20%; width: 60%;">
         <div class="account_form aos-init aos-animate" data-aos="fade-up" data-aos-delay="0"
             style="border: 2px solid black; border-radius: 10px; padding: 5px;">
             <h3>Đăng kí</h3>
@@ -62,5 +44,57 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
+
+    <form action="{{ route('auth.register') }}" method="post">
+        @csrf
+        <div class="form-group first">
+            <label for="name">Họ tên</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+        <div class="form-group first">
+            <label for="username">Email</label>
+            <input type="email" class="form-control" id="username" name="email">
+        </div>
+        <div class="form-group last">
+            <label for="password">Mật khẩu</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="form-group last">
+            <label for="password">Nhập lại mật khẩu</label>
+            <input type="password" class="form-control" id="password" name="password_confirmation">
+        </div>
+
+        <div class="d-flex mb-5 align-items-center">
+            <label class="control control--checkbox mb-0">
+                <span class="caption">
+                    Nhớ tôi
+                </span>
+                <input type="checkbox" checked="checked" name="remember" />
+                <div class="control__indicator"></div>
+            </label>
+
+        </div>
+
+        <input type="submit" value="Đăng nhập" class="btn btn-block btn-primary">
+
+        <div style="margin-top: 5px">Đã có tài khoản
+            <a href="{{ route('auth.login') }}" class="login">
+                Đăng nhập ngay
+            </a>
+        </div>
+
+        <span class="d-block text-center my-4 text-muted">&mdash; Hoặc đăng nhập với
+            &mdash;</span>
+
+        <div class="social-login" style="text-align: center">
+            <a href="#" class="facebook">
+                <span class="icon-facebook mr-3"></span>
+            </a>
+            <a href="#" class="google">
+                <span class="icon-google mr-3"></span>
+            </a>
+        </div>
+    </form>
+
 @endsection
