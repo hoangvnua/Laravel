@@ -102,18 +102,14 @@
                                                     <i class="fas fa-user"></i>
                                                 </button>
                                             </form>&ensp;
-                                            <form method="POST" action="{{ route('backend.users.destroy', $user->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-outline-danger" 
-                                                   {{-- data-toggle="modal" data-target="#exampleModal"--}}
-                                                    onclick="if(!confirm('Xác nhận xóa')) { return false } "> 
-                                                    <i class="far fa-trash-alt"></i>
-                                                </button>
-                                            </form>
+
+                                            <button class="btn btn-outline-danger" data-toggle="modal"
+                                                data-target="#exampleModal-{{ $user->id }}" > <i
+                                                class="far fa-trash-alt"></i>
+                                            </button>
 
                                             <!-- Modal -->
-                                            {{-- <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            <div class="modal fade" id="exampleModal-{{ $user->id }}" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
@@ -144,7 +140,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
                                         </td>
                                     </tr>
@@ -153,7 +149,7 @@
                             </tbody>
                         </table>
                         <div style="float: right">
-                        {{ $users->links() }}
+                            {{ $users->links() }}
                         </div>
                     </div>
                     <!-- /.card-body -->

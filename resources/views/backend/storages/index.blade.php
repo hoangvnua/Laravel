@@ -64,12 +64,12 @@
                                                 <i class="fas fa-cloud-download-alt"></i>
                                             </a> &ensp;
                                             <button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                data-target="#exampleModal">
+                                                data-target="#exampleModal-{{ $key }}">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            <div class="modal fade" id="exampleModal-{{ $key }}" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
@@ -93,7 +93,7 @@
                                                                 action="{{ route('backend.storages.destroy', $key) }}">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button class="btn btn-outline-danger">
+                                                                <button class="btn btn-danger">
                                                                     Xác nhận xóa
                                                                 </button>
                                                             </form>

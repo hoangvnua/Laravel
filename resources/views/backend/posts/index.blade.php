@@ -113,12 +113,12 @@
                                             &ensp;
                                             @can('delete-post', $post)
                                                 <button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    data-target="#exampleModal">
+                                                    data-target="#exampleModal-{{ $post->id }}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                <div class="modal fade" id="exampleModal-{{ $post->id }}" tabindex="-1"
                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">

@@ -84,7 +84,7 @@ class PostController extends Controller
                 'title' => 'required|unique:posts|max:255',
                 'content' => 'required',
                 'status' => 'required|in:0,1,2',
-                'image' => 'file|mimes:jpg,png|max:3072|min:20'
+                'image' => 'file|mimes:jpg,png'
             ],
             [
                 'required' => 'Thuộc tính :attribute là bắt buộc',
