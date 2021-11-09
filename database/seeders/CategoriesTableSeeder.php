@@ -20,15 +20,27 @@ class CategoriesTableSeeder extends Seeder
         $categories = [
             [
                 'name' => 'Điện thoại',
+                'slug' => 'dien-thoai',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'Máy tính'
+                'name' => 'Máy tính',
+                'slug' => 'may-tinh',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'Phần cứng'
+                'name' => 'Phần cứng',
+                'slug' => 'phan-cung',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'Phụ kiện'
+                'name' => 'Phụ kiện',
+                'slug' => 'phu-kien',
+                'created_at' => now(),
+                'updated_at' => now()
             ]
 
         ];

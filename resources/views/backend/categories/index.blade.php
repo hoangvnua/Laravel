@@ -68,8 +68,17 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
-                                        <td>{{ $category->created_at->format('d/m/Y') }}</td>
-                                        <td>{{ $category->updated_at->format('d/m/Y') }}</td>
+
+                                        <td>
+                                            @if (!empty($category->created_at))
+                                                {{ $category->created_at->format('d/m/Y') }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if (!empty($category->updated_at))
+                                                {{ $category->updated_at->format('d/m/Y') }}
+                                            @endif
+                                        </td>
                                         <td style="display: flex">
                                             <a href='{{ route('backend.categories.edit', $category->id) }}'>
                                                 <i class="far fa-edit btn btn-outline-primary"></i>
@@ -81,8 +90,8 @@
                                             </button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal-{{ $category->id }}" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="exampleModal-{{ $category->id }}"
+                                                tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

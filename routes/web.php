@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Models\Permission;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,7 @@ use Illuminate\Support\Facades\App;
 // })->name('home');
 
 // Route::get('/', [HomeController::class, 'index'] );
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('frontend.index');
 
 Route::prefix('backend')
     ->name('backend.')
@@ -68,10 +69,6 @@ Route::prefix('backend')
     });
 
 Route::prefix('/')->name('frontend.')->namespace('Frontend')->group(function () {
-
-    Route::get('index', function () {
-        return view('frontend.index');
-    })->name('index');
 
     Route::get('posts/list', 'PostController@list')->name('posts.list');
     Route::get('shop/list', 'ShopController@list')->name('shop.list');
