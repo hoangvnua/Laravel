@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserInfo extends Model
+class Comment extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,7 @@ class UserInfo extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function orders(){
-        return $this->hasMany(Order::class);
+    public function post(){
+        return $this->belongsTo(Post::class);
     }
 }

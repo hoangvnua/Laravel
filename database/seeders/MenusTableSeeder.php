@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Menu;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,6 +15,7 @@ class MenusTableSeeder extends Seeder
      */
     public function run()
     {
+        Menu::truncate();
         $menus = [
             [
                 'name' => 'Trang chủ',
@@ -23,7 +25,7 @@ class MenusTableSeeder extends Seeder
             ],
             [
                 'name' => 'Cửa hàng',
-                'url' => '/',
+                'url' => '/shop',
                 'status' => 1,
                 'sort' => 2
             ],

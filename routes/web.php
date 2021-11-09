@@ -67,15 +67,20 @@ Route::prefix('backend')
         Route::resource('roles', RoleController::class);
     });
 
-Route::prefix('frontend')->name('frontend.')->namespace('Frontend')->group(function () {
+Route::prefix('/')->name('frontend.')->namespace('Frontend')->group(function () {
 
     Route::get('index', function () {
         return view('frontend.index');
     })->name('index');
 
     Route::get('posts/list', 'PostController@list')->name('posts.list');
+    Route::get('shop/list', 'ShopController@list')->name('shop.list');
+    Route::get('cart', 'ShopController@cart')->name('cart');
+    Route::get('checkout', 'ShopController@checkout')->name('checkout');
 
     Route::resource('posts', PostController::class);
+    
+    Route::resource('shop', ShopController::class);
 });
 
 Route::prefix('/')->namespace('Auth')->name('auth.')->group(function () {

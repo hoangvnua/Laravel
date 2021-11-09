@@ -18,12 +18,12 @@ class SubMenuSeeder extends Seeder
         $sub_menu = [
             [
                 'name' => 'Tất cả',
-                'url' => '/frontend/posts',
+                'url' => '/posts',
                 'menu_id' => 3
             ],
             [
                 'name' => 'Bài  viết theo danh mục',
-                'url' => '/frontend/posts/list',
+                'url' => '/posts/list',
                 'menu_id' => 3
             ]
         ];
