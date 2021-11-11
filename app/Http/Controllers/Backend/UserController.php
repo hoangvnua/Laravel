@@ -100,7 +100,7 @@ class UserController extends Controller
         // $userInfo->phone = 123456;
         // $userInfo->save();
 
-        $user->roles()->attach($roles);
+        $user->roles()->sync($roles);
 
         return redirect()->route('backend.users.index');
     }
@@ -150,15 +150,13 @@ class UserController extends Controller
         $data = $request->only(['name', 'email', 'password', 'address', 'phone']);
         $roles = $request->get('roles');
 
-        // DB::table('users')->where('id', $id)->update([
-        //     'name' => $data['name'],
-        //     'email' => $data['email']
-        // ]);
-
         $user = User::find($id);
         $user->name = $data['name'];
         $user->email = $data['email'];
-        $user->password = bcrypt($data['password']);
+        if (!empty($data['password'])) {
+            $user->password = bcrypt($data['password']);
+        }
+
         $user->save();
 
         DB::table('user_infos')->where('user_id', $id)->update([

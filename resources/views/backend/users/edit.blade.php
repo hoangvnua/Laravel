@@ -32,7 +32,7 @@
                     <input type="text" class="form-control" name="name" placeholder="Họ tên" value="{{ $user->name }}">
                 </div>
 
-                <label for="exampleInputFile">Ngày sinh</label>
+                {{-- <label for="exampleInputFile">Ngày sinh</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
@@ -40,7 +40,7 @@
                     <input type="date" class="form-control" name="ngaysinh" data-target="#reservationdate"
                         value="{{ $user->updated_at }}">
 
-                </div>
+                </div> --}}
 
                 <label for="exampleInputFile">Email</label>
                 <div class="input-group mb-3">

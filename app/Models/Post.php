@@ -45,7 +45,7 @@ class Post extends Model
         if (!empty($this->image)) {
             if (Storage::disk($this->disk)->exists($this->image)) {
                 return Storage::disk($this->disk)->url($this->image);
-            }else{
+            } else {
                 return Storage::disk('public')->url('default.jpg');
             }
         } else {
@@ -79,7 +79,8 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 }

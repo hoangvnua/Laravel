@@ -11,13 +11,15 @@ class Category extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
-    public function setNameAttribute($name){
+
+    public function setNameAttribute($name)
+    {
         $this->attributes['name'] = $name;
         $this->attributes['slug'] = Str::slug($name);
     }
-    
-    public function posts(){
+
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 }

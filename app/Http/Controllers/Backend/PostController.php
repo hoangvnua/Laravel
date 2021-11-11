@@ -124,7 +124,7 @@ class PostController extends Controller
 
         $post->save();
 
-        $post->tags()->attach($tags);
+        $post->tags()->sync($tags);
 
         $request->session()->flash('success', 'Thêm mới bài viết thành công!');
         return redirect()->route('backend.posts.index');
@@ -215,14 +215,13 @@ class PostController extends Controller
         if (Auth::user()->cannot('delete-post')) {
             return abort(403);
         }
-        // $post = Post::find($id);
+        $post = Post::find($id);
         // if (!Gate::allows('delete-post', $post)) {
         //     abort(403);
         // }
-
-        // $post->delete();
-
-        Post::destroy($id);
+        $post->tags()->detach();
+        $post->delete();
+    
         Session::flash('success', 'Đã xóa bài viết!');
         return redirect()->route('backend.posts.index');
     }

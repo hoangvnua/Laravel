@@ -53,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="exampleInputFile">Ngày sinh</label>
                     <div class="input-group mb-3 date" id="reservationdate" data-target-input="nearest">
                         <div class="input-group-prepend">
@@ -61,7 +61,7 @@
                         </div>
                         <input type="date" class="form-control" name="ngaysinh" data-target="#reservationdate">
                     </div>
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="exampleInputFile">Email</label>
                     <div class="input-group mb-3">

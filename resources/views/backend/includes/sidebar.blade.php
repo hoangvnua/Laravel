@@ -125,6 +125,30 @@
                 </ul>
             </li>
 
+            <li class="nav-item @if (request()->routeIs('backend.products.*')) menu-open @endif">
+                <a href="#2" class="nav-link">
+                    <i class="fas fa-store-alt"></i>
+                    <p>
+                        Quản lý bán hàng
+                        <i class="fas fa-angle-left right"></i>
+
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('backend.products.index') }}" class="nav-link @if (request()->is('backend/products')) active @endif">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Danh sách sản phẩm</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href=" {{ route('backend.products.create') }} " class="nav-link @if (request()->is('backend/products/create')) active @endif ">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Thêm sản phẩm</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-header">Hệ thống</li>
             <li class="nav-item @if (request()->routeIs('backend.users.*')) menu-open @endif">
                 <a href="#2" class="nav-link">

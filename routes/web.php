@@ -33,6 +33,14 @@ use Illuminate\Support\Facades\App;
 // Route::get('/', [HomeController::class, 'index'] );
 Route::get('/', 'HomeController@index')->name('frontend.index');
 
+// Route::prefix('admin')
+//     ->name('admin.')
+//     ->namespace('admin')
+//     ->middleware(['auth'])
+//     ->group(function () {
+//         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+//     });
+
 Route::prefix('backend')
     ->name('backend.')
     ->namespace('Backend')
@@ -54,8 +62,9 @@ Route::prefix('backend')
 
         // Posts
         Route::resource('posts', PostController::class);
+
         // Dashboard
-        Route::resource('/dashboard', DashboardController::class);
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard.index');
         // User
         Route::resource('users', UserController::class);
         //---- Quản lý danh mục Blog ----
@@ -66,6 +75,8 @@ Route::prefix('backend')
         Route::resource('permissions', PermissionController::class);
         //Role
         Route::resource('roles', RoleController::class);
+        //Product
+        Route::resource('products', ProductController::class);
     });
 
 Route::prefix('/')->name('frontend.')->namespace('Frontend')->group(function () {
@@ -76,7 +87,7 @@ Route::prefix('/')->name('frontend.')->namespace('Frontend')->group(function () 
     Route::get('checkout', 'ShopController@checkout')->name('checkout');
 
     Route::resource('posts', PostController::class);
-    
+
     Route::resource('shop', ShopController::class);
 });
 

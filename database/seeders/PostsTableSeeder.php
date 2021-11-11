@@ -22,7 +22,6 @@ class PostsTableSeeder extends Seeder
                 'slug' => 'hihi-hihi',
                 'content' => 'Tối ngày 20/9.',
                 'status' => 1,
-                'img_url' => 'ảnh ảo',
                 'user_created_id' => 1,
                 'user_updated_id' => 1,
                 'category_id' => 1,

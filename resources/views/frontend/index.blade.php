@@ -1245,7 +1245,7 @@
                                             <div class="image-box" style="height: 271px">
                                                 <a href="blog-single-sidebar-left.html" class="image-link">
                                                     <img class="img-fluid"
-                                                        src="{{ $post->image_url }}" alt="" style="height: 100%;">
+                                                        src="{{ $post->image_url }}" alt="" style="width: 100%; height: 100%;">
                                                 </a>
                                             </div>
                                             <div class="content">

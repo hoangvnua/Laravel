@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -14,12 +15,18 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return view('frontend.shop.index');
+        $products = Product::paginate(12);
+        return view('frontend.shop.index')->with([
+            'products' => $products
+        ]);
     }
 
     public function list()
     {
-        return view('frontend.shop.list');
+        $products = Product::paginate(12);
+        return view('frontend.shop.list')->with([
+            'products' => $products
+        ]);
     }
 
     public function cart(){
