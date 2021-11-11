@@ -40,7 +40,7 @@ class Post extends Model
         return '<span class="badge badge-' . $this->statusColor[$this->status] . '">' . $this->statusArr[$this->status] . '<span>';
     }
 
-    public function getImageUrlAttribute()
+    public function getImgUrlAttribute()
     {
         if (!empty($this->image)) {
             if (Storage::disk($this->disk)->exists($this->image)) {

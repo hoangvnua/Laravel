@@ -90,10 +90,7 @@
                                             @endforeach
                                         </td>
                                         <td>
-                                            @if (!empty($post->image))
-                                                <img src="{{ Storage::disk($post->disk)->url($post->image) }}"
-                                                    width="100px">
-                                            @endif
+                                            <img src="{{ $post->img_url }}" width="100px">
                                         </td>
                                         <td>
                                             {{ $post->user->name }}

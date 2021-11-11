@@ -1239,13 +1239,13 @@
                             <!-- Slider main container -->
                             <div class="swiper-container blog-slider">
                                 <!-- Additional required wrapper -->
-                                <div class="swiper-wrapper" >
+                                <div class="swiper-wrapper">
                                     @foreach ($posts as $post)
                                         <div class="blog-default-single-item blog-color--golden swiper-slide">
                                             <div class="image-box" style="height: 271px">
-                                                <a href="blog-single-sidebar-left.html" class="image-link">
-                                                    <img class="img-fluid"
-                                                        src="{{ $post->image_url }}" alt="" style="width: 100%; height: 100%;">
+                                                <a href="{{ route('frontend.posts.show', $post->id) }}" class="image-link">
+                                                    <img class="img-fluid" src="{{ $post->img_url }}" alt=""
+                                                        style="width: 100%; height: 100%;">
                                                 </a>
                                             </div>
                                             <div class="content">
@@ -1262,7 +1262,8 @@
                                                         class="read-more-btn icon-space-left">Xem thêm<span><i
                                                                 class="ion-ios-arrow-thin-right"></i></span></a>
                                                     <div class="post-meta">
-                                                        <a href="#" class="date">{{ $post->created_at->format('d-m-Y')}}</a>
+                                                        <a href="#"
+                                                            class="date">{{ $post->created_at->format('d-m-Y') }}</a>
                                                     </div>
                                                 </div>
                                             </div>
