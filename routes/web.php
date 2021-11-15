@@ -83,7 +83,13 @@ Route::prefix('/')->name('frontend.')->namespace('Frontend')->group(function () 
 
     Route::get('posts/list', 'PostController@list')->name('posts.list');
     Route::get('shop/list', 'ShopController@list')->name('shop.list');
-    Route::get('cart', 'ShopController@cart')->name('cart');
+
+    Route::get('cart', 'CartController@index')->name('cart');
+    Route::get('cart/create/{id}', 'CartController@create')->name('cart.create');
+    Route::get('cart/remove/{rowId}', 'CartController@remove')->name('cart.remove');
+    Route::get('cart/increase/{rowId}', 'CartController@increase')->name('cart.increase');
+    Route::get('cart/decrease/{rowId}', 'CartController@decrease')->name('cart.decrease');
+    
     Route::get('checkout', 'ShopController@checkout')->name('checkout');
 
     Route::resource('posts', PostController::class);

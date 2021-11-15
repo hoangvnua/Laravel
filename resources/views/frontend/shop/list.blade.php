@@ -6,13 +6,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="breadcrumb-title">Shop - List Left Sidebar</h3>
+                        <h3 class="breadcrumb-title">Cửa hàng</h3>
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
-                                    <li class="active" aria-current="page">Shop List Left Sidebar</li>
+                                    <li><a href="index.html">Trang chủ</a></li>
+                                    <li class="active" aria-current="page">Cửa hàng</li>
                                 </ul>
                             </nav>
                         </div>
@@ -33,49 +32,23 @@
 
                         <!-- Start Single Sidebar Widget -->
                         <div class="sidebar-single-widget">
-                            <h6 class="sidebar-title">CATEGORIES</h6>
+                            <h6 class="sidebar-title">Danh mục</h6>
                             <div class="sidebar-content">
                                 <ul class="sidebar-menu">
-                                    <li>
-                                        <ul class="sidebar-menu-collapse">
-                                            <!-- Start Single Menu Collapse List -->
-                                            <li class="sidebar-menu-collapse-list">
-                                                <div class="accordion">
-                                                    <a href="#" class="accordion-title collapsed" data-bs-toggle="collapse"
-                                                        data-bs-target="#men-fashion" aria-expanded="false">Men <i
-                                                            class="ion-ios-arrow-right"></i></a>
-                                                    <div id="men-fashion" class="collapse">
-                                                        <ul class="accordion-category-list">
-                                                            <li><a href="#">Dresses</a></li>
-                                                            <li><a href="#">Jackets &amp; Coats</a></li>
-                                                            <li><a href="#">Sweaters</a></li>
-                                                            <li><a href="#">Jeans</a></li>
-                                                            <li><a href="#">Blouses &amp; Shirts</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li> <!-- End Single Menu Collapse List -->
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Football</a></li>
-                                    <li><a href="#"> Men's</a></li>
-                                    <li><a href="#"> Portable Audio</a></li>
-                                    <li><a href="#"> Smart Watches</a></li>
-                                    <li><a href="#">Tennis</a></li>
-                                    <li><a href="#"> Uncategorized</a></li>
-                                    <li><a href="#"> Video Games</a></li>
-                                    <li><a href="#">Women's</a></li>
+                                    @foreach ($categories as $category)
+                                        <li><a href="#">{{ $category->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div> <!-- End Single Sidebar Widget -->
 
                         <!-- Start Single Sidebar Widget -->
                         <div class="sidebar-single-widget">
-                            <h6 class="sidebar-title">FILTER BY PRICE</h6>
+                            <h6 class="sidebar-title">Lọc theo giá</h6>
                             <div class="sidebar-content">
                                 <div id="slider-range"></div>
                                 <div class="filter-type-price">
-                                    <label for="amount">Price range:</label>
+                                    <label for="amount">Phạm vi giá:</label>
                                     <input type="text" id="amount">
                                 </div>
                             </div>
@@ -83,7 +56,7 @@
 
                         <!-- Start Single Sidebar Widget -->
                         <div class="sidebar-single-widget">
-                            <h6 class="sidebar-title">MANUFACTURER</h6>
+                            <h6 class="sidebar-title">Nhãn hàng</h6>
                             <div class="sidebar-content">
                                 <div class="filter-type-select">
                                     <ul>
@@ -124,7 +97,7 @@
 
                         <!-- Start Single Sidebar Widget -->
                         <div class="sidebar-single-widget">
-                            <h6 class="sidebar-title">SELECT BY COLOR</h6>
+                            <h6 class="sidebar-title">Lọc theo màu sắc</h6>
                             <div class="sidebar-content">
                                 <div class="filter-type-select">
                                     <ul>
@@ -165,18 +138,12 @@
 
                         <!-- Start Single Sidebar Widget -->
                         <div class="sidebar-single-widget">
-                            <h6 class="sidebar-title">Tag products</h6>
+                            <h6 class="sidebar-title">Thẻ</h6>
                             <div class="sidebar-content">
                                 <div class="tag-link">
-                                    <a href="#">asian</a>
-                                    <a href="#">brown</a>
-                                    <a href="#">euro</a>
-                                    <a href="#">fashion</a>
-                                    <a href="#">hat</a>
-                                    <a href="#">t-shirt</a>
-                                    <a href="#">teen</a>
-                                    <a href="#">travel</a>
-                                    <a href="#">white</a>
+                                    @foreach ($tags as $tag)
+                                        <a href="#">{{ $tag->name }}</a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div> <!-- End Single Sidebar Widget -->
@@ -202,17 +169,14 @@
                                     data-aos="fade-up" data-aos-delay="0">
                                     <!-- Start Sort tab Button -->
                                     <div class="sort-tablist d-flex align-items-center">
-                                        <ul class="tablist nav sort-tab-btn">
-                                            <li><a class="nav-link" data-bs-toggle="tab" href="#layout-3-grid"><img
-                                                        src="/frontend/images/icons/bkg_grid.png" alt=""></a></li>
-                                            <li><a class="nav-link active" data-bs-toggle="tab" href="#layout-list"><img
-                                                        src="/frontend/images/icons/bkg_list.png" alt=""></a></li>
-                                        </ul>
+
 
                                         <!-- Start Page Amount -->
-                                        <div class="page-amount ml-2">
+                                        <div class="page-amount ml-1">
 
-                                            <span>Showing {{ $products->firstItem() }} - {{ $products->lastItem() }} of {{ $products->total()}} results</span>
+                                            <span>Hiển thị {{ $products->firstItem() }} - {{ $products->lastItem() }}
+                                                của
+                                                {{ $products->total() }} sản phẩm</span>
                                         </div> <!-- End Page Amount -->
                                     </div> <!-- End Sort tab Button -->
 
@@ -244,7 +208,7 @@
                                 <div class="col-12">
                                     <div class="tab-content tab-animate-zoom">
                                         <!-- Start Grid View Product -->
-                                        <div class="tab-pane sort-layout-single" id="layout-3-grid">
+                                        <div class="tab-pane active sort-layout-single" id="layout-3-grid">
                                             <div class="row">
                                                 @foreach ($products as $product)
                                                     <div class="col-xl-4 col-sm-6 col-12">
@@ -261,7 +225,8 @@
                                                                 <div class="action-link">
                                                                     <div class="action-link-left">
                                                                         <a href="#" data-bs-toggle="modal"
-                                                                            data-bs-target="#modalAddcart">Add to Cart</a>
+                                                                            data-bs-target="#modalAddcart">Thêm vào giỏ
+                                                                            hàng</a>
                                                                     </div>
                                                                     <div class="action-link-right">
                                                                         <a href="#" data-bs-toggle="modal"
@@ -269,15 +234,14 @@
                                                                                 class="icon-magnifier"></i></a>
                                                                         <a href="wishlist.html"><i
                                                                                 class="icon-heart"></i></a>
-                                                                        <a href="compare.html"><i
-                                                                                class="icon-shuffle"></i></a>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="content">
                                                                 <div class="content-left">
                                                                     <h6 class="title"><a
-                                                                            href="product-details-default.html">{{ $product->name }}</a></h6>
+                                                                            href="product-details-default.html">{{ $product->name }}</a>
+                                                                    </h6>
                                                                     <ul class="review-star">
                                                                         <li class="fill"><i
                                                                                 class="ion-android-star"></i></li>
@@ -292,7 +256,9 @@
                                                                     </ul>
                                                                 </div>
                                                                 <div class="content-right">
-                                                                    <span class="price">{{ $product->priceFormat }}</span>
+                                                                    <span
+                                                                        class="price"><strike>{{ $product->priceFormat }}</strike>
+                                                                        - {{ $product->sale_price_format }}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -300,67 +266,6 @@
                                                 @endforeach
                                             </div>
                                         </div> <!-- End Grid View Product -->
-                                        <!-- Start List View Product -->
-                                        <div class="tab-pane active show sort-layout-single" id="layout-list">
-                                            <div class="row">
-                                                @foreach ($products as $product)
-                                                    <div class="col-12">
-                                                        <!-- Start Product Defautlt Single -->
-                                                        <div class="product-list-single product-color--golden"
-                                                            data-aos="fade-up" data-aos-delay="0">
-                                                            <a href="{{ route('frontend.shop.show', $product->id) }}"
-                                                                class="product-list-img-link">
-                                                                <img class="img-fluid"
-                                                                    src="/frontend/images/product/default/home-1/default-1.jpg"
-                                                                    alt="">
-                                                                <img class="img-fluid"
-                                                                    src="/frontend/images/product/default/home-1/default-2.jpg"
-                                                                    alt="">
-                                                            </a>
-                                                            <div class="product-list-content">
-                                                                <h5 class="product-list-link"><a
-                                                                        href="{{ route('frontend.shop.show', $product->id) }}">KAOREET LOBORTIS
-                                                                        SAGIT</a></h5>
-                                                                <ul class="review-star">
-                                                                    <li class="fill"><i
-                                                                            class="ion-android-star"></i></li>
-                                                                    <li class="fill"><i
-                                                                            class="ion-android-star"></i></li>
-                                                                    <li class="fill"><i
-                                                                            class="ion-android-star"></i></li>
-                                                                    <li class="fill"><i
-                                                                            class="ion-android-star"></i></li>
-                                                                    <li class="empty"><i
-                                                                            class="ion-android-star"></i></li>
-                                                                </ul>
-                                                                <span class="product-list-price"><del>$30.12</del>
-                                                                    $25.12</span>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                    Nobis ad, iure incidunt. Ab consequatur temporibus non
-                                                                    eveniet inventore doloremque necessitatibus sed, ducimus
-                                                                    quisquam, ad asperiores</p>
-                                                                <div class="product-action-icon-link-list">
-                                                                    <a href="#" data-bs-toggle="modal"
-                                                                        data-bs-target="#modalAddcart"
-                                                                        class="btn btn-lg btn-black-default-hover">Add to
-                                                                        cart</a>
-                                                                    <a href="#" data-bs-toggle="modal"
-                                                                        data-bs-target="#modalQuickview"
-                                                                        class="btn btn-lg btn-black-default-hover"><i
-                                                                            class="icon-magnifier"></i></a>
-                                                                    <a href="wishlist.html"
-                                                                        class="btn btn-lg btn-black-default-hover"><i
-                                                                            class="icon-heart"></i></a>
-                                                                    <a href="compare.html"
-                                                                        class="btn btn-lg btn-black-default-hover"><i
-                                                                            class="icon-shuffle"></i></a>
-                                                                </div>
-                                                            </div>
-                                                        </div> <!-- End Product Defautlt Single -->
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div> <!-- End List View Product -->
                                     </div>
                                 </div>
                             </div>
@@ -370,7 +275,7 @@
                     <!-- Start Pagination -->
                     <div class="page-pagination text-center" data-aos="fade-up" data-aos-delay="0">
                         <ul>
-                            {{ $products->links()}}
+                            {{ $products->links() }}
                             {{-- <li><a class="active" href="#">1</a></li>
                             <li><a href="#">2</a></li>
                             <li><a href="#">3</a></li>

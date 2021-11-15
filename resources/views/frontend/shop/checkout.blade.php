@@ -6,13 +6,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="breadcrumb-title">Checkout</h3>
+                        <h3 class="breadcrumb-title">Thanh toán</h3>
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
-                                    <li class="active" aria-current="page">Checkout</li>
+                                    <li><a href="index.html">Trang chủ</a></li>
+                                    <li class="active" aria-current="page">Thanh toán</li>
                                 </ul>
                             </nav>
                         </div>
@@ -74,7 +73,7 @@
             <!-- Start User Details Checkout Form -->
             <div class="checkout_form" data-aos="fade-up" data-aos-delay="400">
                 <div class="row">
-                    {{-- <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <form action="#">
                             <h3>Billing Details</h3>
                             <div class="row">
@@ -249,8 +248,8 @@
                                 </div>
                             </div>
                         </form>
-                    </div> --}}
-                    <div class="col-lg-12 col-md-12">
+                    </div>
+                    <div class="col-lg-6 col-md-6">
                         <form action="#">
                             <h3>Đơn hàng</h3>
                             <div class="order_table table-responsive">
@@ -280,8 +279,8 @@
                                 <div id="checkout_coupon" >
                                     <div class="checkout_info" style="display: flex;">
                                         <form action="#">
-                                            <input placeholder="Coupon code" type="text" style="border: 1px solid">
-                                            <button class="btn btn-md btn-black-default-hover" type="submit">Apply coupon</button>
+                                            <input placeholder="Nhập mã giảm giá (nếu có)" type="text" style="border: 1px solid">
+                                            <button class="btn btn-md btn-black-default-hover" type="submit">Áp dụng mã giảm giá</button>
                                         </form>
                                     </div>
                                 </div>
@@ -291,7 +290,7 @@
                                     <label class="checkbox-default" for="currencyCod" data-bs-toggle="collapse"
                                         data-bs-target="#methodCod">
                                         <input type="checkbox" id="currencyCod">
-                                        <span>Cash on Delivery</span>
+                                        <span>Thanh toán khi nhận hàng</span>
                                     </label>
 
                                     <div id="methodCod" class="collapse" data-parent="#methodCod">
@@ -302,7 +301,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="panel-default">
+                                {{-- <div class="panel-default">
                                     <label class="checkbox-default" for="currencyPaypal" data-bs-toggle="collapse"
                                         data-bs-target="#methodPaypal">
                                         <input type="checkbox" id="currencyPaypal">
@@ -314,10 +313,9 @@
                                                 account.</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="order_button pt-3">
-                                    <button class="btn btn-md btn-black-default-hover" type="submit">Proceed to
-                                        PayPal</button>
+                                    <button class="btn btn-md btn-black-default-hover" type="submit">Thanh toán</button>
                                 </div>
                             </div>
                         </form>

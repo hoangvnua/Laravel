@@ -38,7 +38,7 @@
                                             <a href="{{ route('frontend.posts.show', $post->id) }}"
                                                 class="image-link">
                                                 <img class="img-fluid"
-                                                    src="{{ $post->image_url }}" alt="">
+                                                    src="{{ $post->img_url }}" alt="" width="330px" style="height: 242px">
                                             </a>
                                         </div>
                                         <div class="content">

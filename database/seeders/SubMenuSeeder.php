@@ -25,7 +25,17 @@ class SubMenuSeeder extends Seeder
                 'name' => 'Bài  viết theo danh mục',
                 'url' => '/posts/list',
                 'menu_id' => 3
-            ]
+            ],
+            [
+                'name' => 'Tất cả',
+                'url' => '/posts',
+                'menu_id' => 2
+            ],
+            [
+                'name' => 'Sản phẩm theo danh mục',
+                'url' => '/shop/list',
+                'menu_id' => 2
+            ],
         ];
 
         DB::table('sub_menus')->insert($sub_menu);

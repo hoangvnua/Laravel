@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -15,7 +17,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(12);
+        $products = Product::paginate(20);
         return view('frontend.shop.index')->with([
             'products' => $products
         ]);
@@ -24,13 +26,13 @@ class ShopController extends Controller
     public function list()
     {
         $products = Product::paginate(12);
+        $categories = Category::get();
+        $tags = Tag::get();
         return view('frontend.shop.list')->with([
-            'products' => $products
+            'products' => $products,
+            'categories' => $categories,
+            'tags' => $tags
         ]);
-    }
-
-    public function cart(){
-        return view('frontend.shop.cart');
     }
 
     public function checkout(){
@@ -65,7 +67,13 @@ class ShopController extends Controller
      */
     public function show($id)
     {
-        return view('frontend.shop.show');
+        $products = Product::get();
+        $product = Product::find($id);
+        // dd($product->category);
+        return view('frontend.shop.show')->with([
+            'products' => $products,
+            'product' => $product
+        ]);
     }
 
     /**

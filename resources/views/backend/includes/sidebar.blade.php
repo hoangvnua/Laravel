@@ -20,7 +20,7 @@
                 <a href="{{ route('backend.dashboard.index') }}" class="nav-link @if (request()->is('backend/dashboard')) active @endif">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
-                        Quản lý chung
+                        Trang chủ
                     </p>
                 </a>
             </li>

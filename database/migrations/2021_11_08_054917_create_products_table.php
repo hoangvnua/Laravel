@@ -18,16 +18,17 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug')->nullable();
             $table->string('content');
+            $table->string('quantity');
             $table->decimal('origin_price');
             $table->decimal('sale_price');
             $table->integer('category_id');
             $table->integer('brand_id');
             $table->integer('status');
             $table->json('option');
-            $table->integer('view_count');
-            $table->integer('sale_count');
-            $table->integer('review_count');
-            $table->json('info');
+            $table->integer('view_count')->nullable();
+            $table->integer('sale_count')->nullable();
+            $table->integer('review_count')->nullable();
+            $table->json('info')->nullable();
             $table->timestamps();
         });
     }
