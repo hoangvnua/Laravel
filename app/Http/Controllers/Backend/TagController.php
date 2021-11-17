@@ -18,7 +18,7 @@ class TagController extends Controller
     {
         $tags = Tag::get();
 
-        return view('backend.tags.index')->with([
+        return view('admin.tags.index')->with([
             'tags' => $tags
         ]);
     }
@@ -30,7 +30,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('backend.tags.create');
+        return view('admin.tags.create');
     }
 
     /**
@@ -71,7 +71,7 @@ class TagController extends Controller
     public function edit($id)
     {
         $tag = Tag::find($id);
-        return view('backend.tags.edit')->with(['tag' => $tag]);
+        return view('admin.tags.edit')->with(['tag' => $tag]);
     }
 
     /**

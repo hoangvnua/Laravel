@@ -20,20 +20,23 @@ class Product extends Model
         return $this->hasMany(Image::class);
     }
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class);
     }
 
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
     }
-    
-    public function getImgAttribute(){
-        if (!empty($this->images()->product_id)) {
-            if (Storage::disk($this->images()->disk)->exists($this->images()->path)) {
-                return Storage::disk($this->images()->disk)->url($this->images()->path);
+
+    public function getImgAttribute()
+    {
+
+        $img = $this->images;
+        if (!empty($img[0])) {
+            if (Storage::disk($img[0]->disk)->exists($img[0]->path)) {
+                return Storage::disk($img[0]->disk)->url($img[0]->path);
             } else {
                 return Storage::disk('public')->url('default.jpg');
             }

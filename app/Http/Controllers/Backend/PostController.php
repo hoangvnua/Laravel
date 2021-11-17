@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
@@ -41,6 +42,7 @@ class PostController extends Controller
         // $posts_query = DB::table('posts');
         // $posts = Post::where('status', '=', Post::STATUS_DONE)->simplePaginate(5);
         $posts = Post::paginate(5);
+        $categories = Category::get();
         $search = $request->get('table_search');
         $status = $request->get('status');
         if (!empty($search)) {
@@ -51,7 +53,10 @@ class PostController extends Controller
         // }
 
         // $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
-        return view('backend.posts.index')->with(['posts' => $posts]);
+        return view('admin.posts.index')->with([
+            'posts' => $posts,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -62,7 +67,7 @@ class PostController extends Controller
     public function create()
     {
         $tags = Tag::get();
-        return view('backend.posts.create')->with(['tags' => $tags]);
+        return view('admin.posts.create')->with(['tags' => $tags]);
     }
 
     /**
@@ -98,7 +103,7 @@ class PostController extends Controller
         );
 
         if ($validator->fails()) {
-            return redirect('backend/posts/create')
+            return redirect('admin/posts/create')
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -140,9 +145,11 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $user = User::get();
-        return view('backend.posts.show', [
+        $categories = Category::get();
+        return view('admin.posts.show', [
             'post' => $post,
-            'user' => $user
+            'user' => $user,
+            'categories' => $categories
         ]);
     }
 
@@ -157,7 +164,7 @@ class PostController extends Controller
         // $post = DB::table('posts')->find($id);
         $post = Post::find($id);
         $tags = Tag::get();
-        return view('backend.posts.edit')->with([
+        return view('admin.posts.edit')->with([
             'post' => $post,
             'tags' => $tags
         ]);

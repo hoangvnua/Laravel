@@ -42,7 +42,7 @@
                             ])
                         @endcan
 
-                        <form method="GET" action="{{ route('backend.posts.index') }}" style="float: right">
+                        <form method="GET" action="{{ route('backend.products.index') }}" style="float: right">
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right"
@@ -79,6 +79,7 @@
                                     <tr>
                                         <td>{{ $product->id }}</td>
                                         <td>
+                                           
                                             <img src="{{ $product->img }}" width="100px">
                                         </td>
                                         <td>
@@ -134,7 +135,7 @@
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">Close</button>
                                                                 <form method="POST"
-                                                                    action="{{ route('backend.posts.destroy', $product->id) }}">
+                                                                    action="{{ route('backend.products.destroy', $product->id) }}">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button class="btn btn-danger">

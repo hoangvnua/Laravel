@@ -38,7 +38,7 @@ class UserController extends Controller
             $users = User::where('email', 'like', '%' . $email . '%')->Paginate(5);
         }
 
-        return view('backend.users.index')->with([
+        return view('admin.users.index')->with([
             'users' => $users
         ]);
     }
@@ -58,7 +58,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('backend.users.create')->with(['roles' => $roles]);
+        return view('admin.users.create')->with(['roles' => $roles]);
     }
 
     /**
@@ -116,7 +116,7 @@ class UserController extends Controller
         $user = User::find($id);
         // $userInfo = $user->UserInfo;
         // dd($userInfo->address);
-        return view('backend.users.show', [
+        return view('admin.users.show', [
             'user' => $user
         ]);
     }
@@ -132,7 +132,7 @@ class UserController extends Controller
         $user = User::find($id);
         $roles = Role::get();
 
-        return view('backend.users.edit')->with([
+        return view('admin.users.edit')->with([
             'user' => $user,
             'roles' => $roles
         ]);

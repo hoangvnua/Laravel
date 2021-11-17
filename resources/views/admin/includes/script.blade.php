@@ -21,6 +21,11 @@
 <script src="/admin/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 <script src="/admin/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 <script src="/admin/vendors/scripts/dashboard.js"></script>
-<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-{{--  --}}
+<script src="/admin/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
 
+<script src="/admin/src/plugins/switchery/switchery.min.js"></script>
+<!-- bootstrap-tagsinput js -->
+<script src="/admin/src/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+<!-- bootstrap-touchspin js -->
+<script src="/admin/src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+<script src="/admin/vendors/scripts/advanced-components.js"></script>

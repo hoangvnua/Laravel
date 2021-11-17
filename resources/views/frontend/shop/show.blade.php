@@ -31,10 +31,18 @@
                         <!-- Start Large Image -->
                         <div class="product-large-image product-large-image-horaizontal swiper-container">
                             <div class="swiper-wrapper">
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="/frontend/images/product/default/home-1/default-1.jpg" alt="">
-                                </div>
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
+                                @foreach ($product->images as $image)
+                                    @if ($image->product_id == $product->id)
+                                        <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
+                                            <img src="{{ Storage::disk($image->disk)->url($image->path) }}' }}" alt="">
+                                        </div>
+                                    @else
+                                        <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
+                                            <img src="{{ Storage::disk('public')->url('default.jpg') }}" alt="">
+                                        </div>
+                                    @endif
+                                @endforeach
+                                {{-- <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
                                     <img src="/frontend/images/product/default/home-1/default-2.jpg" alt="">
                                 </div>
                                 <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
@@ -48,18 +56,21 @@
                                 </div>
                                 <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
                                     <img src="/frontend/images/product/default/home-1/default-6.jpg" alt="">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <!-- End Large Image -->
                         <!-- Start Thumbnail Image -->
                         <div class="product-image-thumb product-image-thumb-horizontal swiper-container pos-relative mt-5">
                             <div class="swiper-wrapper">
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="/frontend/images/product/default/home-1/default-1.jpg"
-                                        alt="">
-                                </div>
-                                <div class="product-image-thumb-single swiper-slide">
+                                @foreach ($product->images as $image)
+                                    <div class="product-image-thumb-single swiper-slide">
+                                        <img class="img-fluid"
+                                            src="{{ Storage::disk($image->disk)->url($image->path) ?? '' }}" alt="">
+                                    </div>
+                                @endforeach
+
+                                {{-- <div class="product-image-thumb-single swiper-slide">
                                     <img class="img-fluid" src="/frontend/images/product/default/home-1/default-2.jpg"
                                         alt="">
                                 </div>
@@ -78,7 +89,7 @@
                                 <div class="product-image-thumb-single swiper-slide">
                                     <img class="img-fluid" src="/frontend/images/product/default/home-1/default-6.jpg"
                                         alt="">
-                                </div>
+                                </div> --}}
                             </div>
                             <!-- Add Arrows -->
                             <div class="gallery-thumb-arrow swiper-button-next"></div>
@@ -103,7 +114,8 @@
                                 </ul>
                                 <a href="#" class="customer-review ml-2">( Đánh giá của người dùng )</a>
                             </div>
-                            <div class="price"><strike>{{ $product->price_format }}</strike> - {{ $product->sale_price_format}}</div>
+                            <div class="price"><strike>{{ $product->price_format }}</strike> -
+                                {{ $product->sale_price_format }}</div>
                             <p>{{ $product->content }}</p>
                         </div> <!-- End  Product Details Text Area-->
                         <!-- Start Product Variable Area -->
@@ -174,7 +186,7 @@
                                 </div>
 
                                 <div class="product-add-to-cart-btn">
-                                    <a href="{{ route('frontend.cart.create', $product->id) }}" >Thêm vào giỏ hàng</a>
+                                    <a href="{{ route('frontend.cart.create', $product->id) }}">Thêm vào giỏ hàng</a>
                                 </div>
                             </div>
                             <!-- Start  Product Details Meta Area-->
@@ -189,7 +201,7 @@
                         <div class="product-details-catagory mb-2">
                             <span class="title">DANH MỤC:</span>
                             <ul>
-                                <li><a href="#">{{ $product->category->name }}</a></li>
+                                <li><a href="#">{{ $product->category->name ?? '' }}</a></li>
                             </ul>
                         </div> <!-- End  Product Details Catagories Area-->
 
@@ -479,8 +491,9 @@
                                                 </a>
                                                 <div class="action-link">
                                                     <div class="action-link-left">
-                                                        <a href="{{ route('frontend.cart.create', $product->id) }}" data-bs-toggle="modal"
-                                                            data-bs-target="#modalAddcart">Thêm vào giỏ hàng</a>
+                                                        <a href="{{ route('frontend.cart.create', $product->id) }}"
+                                                            data-bs-toggle="modal" data-bs-target="#modalAddcart">Thêm vào
+                                                            giỏ hàng</a>
                                                     </div>
                                                     <div class="action-link-right">
                                                         <a href="#" data-bs-toggle="modal"
@@ -504,7 +517,8 @@
                                                     </ul>
                                                 </div>
                                                 <div class="content-right">
-                                                    <span class="price">{{ $product->sale_price_format }}</span>
+                                                    <span
+                                                        class="price">{{ $product->sale_price_format }}</span>
                                                 </div>
                                             </div>
                                         </div>

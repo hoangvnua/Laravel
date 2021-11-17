@@ -17,7 +17,7 @@ class PermissionController extends Controller
     {
         $permissions = Permission::get();
 
-        return view('backend.permissions.index')->with([
+        return view('admin.permissions.index')->with([
             'permissions' => $permissions
         ]);
     }

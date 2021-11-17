@@ -14,6 +14,6 @@ class DashboardController extends Controller
         // $cookie = cookie('username', 'hoangnv', 5);
         // return response('hello')->cookie($cookie);
 
-        return view('backend.dashboard');
+        return view('admin.dashboard');
     }
 }

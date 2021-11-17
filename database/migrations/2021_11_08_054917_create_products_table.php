@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug')->nullable();
             $table->string('content');
-            $table->string('quantity');
+            $table->string('quatity');
             $table->decimal('origin_price');
             $table->decimal('sale_price');
             $table->integer('category_id');

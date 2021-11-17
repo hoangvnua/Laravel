@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -18,6 +20,10 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(20);
+        // $product = Product::find(52);
+        // $i = $product->images;
+        // dd($i[0]->product_id);
+        // dd($product->images[1]);
         return view('backend.products.index')->with([
             'products' => $products
         ]);
@@ -33,7 +39,7 @@ class ProductController extends Controller
         $tags = Tag::get();
         $categories = Category::get();
         return view('backend.products.create')->with([
-            'tags' =>$tags,
+            'tags' => $tags,
             'categories' => $categories
         ]);
     }
@@ -51,12 +57,25 @@ class ProductController extends Controller
         $product->content = $request['content'];
         $product->quatity = $request['quatity'];
         $product->origin_price = $request['origin_price'];
-        $product->sale_price = $request['origin_price']*$request['percent']/100;
+        $product->sale_price = $request['origin_price'] * $request['percent'] / 100;
         $product->category_id = $request['category_id'];
         $product->brand_id = 1;
         $product->status = $request['status'];
         $product->option = 1;
         $product->save();
+
+        if ($request->hasFile('image')) {
+            $image = new Image();
+            $disk = 'public';
+            // $path = $request->file('image')->store('blogs', $disk);
+            $path = Storage::disk($disk)->putFile('products', $request->file('image'));
+            $image->disk = $disk;
+            $image->path = $path;
+
+            $product->images()->save($image);
+        }
+
+
 
         $product->tags()->sync($request['tags']);
         $request->session()->flash('success', 'Thêm mới bài viết thành công!');
@@ -109,6 +128,11 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->tags()->detach();
+        $product->categories()->detach();
+        $product->images()->delete($id);
+        $product->delete();
+        return redirect()->route('backend.products.index');
     }
 }

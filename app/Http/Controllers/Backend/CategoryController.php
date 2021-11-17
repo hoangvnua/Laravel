@@ -17,20 +17,20 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(5);
-        return view('backend.categories.index')->with(['categories' => $categories]);
+        return view('admin.categories.index')->with(['categories' => $categories]);
     }
 
     public function restore($id)
     {
         $categories = Category::withTrashed()->where('id', $id)->restore();
 
-        return redirect()->route('backend.categories.delete');
+        return redirect()->route('admin.categories.delete');
     }
 
     public function delete(Request $request)
     {
         $categories = Category::onlyTrashed()->get();
-        return view('backend.categories.softDelete', [
+        return view('admin.categories.softDelete', [
             'categories' => $categories,
         ]);
     }
@@ -41,7 +41,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.categories.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class CategoryController extends Controller
         $category->name = $data['name'];
         $category->save();
         $request->session()->flash('success', 'Thêm mới danh mục thành công!');
-        return redirect()->route('backend.categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -91,7 +91,7 @@ class CategoryController extends Controller
     {
         $category = DB::table('categories')->find($id);
 
-        return view('backend.categories.edit')->with([
+        return view('admin.categories.edit')->with([
             'category' => $category
         ]);
     }
@@ -119,7 +119,7 @@ class CategoryController extends Controller
         $category->name = $data['name'];
         $category->save();
         $request->session()->flash('success', 'Cập nhật danh mục thành công!');
-        return redirect()->route('backend.categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -133,6 +133,6 @@ class CategoryController extends Controller
         // DB::table('categories')->where('id', $id)->delete();
         Category::destroy($id);
         $request->session()->flash('success', 'Đã xóa danh mục!');
-        return redirect()->route('backend.categories.index');
+        return redirect()->route('admin.categories.index');
     }
 }

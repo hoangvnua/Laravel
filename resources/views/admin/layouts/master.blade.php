@@ -8,7 +8,6 @@
 
     @include('admin.includes.css')
 
-    @include('admin.includes.script')
     <style>
         @yield('style');
 
@@ -30,7 +29,7 @@
             @yield('content-header')
             @yield('content')
             <div class="footer-wrap pd-20 mb-20 card-box">
-                DeskApp - Bootstrap 4 Admin Template By <a href="https://www.facebook.com/hoannguyen17"
+                DeskApp - Design by <a href="https://www.facebook.com/hoannguyen17"
                     target="_blank">Nguyễn Văn Hoàng</a>
             </div>
         </div>
@@ -38,4 +37,6 @@
 
 </body>
 
+    @include('admin.includes.script')
+    @yield('custom-scripts')
 </html>
