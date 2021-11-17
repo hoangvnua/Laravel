@@ -192,7 +192,7 @@ class UserController extends Controller
     public function delete(Request $request)
     {
         $users = User::onlyTrashed()->get();
-        return view('backend.users.softDelete', [
+        return view('admin.users.softDelete', [
             'users' => $users,
         ]);
     }

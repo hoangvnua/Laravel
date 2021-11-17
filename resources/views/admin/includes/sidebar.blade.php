@@ -84,6 +84,7 @@
                     <ul class="submenu">
                         <li><a href="{{ route('backend.users.index') }}">Danh sách người dùng</a></li>
                         <li><a href="{{ route('backend.users.create') }}">Thêm người dùng</a></li>
+                        <li><a href="{{ route('backend.users.delete') }}">Người dùng đã xóa</a></li>
                     </ul>
                 </li>
                 <li>
