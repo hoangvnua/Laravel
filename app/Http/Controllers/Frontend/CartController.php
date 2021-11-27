@@ -21,7 +21,7 @@ class CartController extends Controller
     {
         $product = Product::find($id);
 
-        Cart::add($product->id, $product->name, 1, $product->origin_price, 0, [
+        Cart::add($product->id, $product->name, 1, $product->sale_price, 0, [
             'image' => '/frontend/images/product/default/home-1/default-1.jpg'
         ]);
 

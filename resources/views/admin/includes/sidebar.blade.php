@@ -47,7 +47,7 @@
                     <ul class="submenu">
                         <li class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle">
-                                <span class="micon fa fa-plug"></span><span class="mtext">Thẻ</span>
+                                <span class="micon fas fa-tags"></span><span class="mtext">Thẻ</span>
                             </a>
                             <ul class="submenu child">
                                 <li><a href="{{ route('backend.tags.index') }}">Danh sách các thẻ</a></li>
@@ -68,6 +68,8 @@
                     <ul class="submenu">
                         <li><a href="{{ route('backend.products.index') }}">Danh sách sản phẩm</a></li>
                         <li><a href="{{ route('backend.products.create') }}">Thêm sản phẩm</a></li>
+                        <li><a href="{{ route('backend.orders.index') }}">Đơn hàng</a></li>
+                        {{-- <li><a href="{{ route('backend.orderConf') }}">Chờ xác nhận</a></li> --}}
                     </ul>
                 </li>
 
@@ -79,7 +81,7 @@
                 </li>
                 <li>
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-edit-2"></span><span class="mtext">Người dùng</span>
+                        <span class="micon fas fa-user"></span><span class="mtext">Người dùng</span>
                     </a>
                     <ul class="submenu">
                         <li><a href="{{ route('backend.users.index') }}">Danh sách người dùng</a></li>
@@ -89,7 +91,7 @@
                 </li>
                 <li>
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-edit-2"></span><span class="mtext">Phân quyền</span>
+                        <span class="micon fas fa-user-cog"></span><span class="mtext">Phân quyền</span>
                     </a>
                     <ul class="submenu">
                         <li><a href="{{ route('backend.roles.index') }}">Vai trò người dùng</a></li>
@@ -98,7 +100,7 @@
                 </li>
                 <li>
                     <a href="{{ route('backend.permissions.index') }}" class="dropdown-toggle no-arrow">
-                        <span class="micon dw dw-paper-plane1"></span>
+                        <span class="micon far fa-calendar-minus"></span>
                         <span class="mtext">Các quyền <img src="/admin/vendors/images/coming-soon.png" alt=""
                                 width="25"></span>
                     </a>

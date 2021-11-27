@@ -20,9 +20,9 @@ class Product extends Model
         return $this->hasMany(Image::class);
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function tags()
@@ -54,4 +54,9 @@ class Product extends Model
     {
         return number_format($this->sale_price, 0, '', '.') . ' đ ';
     }
+
+    public function orderProducts(){
+        return $this->hasMany(OrderProduct::class);
+    }
+
 }

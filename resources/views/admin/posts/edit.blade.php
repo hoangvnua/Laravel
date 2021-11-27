@@ -36,7 +36,9 @@
 
     @section('content')
         <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-            <form action="">
+            <form action="{{ route('backend.posts.update', $post->id) }}">
+                @method('PUT')
+                @csrf
                 <div class="form-group">
                     <label>Têu đề</label>
                     <input class="form-control" type="text" value="{{ $post->title }}" placeholder="Nhập tiêu đề"
@@ -59,8 +61,8 @@
                     </label>
                     <textarea class="textarea_editor form-control border-radius-0" name="content"
                         placeholder="Nội dung ...">
-                        {{ $post->content }}
-                    </textarea>
+                            {{ $post->content }}
+                        </textarea>
                 </div>
 
                 <div class="form-group mb-30">

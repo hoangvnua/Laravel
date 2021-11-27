@@ -85,24 +85,14 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <div class="coupon_code right" data-aos="fade-up" data-aos-delay="400">
-                            <h3>Cart Totals</h3>
+                            <h3>Thanh toán</h3>
                             <div class="coupon_inner">
-                                <div class="cart_subtotal">
-                                    <p>Subtotal</p>
-                                    <p class="cart_amount">$215.00</p>
-                                </div>
-                                <div class="cart_subtotal ">
-                                    <p>Shipping</p>
-                                    <p class="cart_amount"><span>Flat Rate:</span> $255.00</p>
-                                </div>
-                                <a href="#">Calculate shipping</a>
-
                                 <div class="cart_subtotal">
                                     <p>Tổng đơn hàng</p>
                                     <p class="cart_amount">{{ \Gloudemans\Shoppingcart\Facades\Cart::total() }}</p>
                                 </div>
                                 <div class="checkout_btn">
-                                    <a href="{{ route('frontend.checkout') }}" class="btn btn-md btn-golden">Thanh toán</a>
+                                    <a href="{{ route('frontend.pay.index') }}" class="btn btn-md btn-golden">Mua ngay</a>
                                 </div>
                             </div>
                         </div>

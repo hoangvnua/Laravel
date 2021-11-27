@@ -28,6 +28,7 @@
     @section('content')
         <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
             <form method="POST" action="{{ route('backend.tags.update', $tag->id) }}" enctype="multipart/form-data">
+                @method('PUT')
                 @csrf
                 <div class="form-group">
                     <label>Tên thẻ</label>

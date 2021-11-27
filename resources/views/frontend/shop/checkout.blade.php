@@ -31,8 +31,8 @@
                     <div class="user-actions accordion" data-aos="fade-up" data-aos-delay="0">
                         <h3>
                             <i class="fas fa-map-marker-alt"></i>
-                            Địa chỉ nhận hàng
-                           
+                            Thông tin người nhận
+
                             {{-- <a class="Returning" href="#" data-bs-toggle="collapse" data-bs-target="#checkout_login"
                                 aria-expanded="true">Click here to login</a> --}}
                         </h3>
@@ -60,20 +60,23 @@
                                 </form>
                             </div>
                         </div> --}}
+
                         <div>
                             <div class="container">
-                                Nguyễn Văn Hoàng 0842103986 Lạc vệ tiên du bắc ninh
+                                {{ auth()->user()->name ?? '' }}, {{ auth()->user()->UserInfo->phone ?? '' }},
+                                {{ auth()->user()->UserInfo->address ?? '' }}
                             </div>
                         </div>
+
                     </div>
-                  
+
                 </div>
                 <!-- User Quick Action Form -->
             </div>
             <!-- Start User Details Checkout Form -->
             <div class="checkout_form" data-aos="fade-up" data-aos-delay="400">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6">
+                    {{-- <div class="col-lg-12 col-md-12">
                         <form action="#">
                             <h3>Billing Details</h3>
                             <div class="row">
@@ -248,9 +251,10 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <form action="#">
+                    </div> --}}
+                    <div class="col-lg-12 col-md-12">
+                        <form method="POST" action="{{ route('frontend.pay.store') }}">
+                            @csrf
                             <h3>Đơn hàng</h3>
                             <div class="order_table table-responsive">
                                 <table>
@@ -264,26 +268,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td> Handbag fringilla <strong> × 2</strong></td>
-                                            <td>Vàng</td>
-                                            <td> $165.00</td>
-                                            <td>2</td>
-                                            <td>$330.00</td>
-                                        </tr>
-                                    </tfoot>
+                                        @foreach ($products as $product)
+                                            <tr>
+                                                <td>
+                                                    <a href="">{{ $product->name }}</a>
+                                                </td>
+                                                <td>Vàng</td>
+                                                <td>{{ $product->price }}</td>
+                                                <td>{{ $product->qty }}</td>
+                                                <td>{{ $product->price * $product->qty }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
                             </div>
                             <div class="user-actions accordion" data-aos="fade-up" data-aos-delay="200">
-                                
-                                <div id="checkout_coupon" >
+
+                                {{-- <div id="checkout_coupon">
                                     <div class="checkout_info" style="display: flex;">
                                         <form action="#">
-                                            <input placeholder="Nhập mã giảm giá (nếu có)" type="text" style="border: 1px solid">
-                                            <button class="btn btn-md btn-black-default-hover" type="submit">Áp dụng mã giảm giá</button>
+                                            <input placeholder="Nhập mã giảm giá (nếu có)" type="text"
+                                                style="border: 1px solid">
+                                            <button class="btn btn-md btn-black-default-hover" type="submit">Áp dụng mã giảm
+                                                giá</button>
                                         </form>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="payment_method">
                                 <div class="panel-default">
@@ -292,37 +302,38 @@
                                         <input type="checkbox" id="currencyCod">
                                         <span>Thanh toán khi nhận hàng</span>
                                     </label>
+                                </div>
 
-                                    <div id="methodCod" class="collapse" data-parent="#methodCod">
-                                        <div class="card-body1">
-                                            <p>Please send a check to Store Name, Store Street, Store Town, Store State /
-                                                County, Store Postcode.</p>
+                                <div class="coupon_area">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="coupon_code right" data-aos="fade-up" data-aos-delay="400">
+                                                    <h3>Thanh toán</h3>
+                                                    <div class="coupon_inner">
+                                                        <div class="cart_subtotal">
+
+                                                            <p>Tổng đơn hàng</p>
+                                                            <p class="cart_amount">
+                                                                {{ \Gloudemans\Shoppingcart\Facades\Cart::total() }}</p>
+                                                        </div>
+                                                        <span style="float: right">Giá trị đơn hàng đã tính 10% VAT</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                {{-- <div class="panel-default">
-                                    <label class="checkbox-default" for="currencyPaypal" data-bs-toggle="collapse"
-                                        data-bs-target="#methodPaypal">
-                                        <input type="checkbox" id="currencyPaypal">
-                                        <span>PayPal</span>
-                                    </label>
-                                    <div id="methodPaypal" class="collapse " data-parent="#methodPaypal">
-                                        <div class="card-body1">
-                                            <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
-                                                account.</p>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                                <div class="order_button pt-3">
-                                    <button class="btn btn-md btn-black-default-hover" type="submit">Thanh toán</button>
+
+                                <div class="order_button pt-3" style="text-align: right">
+                                    <button class="btn btn-md btn-black-default-hover" type="submit">Đặt mua</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div> <!-- Start User Details Checkout Form -->
-            
+
         </div>
     </div>
 @endsection

@@ -70,8 +70,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'avatar' => 'required|file|mimes:jpg,png|max:3072|min:20'
+            'avatar' => 'required|file|mimes:jpg,png'
         ]);
+        
         $data = $request->only(['name', 'email', 'password', 'phone', 'address', 'avatar']);
         $roles = $request->get('roles');
 

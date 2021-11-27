@@ -92,8 +92,7 @@
                                                                 </a>
                                                                 <div class="action-link">
                                                                     <div class="action-link-left">
-                                                                        <a href="#" data-bs-toggle="modal"
-                                                                            data-bs-target="#modalAddcart">Thêm vào giỏ
+                                                                        <a href="{{ route('frontend.cart.create', $product->id) }}">Thêm vào giỏ
                                                                             hàng</a>
                                                                     </div>
                                                                     <div class="action-link-right">

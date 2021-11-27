@@ -41,7 +41,9 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        return $user->role == 'admin' ;
+        foreach ($user->roles as $role) {
+            return $role->name == 'admin';
+        }
     }
 
     /**

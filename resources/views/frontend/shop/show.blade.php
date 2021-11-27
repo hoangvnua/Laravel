@@ -31,65 +31,34 @@
                         <!-- Start Large Image -->
                         <div class="product-large-image product-large-image-horaizontal swiper-container">
                             <div class="swiper-wrapper">
-                                @foreach ($product->images as $image)
-                                    @if ($image->product_id == $product->id)
+                                @if (empty($product->images[0]))
+                                    <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
+                                        <img src="{{ $product->img }}" alt="">
+                                    </div>
+                                @else
+                                    @foreach ($product->images as $image)
                                         <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                            <img src="{{ Storage::disk($image->disk)->url($image->path) }}' }}" alt="">
+                                            <img class="img-fluid" src="{{ $product->img }}" alt="">
                                         </div>
-                                    @else
-                                        <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                            <img src="{{ Storage::disk('public')->url('default.jpg') }}" alt="">
-                                        </div>
-                                    @endif
-                                @endforeach
-                                {{-- <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="/frontend/images/product/default/home-1/default-2.jpg" alt="">
-                                </div>
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="/frontend/images/product/default/home-1/default-3.jpg" alt="">
-                                </div>
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="/frontend/images/product/default/home-1/default-4.jpg" alt="">
-                                </div>
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="/frontend/images/product/default/home-1/default-5.jpg" alt="">
-                                </div>
-                                <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="/frontend/images/product/default/home-1/default-6.jpg" alt="">
-                                </div> --}}
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                         <!-- End Large Image -->
                         <!-- Start Thumbnail Image -->
                         <div class="product-image-thumb product-image-thumb-horizontal swiper-container pos-relative mt-5">
                             <div class="swiper-wrapper">
-                                @foreach ($product->images as $image)
+                                @if (empty($product->images[0]))
                                     <div class="product-image-thumb-single swiper-slide">
-                                        <img class="img-fluid"
-                                            src="{{ Storage::disk($image->disk)->url($image->path) ?? '' }}" alt="">
+                                        <img class="img-fluid" src="{{ $product->img }}" alt="">
                                     </div>
-                                @endforeach
-
-                                {{-- <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="/frontend/images/product/default/home-1/default-2.jpg"
-                                        alt="">
-                                </div>
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="/frontend/images/product/default/home-1/default-3.jpg"
-                                        alt="">
-                                </div>
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="/frontend/images/product/default/home-1/default-4.jpg"
-                                        alt="">
-                                </div>
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="/frontend/images/product/default/home-1/default-5.jpg"
-                                        alt="">
-                                </div>
-                                <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="/frontend/images/product/default/home-1/default-6.jpg"
-                                        alt="">
-                                </div> --}}
+                                @else
+                                    @foreach ($product->images as $image)
+                                        <div class="product-image-thumb-single swiper-slide">
+                                            <img class="img-fluid" src="{{ $product->img }}" alt="">
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                             <!-- Add Arrows -->
                             <div class="gallery-thumb-arrow swiper-button-next"></div>

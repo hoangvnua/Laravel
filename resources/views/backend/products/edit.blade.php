@@ -33,6 +33,7 @@
         @endif
         <form class="form-horizontal" role="form" method="POST" action="{{ route('backend.products.store') }}"
             enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             
             <div class="card-body">

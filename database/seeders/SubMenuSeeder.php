@@ -28,7 +28,7 @@ class SubMenuSeeder extends Seeder
             ],
             [
                 'name' => 'Tất cả',
-                'url' => '/posts',
+                'url' => '/shop',
                 'menu_id' => 2
             ],
             [

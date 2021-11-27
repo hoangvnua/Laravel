@@ -18,28 +18,7 @@ use Illuminate\Support\Facades\App;
 |
 */
 
-// Route::get('/', function () {
-
-//     // $currentRoute = Route::current()->uri();
-
-//     // // $currentRoute = Route::currentRouteName();
-//     // $currentRoute = Route::getCurrentRoute();
-
-//     // dd($currentRoute);
-
-//     return view('welcome');
-// })->name('home');
-
-// Route::get('/', [HomeController::class, 'index'] );
 Route::get('/', 'HomeController@index')->name('frontend.index');
-
-// Route::prefix('admin')
-//     ->name('admin.')
-//     ->namespace('admin')
-//     ->middleware(['auth'])
-//     ->group(function () {
-//         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-//     });
 
 Route::prefix('backend')
     ->name('backend.')
@@ -57,7 +36,9 @@ Route::prefix('backend')
         Route::get('categories/delete', 'CategoryController@delete')->name('categories.delete');
         Route::get('categories/restore/{id}', 'CategoryController@restore')->name('categories.restore');
 
-        // Route::get('storages', 'StorageController@index')->name('storages.index');
+        // order
+        Route::resource('orders', OrderController::class);
+
         Route::resource('storages', StorageController::class)->parameters(['storages' => 'id']);
 
         // Posts
@@ -82,19 +63,21 @@ Route::prefix('backend')
 Route::prefix('/')->name('frontend.')->namespace('Frontend')->group(function () {
 
     Route::get('posts/list', 'PostController@list')->name('posts.list');
+
     Route::get('shop/list', 'ShopController@list')->name('shop.list');
+    Route::get('shop', 'ShopController@index')->name('shop.index');
+    Route::get('shop/{id}', 'ShopController@show')->name('shop.show');
 
     Route::get('cart', 'CartController@index')->name('cart');
     Route::get('cart/create/{id}', 'CartController@create')->name('cart.create');
     Route::get('cart/remove/{rowId}', 'CartController@remove')->name('cart.remove');
     Route::get('cart/increase/{rowId}', 'CartController@increase')->name('cart.increase');
     Route::get('cart/decrease/{rowId}', 'CartController@decrease')->name('cart.decrease');
-    
-    Route::get('checkout', 'ShopController@checkout')->name('checkout');
+
 
     Route::resource('posts', PostController::class);
 
-    Route::resource('shop', ShopController::class);
+    Route::resource('pay', PayController::class);
 });
 
 Route::prefix('/')->namespace('Auth')->name('auth.')->group(function () {

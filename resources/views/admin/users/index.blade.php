@@ -53,7 +53,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
                         <div class="da-card">
                             <div class="da-card-photo">
-                                <img src="{{ $user->image }}" alt="" style="height: 100%">
+                                <img src="{{ $user->image }}" alt="" style="height: 210px">
                                 <div class="da-overlay">
                                     <div class="da-social">
                                         <ul class="clearfix">
