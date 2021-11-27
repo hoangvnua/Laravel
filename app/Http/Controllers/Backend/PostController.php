@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function __construct()
     {
-        // $this->authorizeResource(Post::class, 'post');
+        $this->authorizeResource(Post::class, 'post');
     }
 
     /**
@@ -180,22 +180,10 @@ class PostController extends Controller
     public function update(StorePostRequest $request, $id)
     {
         $post = Post::find($id);
-        // if (!Gate::allows('update-post', $post)) {
-        //     abort(403);
-        // }
-
-        // if ($request->user()->cannot('update-post', $post)) {
-        //     abort(403);
-        // }
+       
 
         $data = $request->only(['title', 'content', 'status']);
         $tags = $request->get('tags');
-
-        // DB::table('posts')->where('id', $id)->update([
-        //     'title' => $data['title'],
-        //     'content' => $data['content'],
-        //     'status' => $data['status']
-        // ]);
 
         $post->title = $data['title'];
         $post->content = $data['content'];
@@ -219,13 +207,10 @@ class PostController extends Controller
     public function destroy($id)
     {
 
-        if (Auth::user()->cannot('delete-post')) {
-            return abort(403);
-        }
-        $post = Post::find($id);
-        // if (!Gate::allows('delete-post', $post)) {
-        //     abort(403);
+        // if (Auth::user()->cannot('delete-post')) {
+        //     return abort(403);
         // }
+        $post = Post::find($id);
         $post->tags()->detach();
         $post->delete();
     
