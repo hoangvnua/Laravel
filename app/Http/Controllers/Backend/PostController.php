@@ -8,17 +8,11 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
-use Exception;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use PhpParser\Node\Stmt\TryCatch;
 
 class PostController extends Controller
 {
@@ -29,7 +23,7 @@ class PostController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(Post::class, 'post');
+        $this->middleware('can:create-post, update-post, delete-post');
     }
 
     /**
@@ -180,7 +174,6 @@ class PostController extends Controller
     public function update(StorePostRequest $request, $id)
     {
         $post = Post::find($id);
-       
 
         $data = $request->only(['title', 'content', 'status']);
         $tags = $request->get('tags');
@@ -188,7 +181,6 @@ class PostController extends Controller
         $post->title = $data['title'];
         $post->content = $data['content'];
         $post->status = $data['status'];
-        // $post->user_created_id = Auth::user()->id;
         $post->user_updated_id = Auth::user()->id;
         $post->category_id = 1;
         $post->save();

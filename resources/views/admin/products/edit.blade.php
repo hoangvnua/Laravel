@@ -36,7 +36,8 @@
 
     @section('content')
         <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-            <form method="post" action="{{ route('backend.products.update', $product->id) }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('backend.products.update', $product->id) }}"
+                enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="form-group">
@@ -107,24 +108,52 @@
                         placeholder="Nội dung ...">{{ $product->content }}</textarea>
                 </div>
 
-                <div class="form-group mb-30">
-                    <label>Thẻ</label>
-                    <select class="custom-select2 form-control" name="tags[]" multiple="multiple" style="width: 100%;">
-                        @foreach ($tags as $tag)
-                            @foreach ($product->tags as $product_tag)
-                                @php
-                                    $selected = '';
-                                    if ($product_tag->id == $tag->id) {
-                                        $selected = 'selected';
+                <div style="display: flex">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Thương hiệu</label>
+                            <select class="selectpicker form-control" data-style="btn-outline-primary" data-size="5"
+                                name="brand">
+                                @foreach ($brands as $brand)
+                                    @foreach ($brands as $br)
+                                        @php
+                                            $selected = '';
+                                            if ($product->brand_id == $br->id) {
+                                                $selected = 'selected';
+                                            }
+                                        @endphp
                                         break;
-                                    }
-                                @endphp
-                            @endforeach
-                            <option value="{{ $tag->id }}" @if (isset($selected)) {{ $selected }} @endif>{{ $tag->name }}
-                            </option>
-                        @endforeach
-                    </select>
+                                    @endforeach
+
+                                    <option value="{{ $brand->id }}" @if (isset($selected)) {{ $selected }} @endif>{{ $brand->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Thẻ</label>
+                            <select class="custom-select2 form-control" name="tags[]" multiple="multiple"
+                                style="width: 100%;">
+                                @foreach ($tags as $tag)
+                                    @foreach ($product->tags as $product_tag)
+                                        @php
+                                            $selected = '';
+                                            if ($product_tag->id == $tag->id) {
+                                                $selected = 'selected';
+                                                break;
+                                            }
+                                        @endphp
+                                    @endforeach
+                                    <option value="{{ $tag->id }}" @if (isset($selected)) {{ $selected }} @endif>{{ $tag->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 </div>
+
 
                 <div class="col-md-12 col-sm-12">
                     <div class="form-group">
@@ -134,7 +163,7 @@
                             <option value="1">Đã viết xong</option>
                             <option value="0">Chưa công khai</option>
                             <option value="2">Công khai</option>
-                            </optgroup>
+
                         </select>
                     </div>
                 </div>

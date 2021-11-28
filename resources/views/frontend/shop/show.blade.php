@@ -158,12 +158,13 @@
                                     <a href="{{ route('frontend.cart.create', $product->id) }}">Thêm vào giỏ hàng</a>
                                 </div>
                             </div>
-                            <!-- Start  Product Details Meta Area-->
-                            <div class="product-details-meta mb-20">
+                            
+                            {{-- <div class="product-details-meta mb-20">
                                 <a href="wishlist.html" class="icon-space-right"><i class="icon-heart"></i>Thêm vào yêu
                                     thích</a>
                                 <a href="compare.html" class="icon-space-right"><i class="icon-refresh"></i>làm mới</a>
-                            </div> <!-- End  Product Details Meta Area-->
+                            </div> --}}
+                            
                         </div> <!-- End Product Variable Area -->
 
                         <!-- Start  Product Details Catagories Area-->

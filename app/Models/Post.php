@@ -37,7 +37,7 @@ class Post extends Model
 
     public function getStatusTextAttribute()
     {
-        return '<span class="badge badge-' . $this->statusColor[$this->status] . '">' . $this->statusArr[$this->status] . '<span>';
+        return  $this->statusArr[$this->status];
     }
 
     public function getImgUrlAttribute()

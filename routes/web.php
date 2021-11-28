@@ -58,15 +58,21 @@ Route::prefix('backend')
         Route::resource('roles', RoleController::class);
         //Product
         Route::resource('products', ProductController::class);
+        // Brands
+        Route::resource('brands', BrandController::class);
     });
 
 Route::prefix('/')->name('frontend.')->namespace('Frontend')->group(function () {
-
+    
+    Route::get('posts', 'PostController@index')->name('posts.index');
     Route::get('posts/list', 'PostController@list')->name('posts.list');
+    Route::get('posts/{id}', 'PostController@show')->name('posts.show');
 
     Route::get('shop/list', 'ShopController@list')->name('shop.list');
     Route::get('shop', 'ShopController@index')->name('shop.index');
     Route::get('shop/{id}', 'ShopController@show')->name('shop.show');
+
+    Route::get('comments/store', 'CommentController@store')->name('comments.store');
 
     Route::get('cart', 'CartController@index')->name('cart');
     Route::get('cart/create/{id}', 'CartController@create')->name('cart.create');
@@ -75,7 +81,7 @@ Route::prefix('/')->name('frontend.')->namespace('Frontend')->group(function () 
     Route::get('cart/decrease/{rowId}', 'CartController@decrease')->name('cart.decrease');
 
 
-    Route::resource('posts', PostController::class);
+    // Route::resource('posts', PostController::class);
 
     Route::resource('pay', PayController::class);
 });

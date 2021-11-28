@@ -108,6 +108,18 @@
 
                 <div class="col-md-12 col-sm-12">
                     <div class="form-group">
+                        <label>Thương hiệu</label>
+                        <select class="selectpicker form-control" data-style="btn-outline-primary" data-size="5"
+                            name="brand">
+                            @foreach ($brands as $brand)
+                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
                         <label>Trạng thái</label>
                         <select class="selectpicker form-control" data-style="btn-outline-primary" data-size="5"
                             name="status">

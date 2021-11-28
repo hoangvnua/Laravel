@@ -6,7 +6,7 @@
 
     <!-- Start Offcanvas Mobile Menu Wrapper -->
     <div class="offcanvas-wishlist-wrapper">
-        <h4 class="offcanvas-title">Wishlist</h4>
+        <h4 class="offcanvas-title">Danh sách yêu thích</h4>
         <ul class="offcanvas-wishlist">
             <li class="offcanvas-wishlist-item-single">
                 <div class="offcanvas-wishlist-item-block">
@@ -61,7 +61,7 @@
             </li>
         </ul>
         <ul class="offcanvas-wishlist-action-button">
-            <li><a href="#" class="btn btn-block btn-golden">View wishlist</a></li>
+            <li><a href="#" class="btn btn-block btn-golden">Xem tất cả</a></li>
         </ul>
     </div> <!-- End Offcanvas Mobile Menu Wrapper -->
 

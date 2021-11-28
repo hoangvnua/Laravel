@@ -41,7 +41,8 @@ class PayController extends Controller
             $order_product->many_total = $product->price * $product->qty;
             $order_product->save();
         }
-
+        
+        Cart::destroy();
         return redirect()->route('frontend.shop.index');
     }
 }

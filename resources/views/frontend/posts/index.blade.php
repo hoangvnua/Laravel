@@ -10,7 +10,7 @@
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
-                                    <li><a href="index.html">Trang chủ</a></li>
+                                    <li><a href="{{ route('frontend.index')}}">Trang chủ</a></li>
                                     <li class="active" aria-current="page">Bài viết</li>
                                 </ul>
                             </nav>

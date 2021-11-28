@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Order::class, 'order');
+        $this->middleware('can:confirm-order, dong-goi, ship, ship-false, cancel-order');
     }
 
     public function index()

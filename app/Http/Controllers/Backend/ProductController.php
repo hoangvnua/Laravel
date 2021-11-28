@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Order;
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:create-product, edit-product, delete-product');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -43,9 +48,11 @@ class ProductController extends Controller
     {
         $tags = Tag::get();
         $categories = Category::get();
+        $brands = Brand::get();
         return view('admin.products.create')->with([
             'tags' => $tags,
-            'categories' => $categories
+            'categories' => $categories,
+            'brands' => $brands
         ]);
     }
 
@@ -64,7 +71,7 @@ class ProductController extends Controller
         $product->origin_price = $request['origin_price'];
         $product->sale_price = $request['sale_price'];
         $product->category_id = $request['category_id'];
-        $product->brand_id = 1;
+        $product->brand_id = $request['brand'];
         $product->status = $request['status'];
         $product->option = 1;
         $product->save();
@@ -79,8 +86,6 @@ class ProductController extends Controller
 
             $product->images()->save($image);
         }
-
-
 
         $product->tags()->sync($request['tags']);
         $request->session()->flash('success', 'Thêm mới bài viết thành công!');
@@ -110,10 +115,12 @@ class ProductController extends Controller
         // dd($product->category->id);
         $categories = Category::get();
         $tags = Tag::get();
+        $brands = Brand::get();
         return view('admin.products.edit')->with([
             'product' => $product,
             'categories' => $categories,
-            'tags' => $tags
+            'tags' => $tags,
+            'brands' => $brands
         ]);
     }
 
@@ -133,7 +140,7 @@ class ProductController extends Controller
         $product->origin_price = $request['origin_price'];
         $product->sale_price = $request['sale_price'];
         $product->category_id = $request['category_id'];
-        $product->brand_id = 1;
+        $product->brand_id = $request['brand'];
         $product->status = $request['status'];
         $product->option = 1;
         $product->save();
@@ -164,7 +171,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->tags()->detach();
-        $product->categories()->detach();
+        // $product->categories()->detach();
         $product->images()->delete($id);
         $product->delete();
         return redirect()->route('backend.products.index');

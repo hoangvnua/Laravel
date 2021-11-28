@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Bài viết
+    Sản phẩm
 @endsection
 
 @section('style')
@@ -30,6 +30,25 @@
     @endsection
 
     @section('content')
+        <div class="pd-20">
+            @can('create-product', App\models\Product::class)
+                @include('backend.component.btn', [
+                'href' => route('backend.products.create'),
+                'type' => 'primary',
+                'content' => 'Thêm mới'
+                ])
+            @endcan
+            @if (session('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
         <div class="product-wrap">
             <div class="product-list">
                 <ul class="row">
@@ -47,14 +66,22 @@
                                         <del>{{ $product->price_format }}</del><ins>{{ $product->sale_price_format }}</ins>
                                     </div>
                                     <div style="text-align: center">
-                                        <a href="{{ route('backend.products.show', $product->id) }}"
-                                            class="btn btn-outline-success"><i class="fas fa-eye"></i></a>
-                                        <a href="{{ route('backend.products.edit', $product->id) }}"
-                                            class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
-                                        <a class="btn btn-outline-danger" data-toggle="modal"
-                                            data-target="#exampleModal-{{ $product->id }}">
-                                            <i class="far fa-trash-alt"></i>
-                                        </a>
+                                        @can('edit-product',App\models\Product::class)
+                                            <a href="{{ route('backend.products.show', $product->id) }}"
+                                                class="btn btn-outline-success"><i class="fas fa-eye"></i></a>
+                                        @endcan
+                                        @can('edit-product', App\models\Product::class)
+                                            <a href="{{ route('backend.products.edit', $product->id) }}"
+                                                class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                        @endcan
+
+                                        @can('delete-product', App\models\Product::class)
+                                            <a class="btn btn-outline-danger" data-toggle="modal"
+                                                data-target="#exampleModal-{{ $product->id }}">
+                                                <i class="far fa-trash-alt"></i>
+                                            </a>
+                                        @endcan
+
                                     </div>
 
                                     <!-- Modal -->

@@ -61,32 +61,48 @@
                     </label>
                     <textarea class="textarea_editor form-control border-radius-0" name="content"
                         placeholder="Nội dung ...">
-                            {{ $post->content }}
-                        </textarea>
+                                {{ $post->content }}
+                            </textarea>
                 </div>
 
-                <div class="form-group mb-30">
-                    <label>Thẻ</label>
-                    <select multiple data-role="tagsinput" style="width: 100%;" name="tags[]">
-                        @foreach ($tags as $tag)
-                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                <div style="display: flex">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Thẻ</label>
+                            <select class="custom-select2 form-control" name="tags[]" multiple="multiple"
+                                style="width: 100%;">
+                                @foreach ($tags as $tag)
+                                    @foreach ($post->tags as $post_tag)
+                                        @php
+                                            $selected = '';
+                                            if ($post_tag->id == $tag->id) {
+                                                $selected = 'selected';
+                                                break;
+                                            }
+                                        @endphp
+                                    @endforeach
+                                    <option value="{{ $tag->id }}" @if (isset($selected)) {{ $selected }} @endif>{{ $tag->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                        <label>Trạng thái</label>
-                        <select class="selectpicker form-control" data-style="btn-outline-primary" data-size="5"
-                            name="status">
-                            <option value="{{ $post->status }}">{{ $post->status_text }}</option>
-                            <option value="1">Đã viết xong</option>
-                            <option value="0">Chưa công khai</option>
-                            <option value="2">Công khai</option>
-                            </optgroup>
-                        </select>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Trạng thái</label>
+                            <select class="selectpicker form-control" data-style="btn-outline-primary" data-size="5"
+                                name="status">
+                                <option value="{{ $post->status }}">{{ $post->status_text }}</option>
+                                <option value="1">Đã viết xong</option>
+                                <option value="0">Chưa công khai</option>
+                                <option value="2">Công khai</option>
+                                </optgroup>
+                            </select>
+                        </div>
                     </div>
                 </div>
+
                 <div style="text-align: right">
                     <button class="btn btn-success">Cập nhật</button>
                 </div>

@@ -50,7 +50,8 @@
                                         <a href="#"
                                             class="list-group-item d-flex align-items-center justify-content-between">
                                             {{ $category->name }}
-                                            <span class="badge badge-primary badge-pill">7</span>
+                                            <span
+                                                class="badge badge-primary badge-pill">{{ $category->posts->count() }}</span>
                                         </a>
                                     @endforeach
                                 </div>

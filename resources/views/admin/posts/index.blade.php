@@ -156,62 +156,27 @@
                                         <a href="#"
                                             class="list-group-item d-flex align-items-center justify-content-between">
                                             {{ $category->name }}
-                                            <span class="badge badge-primary badge-pill">7</span>
+                                            <span
+                                                class="badge badge-primary badge-pill">{{ $category->posts->count() }}</span>
                                         </a>
                                     @endforeach
 
                                 </div>
                             </div>
                             <div class="card-box mb-30">
-                                <h5 class="pd-20 h5 mb-0">Latest Post</h5>
+                                <h5 class="pd-20 h5 mb-0">Bài đăng mới nhất</h5>
                                 <div class="latest-post">
                                     <ul>
-                                        <li>
-                                            <h4><a href="#">Ut enim ad minim veniam, quis nostrud exercitation ullamco</a>
-                                            </h4>
-                                            <span>HTML</span>
-                                        </li>
-                                        <li>
-                                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a>
-                                            </h4>
-                                            <span>Css</span>
-                                        </li>
-                                        <li>
-                                            <h4><a href="#">Ut enim ad minim veniam, quis nostrud exercitation ullamco</a>
-                                            </h4>
-                                            <span>jQuery</span>
-                                        </li>
-                                        <li>
-                                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a>
-                                            </h4>
-                                            <span>Bootstrap</span>
-                                        </li>
-                                        <li>
-                                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a>
-                                            </h4>
-                                            <span>Design</span>
-                                        </li>
+                                        @foreach ($posts as $post)
+                                            <li>
+                                                <h4><a href="#">{{ $post->title }}</a>
+                                                </h4>
+                                                <span>{{ $post->created_at->format('d/M/y') }}</span>
+                                            </li>
+                                        @endforeach
+
+
                                     </ul>
-                                </div>
-                            </div>
-                            <div class="card-box overflow-hidden">
-                                <h5 class="pd-20 h5 mb-0">Archives</h5>
-                                <div class="list-group">
-                                    <a href="#"
-                                        class="list-group-item d-flex align-items-center justify-content-between">January
-                                        2020</a>
-                                    <a href="#"
-                                        class="list-group-item d-flex align-items-center justify-content-between">February
-                                        2020</a>
-                                    <a href="#"
-                                        class="list-group-item d-flex align-items-center justify-content-between">March
-                                        2020</a>
-                                    <a href="#"
-                                        class="list-group-item d-flex align-items-center justify-content-between">April
-                                        2020</a>
-                                    <a href="#"
-                                        class="list-group-item d-flex align-items-center justify-content-between">May
-                                        2020</a>
                                 </div>
                             </div>
                         </div>

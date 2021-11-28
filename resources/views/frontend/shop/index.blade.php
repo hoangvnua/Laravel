@@ -45,7 +45,7 @@
                                     </div> <!-- End Sort tab Button -->
 
                                     <!-- Start Sort Select Option -->
-                                    <div class="sort-select-list d-flex align-items-center">
+                                    {{-- <div class="sort-select-list d-flex align-items-center">
                                         <label class="mr-2">Sắp xếp:</label>
                                         <form action="#">
                                             <fieldset>
@@ -59,7 +59,7 @@
                                                 </select>
                                             </fieldset>
                                         </form>
-                                    </div> <!-- End Sort Select Option -->
+                                    </div> <!-- End Sort Select Option --> --}}
 
 
 
@@ -100,7 +100,7 @@
                                                                             data-bs-target="#modalQuickview">
                                                                             <i class="icon-magnifier"></i>
                                                                         </a>
-                                                                        <a href="wishlist.html">
+                                                                        <a href="#">
                                                                             <i class="icon-heart"></i>
                                                                         </a>
                                                                     </div>

@@ -1,6 +1,6 @@
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="{{ route('frontend.index') }} ">
+        <a target="_blank" href="{{ route('frontend.index') }} ">
             <img src="/admin/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
             <img src="/admin/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
         </a>
@@ -17,18 +17,21 @@
                         <span class="micon dw dw-house-1"></span><span class="mtext">Trang chủ</span>
                     </a>
                 </li>
-                <li class="dropdown @if (request()->routeIs('backend.posts.*')) show @endif">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-edit2"></span><span class="mtext">Quản lý bài viết</span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="{{ route('backend.posts.index') }}" class="@if (request()->routeIs('backend.posts.index')) active @endif">Danh sách
-                                bài viết</a></li>
-                        <li><a href="{{ route('backend.posts.create') }}" class="@if (request()->routeIs('backend.posts.create')) active @endif">Viết
-                                bài</a>
-                        </li>
-                    </ul>
-                </li>
+                @can('create-post')
+                    <li class="dropdown @if (request()->routeIs('backend.posts.*')) show @endif">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-edit2"></span><span class="mtext">Quản lý bài viết</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('backend.posts.index') }}" class="@if (request()->routeIs('backend.posts.index')) active @endif">Danh sách
+                                    bài viết</a></li>
+                            <li><a href="{{ route('backend.posts.create') }}" class="@if (request()->routeIs('backend.posts.create')) active @endif">Viết
+                                    bài</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
+
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-list3"></span><span class="mtext">Quản lý chung</span>
@@ -55,23 +58,35 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
-
-                <li>
-                    <div class="dropdown-divider"></div>
-                </li>
-
-                <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-library"></span><span class="mtext">Quản lý bán hàng</span>
-                    </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('backend.products.index') }}">Danh sách sản phẩm</a></li>
-                        <li><a href="{{ route('backend.products.create') }}">Thêm sản phẩm</a></li>
-                        <li><a href="{{ route('backend.orders.index') }}">Đơn hàng</a></li>
-                        {{-- <li><a href="{{ route('backend.orderConf') }}">Chờ xác nhận</a></li> --}}
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <span class="micon fas fa-tags"></span><span class="mtext">Thương hiệu</span>
+                            </a>
+                            <ul class="submenu child">
+                                <li><a href="{{ route('backend.brands.index') }}">Danh sách thương hiệu</a></li>
+                                <li><a href="{{ route('backend.brands.create') }}">Thêm thương hiệu</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
+                @can('edit-product')
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-library"></span><span class="mtext">Quản lý bán hàng</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('backend.products.index') }}">Danh sách sản phẩm</a></li>
+                            <li><a href="{{ route('backend.products.create') }}">Thêm sản phẩm</a></li>
+                            <li><a href="{{ route('backend.orders.index') }}">Đơn hàng</a></li>
+                            {{-- <li><a href="{{ route('backend.orderConf') }}">Chờ xác nhận</a></li> --}}
+                        </ul>
+                    </li>
+                @endcan
 
                 <li>
                     <div class="dropdown-divider"></div>

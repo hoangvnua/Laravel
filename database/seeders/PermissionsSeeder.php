@@ -60,6 +60,10 @@ class PermissionsSeeder extends Seeder
             [
                 'name' => 'Hủy đơn hàng',
                 'slug' => 'cancel-order'
+            ],
+            [
+                'name' => 'Phân quyền',
+                'slug' => 'phan-quyen'
             ]
         ];
         DB::table('permissions')->insert($permission);
