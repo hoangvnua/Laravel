@@ -33,10 +33,10 @@
 
 
         </ul>
-        <div class="offcanvas-cart-total-price">
+        {{-- <div class="offcanvas-cart-total-price">
             <span class="offcanvas-cart-total-price-text">Tổng:</span>
             <span class="offcanvas-cart-total-price-value">{{ $product->price * $product->qty }}</span>
-        </div>
+        </div> --}}
         <ul class="offcanvas-cart-action-button">
             <li><a href="{{ route('frontend.cart') }}" class="btn btn-block btn-golden">Xem giỏ hàng</a></li>
             <li><a href="{{ route('frontend.pay.index') }}" class=" btn btn-block btn-golden mt-5">Thanh toán</a></li>
