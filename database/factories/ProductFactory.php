@@ -26,7 +26,7 @@ class ProductFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name),
-            'content' => $this->faker->text(50),
+            'content' => "bàn gốiadohsahudhuahdhauidhápdhsdaphsdauhpdhdsahpúahdúahu9dsahu",
             'quatity' => 1000,
             'origin_price' => rand(200000, 1000000),
             'sale_price' => rand(180000, 550000),
