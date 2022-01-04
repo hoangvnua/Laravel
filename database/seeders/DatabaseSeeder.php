@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CommentSeeder::class);
         $this->call(ImageSeeder::class);
         $this->call(MenusTableSeeder::class);
-        $this->call(ProductSeeder::class);
+        // $this->call(ProductSeeder::class);
         $this->call(ReviewSeeder::class);
         $this->call(RolePermissionSeeder::class);
         $this->call(PermissionsSeeder::class);
