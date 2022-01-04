@@ -22,7 +22,7 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->text(10);
+        $name = 'bàn gỗ';
         return [
             'name' => $name,
             'slug' => Str::slug($name),
