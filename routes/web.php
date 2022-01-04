@@ -63,10 +63,9 @@ Route::prefix('backend')
     });
 
 Route::prefix('/')->name('frontend.')->namespace('Frontend')->group(function () {
-    
-    Route::get('posts', 'PostController@index')->name('posts.index');
-    Route::get('posts/list', 'PostController@list')->name('posts.list');
-    Route::get('posts/{id}', 'PostController@show')->name('posts.show');
+
+
+
 
     Route::get('shop/list', 'ShopController@list')->name('shop.list');
     Route::get('shop', 'ShopController@index')->name('shop.index');
@@ -80,6 +79,11 @@ Route::prefix('/')->name('frontend.')->namespace('Frontend')->group(function () 
     Route::get('cart/increase/{rowId}', 'CartController@increase')->name('cart.increase');
     Route::get('cart/decrease/{rowId}', 'CartController@decrease')->name('cart.decrease');
 
+    Route::prefix('posts/')->name('posts.')->group(function () {
+        Route::get('', 'PostController@index')->name('index');
+        Route::get('list', 'PostController@list')->name('list');
+        Route::get('{id}', 'PostController@show')->name('show');
+    });
 
     // Route::resource('posts', PostController::class);
 

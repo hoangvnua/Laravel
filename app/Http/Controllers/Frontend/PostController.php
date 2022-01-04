@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -18,12 +19,14 @@ class PostController extends Controller
      */
     public function index()
     {
+        $products = Cart::content();
         $posts = Cache::remember('front_end_posts', 10, function () {
-            return Post::simplePaginate(12);
+            return Post::Paginate(12);
         });
         // $posts = Post::simplePaginate(12);
         return view('frontend.posts.index')->with([
-            'posts' => $posts
+            'posts' => $posts,
+            'products' => $products
         ]);
     }
 
