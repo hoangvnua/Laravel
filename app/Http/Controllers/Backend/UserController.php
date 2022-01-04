@@ -148,7 +148,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->only(['name', 'email', 'password', 'address', 'phone']);
+        $validated = $request->validate([
+            'avatar' => 'required|file|mimes:jpg,png'
+        ]);
+        $data = $request->only(['name', 'email', 'password', 'address', 'phone', 'avatar']);
         $roles = $request->get('roles');
 
         $user = User::find($id);
@@ -156,6 +159,13 @@ class UserController extends Controller
         $user->email = $data['email'];
         if (!empty($data['password'])) {
             $user->password = bcrypt($data['password']);
+        }
+        if ($request->hasFile('avatar')) {
+            $disk = 'public';
+            $path = $request->file('avatar')->store('avatars', $disk);
+            // $path = Storage::putFile('avatar', $request->file('public'));
+            $user->disk = $disk;
+            $user->avatar = $path;
         }
 
         $user->save();

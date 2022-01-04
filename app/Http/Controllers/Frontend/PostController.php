@@ -34,11 +34,13 @@ class PostController extends Controller
         $posts = Post::simplePaginate(12);
         $categories = Category::get();
         $tags = Tag::get();
+        $products = Cart::content();
 
         return view('frontend.posts.list')->with([
             'posts' => $posts,
             'categories' => $categories,
-            'tags' =>$tags
+            'tags' =>$tags,
+            'products' => $products
         ]);
     }
 
@@ -71,6 +73,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        $products = Cart::content();
         $posts = Post::get();
         $post = Post::find($id);
         $categories = Category::get();
@@ -79,7 +82,8 @@ class PostController extends Controller
             'posts' => $posts,
             'post' => $post,
             'categories' => $categories,
-            'tags' =>$tags
+            'tags' =>$tags,
+            'products' => $products
         ]);
     }
 
