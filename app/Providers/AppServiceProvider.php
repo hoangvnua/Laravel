@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Menu;
 use App\Models\SubMenu;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -38,6 +39,9 @@ class AppServiceProvider extends ServiceProvider
         //     'sub' => $sub
         // ]);
 
-        // Paginator::useBootstrap();
+        Paginator::useBootstrap();
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
