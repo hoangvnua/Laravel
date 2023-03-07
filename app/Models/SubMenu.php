@@ -11,6 +11,6 @@ class SubMenu extends Model
 
     public function menus()
     {
-        return $this->belongsTo(Menu::class, 'menu_id');
+        //return $this->belongsTo(Menu::class, 'menu_id');
     }
 }
