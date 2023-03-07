@@ -29,8 +29,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        // $menu = ['Phone', 'Laptop'];
-        // view()->share('menu', $menu);
+        $menu = ['Phone', 'Laptop'];
+        view()->share('menu', $menu);
 
         // $menus = Menu::get();
         // $sub =  SubMenu::get();
